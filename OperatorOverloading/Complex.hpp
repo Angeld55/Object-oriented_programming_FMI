@@ -64,7 +64,7 @@ Complex& Complex::operator*=(const Complex& other)
 }
 Complex& Complex::operator/=(const Complex& other) // a/=b
 {
-	Complex Conjugated = other.getConjugated(); //взимаме комплексно спрегнатата на текущата дроб (а)
+	Complex Conjugated = other.getConjugated(); //взимаме комплексно спрегнатата на другата дроб (b)
 	
 	Complex otherCopy(other);// копираме другата (b), за да не я промяняме.
 
