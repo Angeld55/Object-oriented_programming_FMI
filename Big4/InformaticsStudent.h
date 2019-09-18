@@ -14,10 +14,11 @@ private:
 	int fn;
 
 	void CopyFrom(const InformaticsStudent& other);
-    void Free();
+        void Free();
 
 public:
 	/// BIG 4 starts here
+	
 	InformaticsStudent();
 	InformaticsStudent(const InformaticsStudent& other);
 	InformaticsStudent& operator=(const InformaticsStudent& other);
