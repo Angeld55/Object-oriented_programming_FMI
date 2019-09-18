@@ -69,7 +69,7 @@ void InformaticsStudent::setFn(int fn)
 		fn = 45000;
 	this->fn = fn;
 }
-const InformaticsStudent::char* getName() const
+const char* InformaticsStudent::getName() const
 {
 	return name;
 }
@@ -78,7 +78,7 @@ int InformaticsStudent::getFn() const
 	return fn;
 }
 
-void printStudent()
+void InformaticsStudent::printStudent()
 {
 	cout << name << " fn: " << fn << endl;
 }
