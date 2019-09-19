@@ -23,7 +23,7 @@ struct Point
 	}
 };
 
-class Figure
+class Figure //Този клас е абстрактен - не можем да правим обекти от него.
 {
 
 	Point* points;
@@ -38,8 +38,11 @@ public:
 	void setPoint(int ind, int x, int y);
 	const Point& getPoint(int ind);
 	
+	//Тези функции са виртуални -> Във всеки неабстрактен наследник трябва да бъдат разписани отделно тези функции.
+	//То е и логично - лице на правоъгълник и лице на триъгълник се смята по различен начин, нали?
+	// Не можем още тук да дефинираме някаква обща формула, която да върши работа за всички фигури.
 	virtual double getPer() = 0;
-    virtual double getArea()= 0;
+    	virtual double getArea()= 0;
 
 
 };
@@ -94,21 +97,6 @@ const Point& Figure::getPoint(int ind)
 	return points[ind];
 
 }
-
-
-
-int main()
-{
-	Figure** arr= new Figure*[3];
-	arr[0] = new Triangle(15, 15, 15, 30, 50, 30);
-	arr[1] = new Rectangle(15, 15, 50, 30);
-	arr[2] = new Circle(1, 2, 9);
-
-	for (int i = 0; i < 3; i++)
-	{
-	    cout << arr[i]->getPer()<<endl;
-		cout << arr[i]->getArea()<<endl;
-	}
 
 
 }
