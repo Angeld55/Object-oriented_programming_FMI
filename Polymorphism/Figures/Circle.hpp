@@ -1,3 +1,4 @@
+#include "Figure.hpp"
 class Circle : public Figure
 {
 	int radius;
