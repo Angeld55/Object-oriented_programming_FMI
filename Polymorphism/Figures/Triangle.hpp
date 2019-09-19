@@ -1,3 +1,6 @@
+#include "Figure.hpp"
+class Triangle
+{
 public:
 	Triangle(int x1, int y1, int x2, int y2, int x3, int y3) :Figure(3)
 	{
@@ -15,6 +18,7 @@ public:
 	}
 	double getArea()
 	{
+	    //Херонова формула
 	   double halfP = getPer()/2; 
 	   return sqrt(halfP * (halfP-getSide(0))*(halfP-getSide(1))*(halfP-getSide(2)));
 	}
