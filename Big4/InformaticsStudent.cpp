@@ -20,8 +20,8 @@ InformaticsStudent::InformaticsStudent()
 	fn = 0;
 }
 
-InformaticsStudent::InformaticsStudent(const char* name, int fn)
-{
+InformaticsStudent::InformaticsStudent(const char* name, int fn) //При конструктура винаги КОПИРАМЕ подадения стринг за нашния нов обект.
+{								 // Това е важно, защото не искаме някой друг да има достъп до него.
 	setName(name);
 	setFn(fn);
 }
@@ -29,25 +29,32 @@ InformaticsStudent::InformaticsStudent(const char* name, int fn)
 
 InformaticsStudent::InformaticsStudent(const InformaticsStudent& other)
 {
-	CopyFrom(other); //копирам от другия обект(няма нужда да трия памет от себе си, понже това е конструктор и обекта сега се създава)
+	//Използваме функцията, която копира всичко от other в нашия обект.
+	CopyFrom(other); 
+	
+	//Понеже това е конструктор, няма нужда да трия нищо от обекта, понеже няма как да е имало данни тук,защото сега го създаваме.
 }
 
 InformaticsStudent& InformaticsStudent::operator=(const InformaticsStudent& other)
 {
+	//За разлика от при Копи-контструктора , тука е възможно да е имало данни , преди копирането	
+	// (възможно е обекта да е съществувал).За това преди да копираме трябва да изтрием, това което е седяло тук.
+	// Проверката на 44 ред е с цел да не стане нещо от сорта T1=T1.
+	
 	if (this != &other)
 	{
 		Free(); //трия своята памет
 
 		CopyFrom(other); // копирам от другия обект
 	}
-	return *this;
+	return *this;  // Връщаме указател към обекта, в който сме копирали, за може да chain-ваме  T1=T2=T3.
 }
 
 InformaticsStudent::~InformaticsStudent()
 {
 	Free();
 }
-// BIG 4 ends here
+
 
 void InformaticsStudent::setName(const char* name)
 {
