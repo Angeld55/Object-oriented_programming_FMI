@@ -18,7 +18,7 @@ public:
 	}
 	double getArea()
 	{
-	    //Херонова формула
+	        //Херонова формула
 	        double halfP = getPer()/2; 
 	        return sqrt(halfP * (halfP-getSide(0))*(halfP-getSide(1))*(halfP-getSide(2)));
 	}
