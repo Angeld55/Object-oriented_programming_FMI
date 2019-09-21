@@ -15,6 +15,6 @@ public:
 	}
 	double getArea()
 	{
-	 return getPoint(0).getDistTo(getPoint(1))* getPoint(1).getDistTo(getPoint(2));   
+		return getPoint(0).getDistTo(getPoint(1))* getPoint(1).getDistTo(getPoint(2));   
 	}
 };
