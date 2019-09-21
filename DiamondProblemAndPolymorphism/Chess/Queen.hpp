@@ -1,7 +1,7 @@
 #include "Figure.hpp"
 
-class Queen : public Bishop, public Rook
-{
+class Queen : public Bishop, public Rook //Формално това НЕ Е ок. Понеже царицата НЕ Е топ и царицата НЕ Е офицер.
+{						
 public:
 	Queen(int xCoordinate, int yCoordinate, bool isWhite) :Figure(xCoordinate, yCoordinate, isWhite), Bishop(xCoordinate, yCoordinate, isWhite), Rook(xCoordinate, yCoordinate, isWhite)
 	{}
