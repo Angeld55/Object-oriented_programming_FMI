@@ -10,7 +10,7 @@ public:
 	}
 	double getSide(int side)
 	{
-	    return getPoint(side).getDistTo(getPoint((side+1)%3));
+	        return getPoint(side).getDistTo(getPoint((side+1)%3));
 	}
 	double getPer()
 	{
@@ -19,7 +19,7 @@ public:
 	double getArea()
 	{
 	    //Херонова формула
-	   double halfP = getPer()/2; 
-	   return sqrt(halfP * (halfP-getSide(0))*(halfP-getSide(1))*(halfP-getSide(2)));
+	        double halfP = getPer()/2; 
+	        return sqrt(halfP * (halfP-getSide(0))*(halfP-getSide(1))*(halfP-getSide(2)));
 	}
 };
