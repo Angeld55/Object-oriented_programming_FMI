@@ -24,14 +24,14 @@ public:
 	friend std::istream& operator>>(std::istream&, Vector& v);
 
 	int GetAtIndex(int index) const;
-	int& operator[](int index); // оператор за индексиране(като в масивите)  vector a; a[4] -взима четвъртия кординат на вектора
+	int& operator[](int index);// РѕРїРµСЂР°С‚РѕСЂ Р·Р° РёРЅРґРµРєСЃРёСЂР°РЅРµ(РєР°С‚Рѕ РІ РјР°СЃРёРІРёС‚Рµ)  vector a; a[4] -РІР·РёРјР° С‡РµС‚РІСЉСЂС‚РёСЏ РєРѕСЂРґРёРЅР°С‚ РЅР° РІРµРєС‚РѕСЂР°
 	void print();
 };
 
-Vector operator+(const Vector& lhs, const Vector& rhs);// Събиране на два вектора
-Vector operator-(const Vector& lhs, const Vector& rhs);// Събиране на два вектора
+Vector operator+(const Vector& lhs, const Vector& rhs);// РЎСЉР±РёСЂР°РЅРµ РЅР° РґРІР° РІРµРєС‚РѕСЂР°
+Vector operator-(const Vector& lhs, const Vector& rhs);// РР·РІР°Р¶РґР°РЅРµ РЅР° РґРІР° РІРµРєС‚РѕСЂР°
 
-int operator%(const Vector& lhs, const Vector& rhs); // Скаларно произведение на два вектора
+int operator%(const Vector& lhs, const Vector& rhs); // РЎРєР°Р»Р°СЂРЅРѕ РїСЂРѕРёР·РІРµРґРµРЅРёРµ РЅР° РґРІР° РІРµРєС‚РѕСЂР°
 
-bool operator||(const Vector& lhs, const Vector& rhs); //проверява дали два вектора са успоредни
-bool operator|=(const Vector& lhs, const Vector& rhs); // Дали два вектора са перпендикулярни
+bool operator||(const Vector& lhs, const Vector& rhs); //РїСЂРѕРІРµСЂСЏРІР° РґР°Р»Рё РґРІР° РІРµРєС‚РѕСЂР° СЃР° СѓСЃРїРѕСЂРµРґРЅРё
+bool operator|=(const Vector& lhs, const Vector& rhs); // Р”Р°Р»Рё РґРІР° РІРµРєС‚РѕСЂР° СЃР° РїРµСЂРїРµРЅРґРёРєСѓР»СЏСЂРЅРё
