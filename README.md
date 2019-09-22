@@ -1,2 +1,3 @@
-# Object-oriented_programming_FMI
-Examples for the "Object-oriented programming"  given by me as teaching assistant.
+### Код от семинарите по "Обектно-ориентирано програмиране" - спец. Информатика
+
+![enter image description here](https://lh3.googleusercontent.com/FvLCkB2cpD21CZRcXmPb8S0vZqurapWrBoQvbyg__x_mJ2HafSdX3AHYbi6xmh8hUz2dwRgX_g "Учебна програма")
