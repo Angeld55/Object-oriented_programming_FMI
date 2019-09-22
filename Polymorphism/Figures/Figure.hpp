@@ -97,17 +97,3 @@ const Point& Figure::getPoint(int ind)
 	return points[ind];
 
 }
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
