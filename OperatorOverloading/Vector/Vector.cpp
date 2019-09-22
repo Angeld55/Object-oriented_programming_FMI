@@ -111,7 +111,7 @@ int operator%(const Vector& lhs, const Vector& rhs)
 		result += lhs.GetAtIndex(i) * rhs.GetAtIndex(i);
 	return result;
 }
-bool operator||(const Vector& lhs, const Vector& rhs) // a и b са перпендикулярни <-> a*K=b (K е константа).
+bool operator||(const Vector& lhs, const Vector& rhs)// a Рё b СЃР° РїРµСЂРїРµРЅРґРёРєСѓР»СЏСЂРЅРё <-> a*K=b (K Рµ РєРѕРЅСЃС‚Р°РЅС‚Р°).
 {
 	double coeff = lhs.GetAtIndex(0) / rhs.GetAtIndex(0);
 	for (int i = 1; i < lhs.GetLen(); i++)
@@ -127,7 +127,7 @@ bool operator||(const Vector& lhs, const Vector& rhs) // a и b са перпендикулярн
 }
 bool operator|=(const Vector& lhs, const Vector& rhs)
 {
-	return lhs%rhs == 0; //скаларното произведение на два успоредни вектора е 0.
+	return lhs%rhs == 0; //СЃРєР°Р»Р°СЂРЅРѕС‚Рѕ РїСЂРѕРёР·РІРµРґРµРЅРёРµ РЅР° РґРІР° СѓСЃРїРѕСЂРµРґРЅРё РІРµРєС‚РѕСЂР° Рµ 0.
 }
 
 std::ostream& operator<<(std::ostream& os, const Vector& v)
