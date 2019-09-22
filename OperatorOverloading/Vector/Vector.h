@@ -31,7 +31,7 @@ public:
 Vector operator+(const Vector& lhs, const Vector& rhs);// Събиране на два вектора
 Vector operator-(const Vector& lhs, const Vector& rhs);// Изваждане на два вектора
 
-int operator%(const Vector& lhs, const Vector& rhs); // Скаларно произведение на два вектора
+int operator%(const Vector& lhs, const Vector& rhs);   // Скаларно произведение на два вектора
 
-bool operator||(const Vector& lhs, const Vector& rhs); //проверява дали два вектора са успоредни
+bool operator||(const Vector& lhs, const Vector& rhs); // Дали два вектора са успоредни
 bool operator|=(const Vector& lhs, const Vector& rhs); // Дали два вектора са перпендикулярни
