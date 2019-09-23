@@ -1,4 +1,7 @@
+#pragma once
 #include "Figure.hpp"
+#include "Bishop.hpp"
+#include "Rook.hpp"
 
 class Queen : public Bishop, public Rook //Формално това НЕ Е ок. Понеже царицата НЕ Е топ и царицата НЕ Е офицер.
 {						

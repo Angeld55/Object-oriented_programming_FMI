@@ -1,3 +1,4 @@
+#pragma once
 #include "Figure.hpp"
 
 class Rook : virtual public Figure
@@ -13,7 +14,7 @@ public:
 	
 };
 
-bool Rook::Move(int xNew, int yNew);
+bool Rook::Move(int xNew, int yNew)
 {
 	if (!isValidCoord(xNew, yNew))
 		return false;

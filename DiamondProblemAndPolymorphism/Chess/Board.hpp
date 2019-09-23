@@ -1,4 +1,7 @@
+#pragma once
 #include "Figure.hpp"
+#include "Knight.hpp"
+#include "Queen.hpp"
 
 class Board
 {

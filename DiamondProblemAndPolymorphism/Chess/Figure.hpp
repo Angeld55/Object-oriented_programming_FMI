@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 
 using namespace std;
@@ -21,7 +22,7 @@ public:
 	virtual ~Figure(){};
 };
 
-Figure::Figure(int xCoord, int yCoord, bool isWhite);
+Figure::Figure(int xCoord, int yCoord, bool isWhite)
 {
 	if (isValidCoord(xCoord, yCoord))
 	{

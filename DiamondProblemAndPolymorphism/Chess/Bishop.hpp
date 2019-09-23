@@ -1,3 +1,4 @@
+#pragma once
 #include "Figure.hpp"
 
 class Bishop : virtual public Figure
