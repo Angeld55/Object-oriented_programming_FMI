@@ -1,4 +1,6 @@
+#pragma once
 #include "User.h"
+#include "GradesBook.h"
 
 class Student : public User
 {
@@ -7,7 +9,7 @@ public:
 	GradesBook b;
 
 	Student(const char* name, int age, int fn);
-	void ReceiveGrade(int grade)
+	void ReceiveGrade(int grade);
 	
 
 };

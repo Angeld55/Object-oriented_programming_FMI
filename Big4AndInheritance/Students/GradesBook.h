@@ -1,3 +1,6 @@
+#pragma once
+#include <iostream>
+
 class GradesBook
 {
 	int* grades;
@@ -19,6 +22,6 @@ public:
 	void RemoveLastGrade();
 	
 	int operator[](int index) const;
-	friend ostream& operator<<(ostream& stream, GradesBook& obj);
+	friend std::ostream& operator<<(std::ostream& stream, GradesBook& obj);
 
 };

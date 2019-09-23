@@ -9,7 +9,7 @@ GradesBook::GradesBook()
 }
 GradesBook::GradesBook(const GradesBook& other)
 {
-	cout << "Copy contr of GradesBook" << endl;
+	std::cout << "Copy contr of GradesBook" << std::endl;
 	CopyFrom(other);
 }
 GradesBook& GradesBook::operator=(const GradesBook& other)
@@ -78,7 +78,7 @@ int GradesBook::operator[](int index) const
 	return grades[index];
 }
 
-ostream& operator<<(ostream& stream, GradesBook& obj)
+std::ostream& operator<<(std::ostream& stream, GradesBook& obj)
 {
 	for (int i = 0; i < obj.capacity; i++)
 	{

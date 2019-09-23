@@ -6,5 +6,5 @@ Student::Student(const char* name, int age, int fn): User(name,age)
 
 void Student::ReceiveGrade(int grade)
 {
-	book.AddGrade(grade);
+	b.AddGrade(grade);
 }
