@@ -1,4 +1,4 @@
-ifndef QUEUE_HDR
+#ifndef QUEUE_HDR
 #define QUEUE_HDR
 
 #include <iostream>
