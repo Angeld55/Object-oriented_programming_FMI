@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Drink.h"
 
 class AlcoholDrink : public Drink
