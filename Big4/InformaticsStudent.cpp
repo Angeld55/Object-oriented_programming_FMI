@@ -1,5 +1,16 @@
 #include "InformaticsStudent.h"
+#include <cstring>
 
+
+bool hasDigits(const char* str,int len)
+{
+	for (int i = 0; i < len;i++)
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			return true;
+	}
+	return false;
+}
 
 void InformaticsStudent::CopyFrom(const InformaticsStudent& other)
 {
@@ -85,7 +96,7 @@ int InformaticsStudent::getFn() const
 	return fn;
 }
 
-void InformaticsStudent::printStudent()
+void InformaticsStudent::printStudent() const
 {
-	cout << name << " fn: " << fn << endl;
+	std::cout << name << " fn: " << fn << std::endl;
 }

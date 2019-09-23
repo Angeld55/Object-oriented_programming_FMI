@@ -7,6 +7,9 @@
 // 4.Destructor ~InformaticsStudent()
 // (Най-лесно е като си разпишем функция за копиране CopyFrom  и функция за триене Free())
 
+#pragma once
+#include <iostream>
+
 class InformaticsStudent
 {
 private:
@@ -32,6 +35,6 @@ public:
 	const char* getName() const;
 	int getFn() const;
 	
-	void printStudent();
+	void printStudent() const;
 	
 };
