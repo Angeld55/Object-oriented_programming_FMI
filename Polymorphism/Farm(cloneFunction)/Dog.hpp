@@ -3,7 +3,7 @@
 class Dog : public Animal
 {
 public:
-	Dog(String name) :Animal(name)
+	Dog(string name) :Animal(name)
 	{}
 	void Roar()
 	{

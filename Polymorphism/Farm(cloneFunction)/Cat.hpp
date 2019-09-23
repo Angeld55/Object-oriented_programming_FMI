@@ -1,9 +1,10 @@
 #include "Animal.hpp"
+#include <iostream>
 
 class Cat : public Animal
 {
 public:
-	Cat(String name) :Animal(name)
+	Cat(string name) :Animal(name)
 	{}
 	Animal* clone()
 	{

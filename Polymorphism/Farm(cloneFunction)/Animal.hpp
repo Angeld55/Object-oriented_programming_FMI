@@ -1,11 +1,13 @@
-#include "Animal.hpp"
-
+#pragma once
+#include <iostream>
+#include <string>
+using namespace std;
 class Animal
 {
 
-	String name;
+	string name;
 public:
-	Animal(String name)
+	Animal(string name)
 	{
 		this->name = name;
 	}

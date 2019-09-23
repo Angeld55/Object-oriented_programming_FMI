@@ -1,5 +1,7 @@
 #include "Animal.hpp"
-
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "Cow.hpp"
 // Collection of all animals
 class Farm
 {
@@ -46,7 +48,7 @@ bool Farm::AddAnimal(Animal* an)
 {
 	if(count == len)
 		return false;
-	animals[count++]=c;
+	animals[count++]=an;
 	return true;
 }
 bool Farm::AddCat(std::string name)
@@ -96,3 +98,4 @@ void Farm::CopyFrom(const Farm& other)
 	len = other.len;
 	count = other.count;
 }
+

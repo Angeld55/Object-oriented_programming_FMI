@@ -2,7 +2,7 @@
 class Cow : public Animal
 {
 public:
-	Cow(String name) :Animal(name)
+	Cow(string name) :Animal(name)
 	{}
 	Animal* clone()
 	{
