@@ -8,4 +8,5 @@ private:
 public:
 	AlcoholDrink(const char* mark, int ml, int percentAlcohol);
 	void setAlcohol(int alcohol);
+	int AlcoholDrink::getAlcohol() const;
 };

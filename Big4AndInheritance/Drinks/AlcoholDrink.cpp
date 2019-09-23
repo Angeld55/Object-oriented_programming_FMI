@@ -1,4 +1,5 @@
-include "AlcoholDrink.h"
+#include "AlcoholDrink.h"
+
 
 
 AlcoholDrink::AlcoholDrink(const char* mark, int ml, int percentAlcohol) : Drink(mark,ml)
@@ -13,5 +14,5 @@ void AlcoholDrink::setAlcohol(int alcohol)
 }
 int AlcoholDrink::getAlcohol() const
 {
-	return alcohol;
+	return percentAlcohol;
 }
