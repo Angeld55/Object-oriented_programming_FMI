@@ -1,3 +1,4 @@
+#include <iostream>
 using namespace std;
 
 const int MAXBEERML = 500;
@@ -8,9 +9,9 @@ class Beer
 public:
 	Beer(const char* mark, int ml);
 	
-	void printAddress();
+	void printAddress() const;
 
-	void printBeer();
+	void printBeer() const;
 	void setMl(int ml);
 
 	void setMark(const char* mark);
@@ -30,11 +31,11 @@ Beer::Beer(const char* mark, int ml)
 	setMark(mark);
 	setMl(ml);
 }
-void Beer::printAddress()
+void Beer::printAddress() const
 {
 	cout << this << endl;
 }
-void Beer::printBeer()
+void Beer::printBeer() const
 {
 	cout << mark << " " << ml << endl;
 }
@@ -69,5 +70,5 @@ int main()
 {
 	Beer t("Zagorka", 5); // 5 е невалидно количество бира. Но в конструктора извикваме setML, която се грижи в променливата да не попаднат невалидни данни.
 	t.setMl(330);
-	t.PrintBeer();
+	t.printBeer();
 }
