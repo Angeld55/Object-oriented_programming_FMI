@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Expression.hpp"
 class Num : public Expression
 {
@@ -16,6 +18,9 @@ public:
 	{
 		return number;
 	}
-	
+	int getNum()
+	{
+		return number;
+	}
 
 };
