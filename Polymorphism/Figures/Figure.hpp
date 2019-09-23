@@ -1,3 +1,5 @@
+#pragma once
+
 #include<iostream> 
 #include <cmath>
 
@@ -42,7 +44,7 @@ public:
 	//То е и логично - лице на правоъгълник и лице на триъгълник се смята по различен начин, нали?
 	// Не можем още тук да дефинираме някаква обща формула, която да върши работа за всички фигури.
 	virtual double getPer() = 0;
-    	virtual double getArea()= 0;
+    virtual double getArea()= 0;
 
 
 };

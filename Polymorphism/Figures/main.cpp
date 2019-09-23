@@ -1,4 +1,8 @@
-#include "Figure.h"
+
+#include "Figure.hpp"
+#include "Triangle.hpp"
+#include "Rectangle.hpp"
+#include "Circle.hpp"
 
 
 int main()
