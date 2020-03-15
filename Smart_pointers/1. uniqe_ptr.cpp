@@ -46,7 +46,7 @@ int main()
 		
 		unique_ptr<Test> smart_pointer_2(new Test());
 
-        unique_ptr<Test> smart_pointer_3 = move(smart_pointer_2);
+       	 	unique_ptr<Test> smart_pointer_3 = move(smart_pointer_2);
 		// unique_ptr<Test> smart_pointer_3(smart_pointer_2); //този синтаксис (както и оператор =) не е валиден! Те бяха валидни в стария и не толкова иползван auto_ptr.
 
 		smart_pointer_2.get(); // Това ще даде NULL, защото smart_pointer_3 "открадна" обекта на smart_pointer_2 
