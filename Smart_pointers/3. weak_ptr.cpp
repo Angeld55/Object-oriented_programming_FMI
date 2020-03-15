@@ -41,9 +41,9 @@ int main()
 	cout << smart_pointer_2.use_count() << endl;  // 1 - weak_ptr НЕ участва в бройката на пойнтерите към обектите.
 
 	//smart_pointer_2->f(); ГРЕШКА!	    
-	//Това е само за временен достъп! Ако искате да достъпите данните на този пойнтер трябва да го превърнете в shared_ptr!.
+	//Това е само за временно пазане на адреса! НЕ МОЖЕМ да достъпим данните. Ако искате да достъпите данните на този пойнтер трябва да го превърнете(заключте) в shared_ptr!. 
 
-	shared_ptr<Test> smart_pointer_3 = smart_pointer_2.lock();
+	shared_ptr<Test> smart_pointer_3 = smart_pointer_2.lock(); //.lock() връща shared_ptr към обекта.
 
 	cout << smart_pointer_1.use_count() << endl;//2
 
