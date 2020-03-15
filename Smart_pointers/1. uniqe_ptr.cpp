@@ -30,13 +30,19 @@ public:
   {
       cout<<"Detructor"<<endl;
   }
+  void f()
+  {
+
+  }
     
 };
 int main()
 {
 	{
 		unique_ptr<Test> smart_pointer_1(new Test()); //Test()
-
+		
+		smart_pointer_1->f(); // Достъпваме данните, както с обикновен пойнтер.
+		
 		Test* obj = smart_pointer_1.get(); //От тук иматаме достъп до паметта, към която сочи пойнтера.
 		//delete obj; // Това не трябва да се прави! smart_pointer_1 не знае, че паметта е освободена и ще се опита да я освободи, което ще доведе до грешка!
 
