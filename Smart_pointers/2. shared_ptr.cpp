@@ -34,7 +34,7 @@ int main()
 
 	shared_ptr<Test> smart_pointer_2(smart_pointer_1);
 
-	cout << smart_pointer_1.get() << endl; //За разлика от uniqe_ptr тук smart_pointer_1 ПРОДЪЛЖАВА да сочи към обекта.  
+	cout << smart_pointer_1.get() << endl; //За разлика от uniqe_ptr, тук smart_pointer_1 ПРОДЪЛЖАВА да сочи към обекта.  
 
 	cout << smart_pointer_2.use_count() << endl; //може да видим колко пойнтера са насочени към обекта.
 	// Обектът ще се изтрие, когато пойнтерите станат 0.
