@@ -36,13 +36,14 @@ int main()
 	}  //Test  (Паметта се освобождава сама)
 
 	{
-	auto_ptr<Test> smart_pointer_2(new Test());
+		
+		auto_ptr<Test> smart_pointer_2(new Test());
 
+		auto_ptr<Test> smart_pointer_3(smart_pointer_2);
 
-	auto_ptr<Test> smart_pointer_3(smart_pointer_2);
-
-	smart_pointer_2.get(); // Това ще даде NULL, защото smart_pointer_3 "открадна" обекта на smart_pointer_2  
-}
+		smart_pointer_2.get(); // Това ще даде NULL, защото smart_pointer_3 "открадна" обекта на smart_pointer_2 
+		
+	}
 
 
 	return 0;
