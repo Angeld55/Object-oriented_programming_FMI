@@ -6,19 +6,24 @@
 class Farm
 {
 	Animal** animals;
+	
 	int len;
 	int count;
+	
 	void Free();
 	void CopyFrom(const Farm& other);
+	
 	bool AddAnimal(Animal* an);
 public:
 	Farm(int len);
 	Farm(const Farm& other);
 	Farm& operator=(const Farm& other);
 	~Farm();
+	
 	bool AddCat(std::string name);
 	bool AddDog(std::string name);
 	bool AddCow(std::string name);
+	
 	void RoarAll();
 };
 Farm::Farm(int len)
