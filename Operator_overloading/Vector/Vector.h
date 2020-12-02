@@ -24,7 +24,7 @@ public:
 	friend std::istream& operator>>(std::istream&, Vector& v);
 
 	int GetAtIndex(int index) const;
-	int& operator[](int index);// оператор за индексиране(като в масивите)  vector a; a[4] -взима четвъртия кординат на вектора
+	int& operator[](int index);// оператор за индексиране(като в масивите)  vector a; a[4] -взима четвъртия координат на вектора
 	void print();
 };
 
