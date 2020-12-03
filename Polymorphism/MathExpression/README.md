@@ -1,8 +1,8 @@
 # Hierarchy
 
 
-![enter image description here](https://lh3.googleusercontent.com/n_wGz-gWEDfCWbBrk9UL7ynzHEdfXOLLg0_TgP70NyQ3uUyFhW2sTxLi4Hlq8Thts30_Q0vp6A "Hierarchy")
+![enter image description here](https://i.ibb.co/ZHnWnKG/1-hierarchy.jpg "Hierarchy")
 
 # How does an object looks like
 
-![enter image description here](https://lh3.googleusercontent.com/0bixlkOVwpu0uHMqo4V18SONCK7YO1gcfcjsEsMP_Mtg3aaWfji2zWVA-6IuHBN1336dykRh-g "Example")
+![enter image description here](https://i.ibb.co/KFfsf7S/2-Example-Expr.jpg "Example")
