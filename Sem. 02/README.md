@@ -57,7 +57,7 @@ int main()
 	file.close();
 }
 ```
-### Работа с поток за изход към файл (ifstream)
+### Работа с поток за изход към файл (ofstream)
    
  ```c++
 #include <iostream>
