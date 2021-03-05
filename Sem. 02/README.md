@@ -76,8 +76,8 @@ int main()
 
 	file << a << " " << b << " " << a + b << endl;
 	
-	if(!file.eof())
-		cout << "The file contains more data after the two integers!"
+	if(!file.eof()) //check if the file has ended
+		cout << "The file contains more data after the two integers!" << endl;
 
 	file.close();
 }
