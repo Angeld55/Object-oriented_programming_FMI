@@ -20,7 +20,7 @@ int main()
 		inputFile.getline(buff, MAX_SIZE);
 		cout << buff << endl;
 	}
-
+        inputFile.close()
 
 	return 0;
 }
