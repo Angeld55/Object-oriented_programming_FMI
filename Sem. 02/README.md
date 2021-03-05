@@ -106,7 +106,7 @@ int main()
 >open students.csv
 >print 80000
 Name = Stefan Velkov, Email: stefan@yahoo.com, FN: 80000
->edit 8000 Krum
+>edit 80000 Krum
 >print 80000
 Name = Krum Velkov, Email: stefan@yahoo.com, FN: 80000
 >save
