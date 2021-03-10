@@ -25,7 +25,7 @@ b3.weight = 14;
 ###  Подаване във функции
 Ако няма да променяме обекта го подаваме по **константна референция.**
  ```c++
-void calculcateArea(const Box& b)
+int calculcateArea(const Box& b)
 {
     return b.height * b.weight;
 }
