@@ -54,6 +54,33 @@ int main()
 	file.close();
 }
 ```
+Пример за прочитане на цялото съдържание файл:
+ ```c++
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+const int BUFF_SIZE = 1024;
+int main()
+{
+	ifstream file("myFile.txt");
+
+	if (!file.is_open())
+	{
+		cout << "Error!" << endl;
+		return -1;
+	}
+	while (!file.eof())
+	{
+		char buff[BUFF_SIZE];
+		file.getline(buff, BUFF_SIZE);
+		
+		//do something with the line
+		cout << line << endl;
+	}
+	file.close();
+}
+```
 ### Работа с поток за изход към файл (ofstream)
    
  ```c++
