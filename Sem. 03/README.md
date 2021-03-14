@@ -78,7 +78,7 @@ size_t getFileLen(std::ifstream& ifs) //we can pass stream to functions.
 Изпоилзваме функциите:
 
 1. .read(char* memoryBlock, size_t size);
-2. .write(char* memoryBlock, size_t size);
+2. .write(const char* memoryBlock, size_t size);
 
 Обърнете внимание, че функцията приема **char***. Ако искаме да запазим променлива от друг вид, ще трябва експлицитно да преобразуваме указателя към тип char* (без значение, че указателят не сочи към елементи от тип char)
 
