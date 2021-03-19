@@ -320,13 +320,13 @@ int main()
 
 - По подадено име на университет и факултетен номер на студент, променя името на студента. 
 
-*changeName(const char&ast uni, int fn, const char* newName)*
+*changeName(const char &ast; uni, int fn, const char &ast; newName)*
 
 - Добавяне на оценка на даден студент. След добавянето на оценката, трябва да се обнови броят получени оценки и средната оценка.
 
- *addGrade(const char&ast uni, int fn, int grade)*
+ *addGrade(const char &ast; uni, int fn, int grade)*
 
 - Функция, която сортира университите по среден успех на студентите.
 
-*sort(uni &ast, size_t unisCount)*
+*sort(uni &ast;, size_t unisCount)*
 
