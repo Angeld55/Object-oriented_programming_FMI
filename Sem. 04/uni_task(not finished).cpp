@@ -15,7 +15,7 @@ void print(const Student& st)
 {
 	cout << st.name << " " << st.fn << " " << st.gradesCount << " " << st.averageGrade << endl;
 }
-Student CreateStudent(const char* name, int fn, int gradesCount, double avGrade)
+Student createStudent(const char* name, int fn, int gradesCount, double avGrade)
 {
 	Student obj;
 
@@ -33,7 +33,7 @@ Student CreateStudent(const char* name, int fn, int gradesCount, double avGrade)
 void saveStudentToFile(ofstream& f, const Student& st)
 {
 	size_t nameLen = strlen(st.name);
-	f.write((const char*)&nameLen, sizeof(nameLen));
+	f.write((const char*)&nameLen, sizeof(nameLen));  //first we write the size of the name!
 	f.write(st.name, nameLen);
 	f.write((const char*)&st.fn, sizeof(st.fn));
 	f.write((const char*)&st.gradesCount, sizeof(st.gradesCount));
@@ -46,7 +46,7 @@ Student readStudentFromFile(ifstream& f)
 
 	size_t nameLen;
 
-	f.read((char *)&nameLen, sizeof(nameLen));
+	f.read((char *)&nameLen, sizeof(nameLen));  //first we read the size of the name!
 
 	res.name = new char[nameLen + 1];
 	f.read(res.name, nameLen);
@@ -78,7 +78,7 @@ void saveUniToFile(ofstream& f, const Uni& uni)
 {
 	
 	f.write(uni.name, sizeof(uni.name));
-	f.write((const char*)&uni.studentsCount, sizeof(uni.studentsCount));
+	f.write((const char*)&uni.studentsCount, sizeof(uni.studentsCount));  //first we write how many students we have!
 	
 	for (int i = 0; i < uni.studentsCount; i++)
 		saveStudentToFile(f, uni.students[i]);
@@ -87,7 +87,7 @@ void saveUniToFile(ofstream& f, const Uni& uni)
 void readUniFromFile(ifstream& f, Uni& uni)
 {
 	f.read(uni.name, sizeof(uni.name));
-	f.read((char*) &uni.studentsCount, sizeof(uni.studentsCount));
+	f.read((char*) &uni.studentsCount, sizeof(uni.studentsCount));  //we read how many students are saved in the file!
 
 	uni.students = new Student[uni.studentsCount];
 	
@@ -115,9 +115,9 @@ int main()
 		u.studentsCount = 3;
 
 		u.students = new Student[u.studentsCount];
-		u.students[0] = CreateStudent("Ivan", 81234, 3, 4.5);
-		u.students[1] = CreateStudent("Angel", 12345, 4, 5);
-		u.students[2] = CreateStudent("Mariq", 81234, 5, 5.5);
+		u.students[0] = createStudent("Ivan", 81234, 3, 4.5);
+		u.students[1] = createStudent("Angel", 12345, 4, 5);
+		u.students[2] = createStudent("Mariq", 81234, 5, 5.5);
 
 
 		ofstream f("uni.dat", ios::binary);
