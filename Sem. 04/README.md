@@ -137,8 +137,10 @@ Student createStudent(const char* name, int fn, int gradesCount, double avGrade)
 void saveStudentToFile(ofstream& f, const Student& st)
 {
 	size_t nameLen = strlen(st.name);
+	
 	f.write((const char*)&nameLen, sizeof(nameLen));  //first we write the size of the name!
 	f.write(st.name, nameLen);
+	
 	f.write((const char*)&st.fn, sizeof(st.fn));
 	f.write((const char*)&st.gradesCount, sizeof(st.gradesCount));
 	f.write((const char*)&st.averageGrade, sizeof(st.averageGrade));
