@@ -171,9 +171,9 @@ int main()
 		{
 			Test t2; // Object is created 
 
-		}// Object is destroyed (t)
+		}// Object is destroyed (t2)
 
-	}//Object is destroyed (t2)
+	}//Object is destroyed (t)
 }
 
  ```
