@@ -25,12 +25,15 @@ int main()
  ```c++
 struct Point
 {
+
 	int x;
 	int y
+
 	bool isInFirstQuadrant()
 	{
 		return x >= 0 && y >= 0;
 	}
+	
 };
 
 int main()
