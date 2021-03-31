@@ -133,7 +133,7 @@ public:
 
 		return Interval(newA, newB);
 	}
-	bool isSubInterval(const Interval& other) const
+	bool isSuperInterval(const Interval& other) const
 	{
 		return a <= other.getA() && b >= other.getB();
 	}
