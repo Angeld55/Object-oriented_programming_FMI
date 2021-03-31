@@ -210,6 +210,8 @@ int main()
      Interval result = t1.intersect(t2); // [4, 10]
      
      t2.isSuperInterval(result); //true
+     
+     result.calcPrimeNumbersInTheInterval() // 2 (only 5 and 7)
 }
  ```
 
