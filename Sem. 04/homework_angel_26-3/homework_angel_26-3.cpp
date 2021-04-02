@@ -3,26 +3,30 @@
 #include<fstream>
 #pragma warning(disable : 4996)
 
-struct Student {
+struct Student 
+{
 	char* name;
 	int fn;
 	int gradesCount;
 	double averageGrade;
 };
 
-struct University {
+struct University 
+{
 	char name[32];
 	Student* collection;
 	size_t studentsCount;
 };
 
-void print(const Student& st) {
+void print(const Student& st) 
+{
 	std::cout << std::endl << "======STUDENT======" << std::endl;
 	std::cout << "Name: " << st.name << std::endl << "Faculcy number:" << st.fn <<
 		std::endl << "Grades: " << st.gradesCount << std::endl << "Avarage: " << st.averageGrade << std::endl;
 }
 
-Student createStudent(const char* name, int fn, int gradesCount, double avGrade) {
+Student createStudent(const char* name, int fn, int gradesCount, double avGrade) 
+{
 	Student obj;
 
 	size_t nameLen = strlen(name);
@@ -37,14 +41,16 @@ Student createStudent(const char* name, int fn, int gradesCount, double avGrade)
 	return obj;
 }
 
-void freeStudent(Student& s) {
+void freeStudent(Student& s) 
+{
 	delete[] s.name;
 
 	s.averageGrade = s.fn = s.gradesCount = 0;
 
 }
 
-void saveStudentToFile(std::ofstream& f, const Student& st) {
+void saveStudentToFile(std::ofstream& f, const Student& st) 
+{
 	size_t nameLen = strlen(st.name);
 
 	f.write((const char*)&nameLen, sizeof(nameLen));  //first we write the size of the name!
@@ -55,7 +61,8 @@ void saveStudentToFile(std::ofstream& f, const Student& st) {
 	f.write((const char*)&st.averageGrade, sizeof(st.averageGrade));
 }
 
-Student readStudentFromFile(std::ifstream& f) {
+Student readStudentFromFile(std::ifstream& f) 
+{
 	Student res;
 
 	size_t nameLen;
@@ -73,21 +80,24 @@ Student readStudentFromFile(std::ifstream& f) {
 	return res;
 }
 
-University createUniversity(const char* _name, const Student* collection, const size_t& studentCount) {
+University createUniversity(const char* _name, const Student* collection, const size_t& studentCount) 
+{
 	University uni;
 
 	strcpy(uni.name, _name);
 	uni.collection = new Student[studentCount];
 	uni.studentsCount = studentCount;
 
-	for (size_t i = 0; i < studentCount; i++) {
+	for (size_t i = 0; i < studentCount; i++) 
+	{
 		uni.collection[i] = collection[i];
 	}
 
 	return uni;
 }
 
-void saveUniversityToFile(std::ofstream& outStream, const University& Uni) {
+void saveUniversityToFile(std::ofstream& outStream, const University& Uni) 
+{
 	//Writing the name of the university first:
 	outStream.write(Uni.name, 32);
 
@@ -96,12 +106,14 @@ void saveUniversityToFile(std::ofstream& outStream, const University& Uni) {
 
 	//Writing every single student:
 	size_t count = Uni.studentsCount;
-	for (size_t i = 0; i < count; i++) {
+	for (size_t i = 0; i < count; i++) 
+	{
 		saveStudentToFile(outStream, Uni.collection[i]);
 	}
 }
 
-University readUniFromFile(std::ifstream& inFile) {
+University readUniFromFile(std::ifstream& inFile) 
+{
 	//to return:
 	University uni;
 
@@ -117,26 +129,30 @@ University readUniFromFile(std::ifstream& inFile) {
 	size_t studentsCount = uni.studentsCount;
 	uni.collection = new Student[studentsCount];
 
-	for (size_t i = 0; i < studentsCount; i++) {
+	for (size_t i = 0; i < studentsCount; i++) 
+	{
 		uni.collection[i] = readStudentFromFile(inFile);
 	}
 
 	return uni;
 }
 
-void printUni(const University& uni) {
+void printUni(const University& uni) 
+{
 	size_t studentsCount = uni.studentsCount;
 
 	std::cout << std::endl << "----------" << uni.name << "----------";
 
-	for (size_t i = 0; i < studentsCount; i++) {
+	for (size_t i = 0; i < studentsCount; i++)
+	{
 		print(uni.collection[i]);
 		std::cout << std::endl;
 	}
 	std::cout << "-------------------------";
 }
 
-void freeUni(University& uni) {
+void freeUni(University& uni) 
+{
 	for (int i = 0; i < uni.studentsCount; i++)
 		freeStudent(uni.collection[i]);
 
@@ -144,82 +160,108 @@ void freeUni(University& uni) {
 	uni.studentsCount = 0;
 }
 
-void changeName(University* uniCollection, const int& uniCount, const char* uni, const int& fn, const char* newName) {
+void changeStudentName(Student& st, const char* newName)
+{
+	delete[] st.name;
+	st.name = new char[strlen(newName) + 1];
+	strcpy(st.name, newName);
+}
+
+void changeName(University* uniCollection, const int& uniCount, const char* uni, const int& fn, const char* newName) 
+{
 	int uniFound = -1;
 	int studentFound = -1;
 
-	for (int i = 0; i < uniCount; i++) {
-		if (strcmp(uniCollection[i].name, uni) == 0) {
+	for (int i = 0; i < uniCount; i++) 
+	{
+		if (strcmp(uniCollection[i].name, uni) != 0) 
+		{
+			continue;
+		}
 
-			uniFound = i;
-			size_t studentsCount = uniCollection[i].studentsCount;
 
-			for (size_t j = 0; j < studentsCount; j++) {
-				if (uniCollection[i].collection[j].fn == fn) {
-					studentFound = j;
-					//decided to use a pointer to make the code easier to read
-					Student* studentPtr = &uniCollection[i].collection[j];
+		uniFound = i;
+		size_t studentsCount = uniCollection[i].studentsCount;
 
-					delete[] studentPtr->name;
-					studentPtr->name = new char[strlen(newName) + 1];
-					strcpy(studentPtr->name, newName);
-
-					break;
-				}
+		for (size_t j = 0; j < studentsCount; j++) 
+		{
+			if (uniCollection[i].collection[j].fn != fn)
+			{
+				continue;
 			}
+
+			studentFound = j;
+			changeStudentName(uniCollection[i].collection[j], newName);
 			break;
 		}
+		break;
 	}
 
-	if (uniFound != -1 && studentFound != -1) {
+	if (uniFound != -1 && studentFound != -1) 
+	{
 		std::cout << std::endl << "Changed: " << std::endl;
 		print(uniCollection[uniFound].collection[studentFound]);
 	}
-	else {
+	else 
+	{
 		std::cout << std::endl << "No such student in this university" << std::endl;
 	}
 }
 
-void addGrade(University* uniCollection, const int& uniCount, const char* uni, const int& fn, const int& grade) {
+void addStudentGrade(Student& st, const int& grade)
+{
+	double newAvarageGrade = (double)((st.averageGrade * st.gradesCount) + grade) / (double)(st.gradesCount + 1);
+	st.averageGrade = newAvarageGrade;
+	st.gradesCount++;
+}
+
+void addGrade(University* uniCollection, const int& uniCount, const char* uni, const int& fn, const int& grade) 
+{
 	int uniFound = -1;
 	int studentFound = -1;
 
-	for (int i = 0; i < uniCount; i++) {
-		if (strcmp(uniCollection[i].name, uni) == 0) {
+	for (int i = 0; i < uniCount; i++)
+	{
+		if (strcmp(uniCollection[i].name, uni) != 0) 
+		{
+			continue;
+		}
 
-			uniFound = i;
-			size_t studentsCount = uniCollection[i].studentsCount;
+		uniFound = i;
+		size_t studentsCount = uniCollection[i].studentsCount;
 
-			for (size_t j = 0; j < studentsCount; j++) {
-				if (uniCollection[i].collection[j].fn == fn) {
-					studentFound = j;
-					Student* studentPtr = &uniCollection[i].collection[j];
-
-					double newAvarageGrade = (double)((studentPtr->averageGrade * studentPtr->gradesCount) + grade) / (double)(studentPtr->gradesCount + 1);
-					studentPtr->averageGrade = newAvarageGrade;
-					studentPtr->gradesCount++;
-
-					break;
-				}
+		for (size_t j = 0; j < studentsCount; j++) 
+		{
+			if (uniCollection[i].collection[j].fn != fn)
+			{
+				continue;
 			}
+
+			studentFound = j;
+			addStudentGrade(uniCollection[i].collection[j], grade);
 			break;
 		}
+		break;
 	}
 
-	if (uniFound != -1 && studentFound != -1) {
+	if (uniFound != -1 && studentFound != -1) 
+	{
 		std::cout << std::endl << "Added: " << std::endl;
 		print(uniCollection[uniFound].collection[studentFound]);
 	}
-	else {
+	else
+	{
 		std::cout << std::endl << "No such student in this university" << std::endl;
 	}
 }
 
-double getSuccess(const University uni) {
+double getSuccess(const University uni) 
+{
 	double avarageGrade = 0;
 	size_t studentsCount = uni.studentsCount;
 
-	for (size_t i = 0; i < studentsCount; i++) {
+	for (size_t i = 0; i < studentsCount; i++) 
+	{
 		avarageGrade += uni.collection[i].averageGrade;
 	}
 
@@ -228,18 +270,25 @@ double getSuccess(const University uni) {
 	return avarageGrade;
 }
 
-void swapUniversities(University* uniCollection, const int& first, const int& second) {
+void swapUniversities(University* uniCollection, const int& first, const int& second) 
+{
 	University temp = uniCollection[first];
 	uniCollection[first] = uniCollection[second];
 	uniCollection[second] = temp;
 }
 
-void sort(University* uniCollection, size_t unisCount) {
+void sort(University* uniCollection, size_t unisCount) 
+{
 	//selection sort
-	for (int pos = 0; pos < unisCount - 1; pos++) {
+	for (int pos = 0; pos < unisCount - 1; pos++) 
+	{
 		int minimalIndex = pos;
-		for (int i = pos; i < unisCount; i++) {
-			if (getSuccess(uniCollection[i]) > getSuccess(uniCollection[minimalIndex])) {
+		
+		for (int i = pos; i < unisCount; i++) 
+		{
+			int currSuccess = getSuccess(uniCollection[minimalIndex]);
+			if (getSuccess(uniCollection[i]) > currSuccess) 
+			{
 				minimalIndex = i;
 			}
 		}
@@ -249,7 +298,8 @@ void sort(University* uniCollection, size_t unisCount) {
 	}
 }
 
-int main() {
+int main() 
+{
 	//simple example:
 
 	//creating university database:---------------
@@ -291,15 +341,19 @@ int main() {
 	std::ofstream outFile("path.txt", std::ios::binary);
 	saveUniversityToFile(outFile, uniCollection[1]);
 	if (outFile.good() == 0)
+	{
 		std::cout << "Error saving the file";
+	}
 
 	outFile.close();
 
 	std::ifstream inFile("path.txt", std::ios::binary);
 	University example = readUniFromFile(inFile);
 
-	if (inFile.good() == 0)
+	if (inFile.good() == 0) 
+	{
 		std::cout << "Error reading the file";
+	}
 
 	inFile.close();
 
@@ -312,11 +366,13 @@ int main() {
 
 	std::cout << "\nSorted:\n";
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 3; i++)
+	{
 		std::cout << i + 1 << ". " << uniCollection[i].name << std::endl;
 	}
 
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 3; i++) 
+	{
 		freeUni(uniCollection[i]);
 	}
 }
