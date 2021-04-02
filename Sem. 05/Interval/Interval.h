@@ -23,7 +23,10 @@ public:
 	size_t calcPrimeNumbersInTheInterval() const;
 	size_t calcPalindromicNumbersInTheInterval() const;
 	size_t calcDiffrentDigitNumbersInTheInverval() const;
+	
 	bool areStartAndEndPowersOfTwo() const;
+	
 	Interval intersect(const Interval& other) const;
+	
 	bool isSuperInterval(const Interval& other) const;
 };
