@@ -118,7 +118,7 @@ int main()
     f(t); // Copy constructor	
     g(t); // nothing. We are passing it as a reference. We are not copying it!
     
-    Test* ptr = new Test();  // Default constructor // we create a new object in the dynamic memory. The constructor must be invoked explicitly 
+    Test* ptr = new Test();  // Default constructor // we create a new object in the dynamic memory. The destructor must be invoked explicitly  (with delete)
 	
     delete ptr; // Destructor	
 	 
