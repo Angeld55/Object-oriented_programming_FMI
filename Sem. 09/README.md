@@ -86,7 +86,7 @@ public:
 	}
 };
  ```
- **ВАЖНО**: Деструкторите на член-данните **НЕ** трябва да се извиква експлицитно в деструктора на класа.
+ **ВАЖНО**: Деструкторите на член-данните **НЕ** трябва да се извикват експлицитно в деструктора на класа.
 
 ## Масиви от обекти
 #### Статичен масив от обекти
@@ -133,7 +133,7 @@ int main()
 class A;
 int main()
 {
-		A** arr = new A*[5]; //5 empty pointers.
+	A** arr = new A*[5]; //5 empty pointers.
 	
 	arr[0] = new A(); //def constr. 
 	arr[2] = new A(); //def constr.
@@ -165,9 +165,9 @@ int main()
     int b = 9;
     cout << sum<int>(a, b) << endl;
 
-	double c = 3.14;
-	double d = 4.5;
-	cout << sum<double>(c,d) << endl;
+    double c = 3.14;
+    double d = 4.5;
+    cout << sum<double>(c,d) << endl;
 	
     return 0;
 }
