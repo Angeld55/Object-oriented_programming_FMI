@@ -1,38 +1,16 @@
-
-## Задачи
-
-**Задача 1:**
-Трябва да реализирате библиотека за работа с факултатитен курс. 
-Курсът ще има преподаватели - лектор и асистенти - имената им се приемат като параметри.
-Асистентите могат да са най-много 3.
-
 **Пример**:
  ```c++
 int main()
 {
-	OOPcourse p("Lecturer1", "Assistant1");
-	
-	p.addStudent("Ivan Petrov", 45123);
-	p.addStudent("Aleksandur Mironov", 45123);
-	p.addStudent("Stefan Popov", 45123);
-	
-	p.addGrade(45123, "HW1", 4, "Assistant1");
-	p.addGrade(45222, "HW1", 6, "Lecturer1");
-	p.addGrade(45222, "K1", 5, "Assistant1");
-	
-	p.getAverage("HW1"); // 4.5;
-	
-	p.removeStudent(45123);
-      
-      	p.getAverageGradePerTask("HW1"); // 5;
-	
-	p.getAverageFromTeacher("Lecturer1"); //6
-	
+	quene<int> q;
+	q.enqueue(3);
+	q.enqueue(5);
+	q.enqueue(10);
+
+	cout << q.dequeue() << endl; //3
+	cout << q.dequeue() << endl; //5
+	cout << q.dequeue() << endl; //10
+
+	cout << q.isEmpty() << endl; //1	
 }
  ```
-Функционални изисквания:
- - Всеки студент трябва да има най-много една оценка за дадено задание.
- - Записана оценка за дадено задание може да се променя, но не може да се изтрива!
- - Във всеки момент трябва да може да се види каква е средната оценка, която е написал лекторът или асистентът.
- - Студент може да има най-много 20 оценки.
- - Студентите имат имена с макс дължина 30 символа.
