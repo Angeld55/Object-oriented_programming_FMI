@@ -256,7 +256,7 @@ int main()
 
 	s2.contains(s1); //false
 	
-	myString s3 = s1 + s2; // prostoTest
+	myString s3 = s1 + s2; // prontoTest
 	
 	s3*=3; //prontoTestprontoTestprontoTest
 	
