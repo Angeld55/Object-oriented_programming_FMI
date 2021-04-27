@@ -258,7 +258,7 @@ int main()
 	
 	myString s3 = s1 + s2; // prostoTest
 	
-	s3*=3; //prostoTestprostoTestprostoTest
+	s3*=3; //prontoTestprontoTestprontoTest
 	
 	cin >> s3;
 	cout << s3 <<endl;
