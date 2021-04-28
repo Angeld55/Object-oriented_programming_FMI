@@ -279,7 +279,7 @@ int main()
 {
 	kPriorityQueue<char> q(4); // 4 priorities - 0, 1, 2 и 3.
 	
-	q.enqueue('A',0):
+	q.enqueue('A',0): //adds A with lowest priority: 0
 	q.enqueue('B',3);
 	q.enqueue('C',2);
 	q.enqueue('D',2);
