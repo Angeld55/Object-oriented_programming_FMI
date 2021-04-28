@@ -268,3 +268,25 @@ int main()
 	cout << s3 << endl;
 }
  ```
+ **Задача 4:**
+ Създайте опашка с k приоритети. При взимане на елемент от опашката трябва да се връща последно добавеният елемент от тези с най-висок приоритет.
+  ```c++
+int main()
+{
+	kPriorityQueue<char> q(4); // 4 priorities - 0, 1, 2 и 3.
+	
+	q.enqueue('A',0):
+	q.enqueue('B',3);
+	q.enqueue('C',2);
+	q.enqueue('D',2);
+	q.enqueue('E',1);
+	
+	//q.enqueue('F', 5); //error! No such priority!
+	
+	q.dequeue(); // B
+	q.dequeue(); // C
+	q.dequeue(); // D
+	q.dequeue(); // E
+	q.dequeue(); // A
+}
+ ```
