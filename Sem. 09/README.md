@@ -250,7 +250,7 @@ int main()
  ```c++
 int main()
 {
-	myString s1(); ""
+	myString s1(); // ""
 	myString s2("Test");
 	
         s2.substr(2); // st
