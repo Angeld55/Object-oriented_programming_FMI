@@ -30,7 +30,7 @@ public:
 	Drink getDrink();
 	AlcoholDrink getAcloholDrink();
 
-	size_t getMlSold();
-	size_t getAllDrinksSold();
-	size_t getAlcoholDrinksSold();
+	size_t getMlSold() const;
+	size_t getAllDrinksSold() const;
+	size_t getAlcoholDrinksSold() const;
 };
