@@ -31,15 +31,15 @@ void Bar::incrementStatistics(const Drink& dr, bool isAlcoholDrink)
 		stats.alcoholDrinksSold++;
 }
 
-size_t Bar::getMlSold()
+size_t Bar::getMlSold() const
 {
 	return stats.mlSold;
 }
-size_t Bar::getAllDrinksSold()
+size_t Bar::getAllDrinksSold() const
 {
 	return stats.allDrinksSold;
 }
-size_t Bar::getAlcoholDrinksSold()
+size_t Bar::getAlcoholDrinksSold() const
 {
 	return stats.alcoholDrinksSold;
 }
