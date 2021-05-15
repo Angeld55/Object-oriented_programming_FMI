@@ -7,7 +7,7 @@ Person createPerson(const char* name, int age)
 {
 	Person p(name, age);
 
-	return p;
+	return std::move(p);
 }
 
 int main()
