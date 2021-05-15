@@ -10,15 +10,15 @@ Time::Time(size_t hours, size_t mins, size_t seconds)
 	setSeconds(seconds);
 }
 
-size_t Time::getHours()
+size_t Time::getHours() const
 {
 	return hours;
 }
-size_t Time::getMins()
+size_t Time::getMins() const
 {
 	return mins;
 }
-size_t Time::getSeconds()
+size_t Time::getSeconds() const
 {
 	return seconds;
 }

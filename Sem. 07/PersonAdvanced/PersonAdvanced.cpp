@@ -62,3 +62,8 @@ void PersonAdvanced::free()
 	delete[] name;
 	age = 0;
 }
+
+void PersonAdvanced::print()
+{
+	std::cout <<"Name: "<< name << ", age: " << age << std::endl;
+}

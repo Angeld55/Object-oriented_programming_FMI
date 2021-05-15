@@ -1,3 +1,4 @@
+#pragma warning(disable: 4996)
 #include "AlcoholDrink.h"
 
 AlcoholDrink::AlcoholDrink() : AlcoholDrink("Unknown", 0, 0){}

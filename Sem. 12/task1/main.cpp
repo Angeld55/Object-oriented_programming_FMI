@@ -1,4 +1,7 @@
-﻿#include <iostream>
+﻿#pragma warning(disable: 4996)
+
+
+#include <iostream>
 #include "Bar/Bar.h"
 #include "Drinks/EnergyDrink.h"
 
