@@ -1,8 +1,8 @@
-#include "Circle.h"
-#include "Rectangle.h"
-#include "Triangle.h"
-#include "Rhombus.h"
-#include "Square.h"
+#include "../Shapes/Circle.h"
+#include "../Shapes/Rectangle.h"
+#include "../Shapes/Triangle.h"
+#include "../Shapes/Rhombus.h"
+#include "../Shapes/Square.h"
 #include <vector>
 
 class ShapesCollection
