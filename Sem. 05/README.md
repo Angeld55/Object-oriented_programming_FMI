@@ -6,7 +6,7 @@
 struct Point
 {
 	int x;
-	int y
+	int y;
 };
 bool isInFirstQuadrant(const Point& p)
 {
