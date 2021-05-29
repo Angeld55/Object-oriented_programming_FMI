@@ -2,8 +2,6 @@
 #include "Collection/ShapesCollection.h"
 using namespace std;
 
-
-//Ромб
 int main()
 {
 	ShapesCollection s;
