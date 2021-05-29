@@ -25,12 +25,12 @@ void ShapesCollection::addSquare(double x1, double y1, double sideLength)
 	collection.push_back(new Square(x1, y1, sideLength));
 }
 
-void ShapesCollection::printAreas()
+void ShapesCollection::printAreas() const
 {
 	for (int i = 0; i < collection.size(); i++)
 		std::cout << collection[i]->getArea() << " " << std::endl;
 }
-void ShapesCollection::printPers()
+void ShapesCollection::printPers() const
 {
 	for (int i = 0; i < collection.size(); i++)
 		std::cout << collection[i]->getPer() << " " << std::endl;
