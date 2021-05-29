@@ -24,8 +24,8 @@ public:
 	//
 	
 	
-	void printAreas();
-	void printPers();
+	void printAreas() const;
+	void printPers() const;
 	
 	ShapesCollection() = default;
 	ShapesCollection(const ShapesCollection& other);
