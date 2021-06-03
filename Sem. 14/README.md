@@ -22,10 +22,11 @@ struct Apple
 
 struct Orange
 {
-	 void printColor() const override
+	void printColor() const override
 	{
 		std::cout << "Orange! "<<std::endl;
 	}
+	
 }
 struct Lemon
 {
