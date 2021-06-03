@@ -62,7 +62,7 @@ public:
      	void addLemon(size_t sourness);
 };
 
-void FruitStore::addApple
+void FruitStore::addApple()
 {
 	fruits[count++] = new Apple();
 }
