@@ -10,7 +10,7 @@ struct Fruit
 	virtual void printColor() const = 0;
 	
 	virtual ~Fruit(){}
-} 
+}
 ```c++
 struct Apple
 {
@@ -54,8 +54,8 @@ public:
        ~FruitStore();
 	
 	void addApple();
-    void addOrange();
-     void addLemon(size_t sourness);
+    	void addOrange();
+     	void addLemon(size_t sourness);
 }
 
 void FruitStore::addApple
@@ -96,7 +96,7 @@ struct Fruit
 	virtual void printColor() const = 0;
 	virtual ~Fruit(){}
 
-      virtual Fruit* clone() const = 0; //!
+      	virtual Fruit* clone() const = 0; //!
 } 
 ```c++
 struct Apple
@@ -107,21 +107,22 @@ struct Apple
 	}
 	Fruit* clone() const override
 	{
-	return new Apple(*this);
-    }
+		return new Apple(*this);
+    	}
 	
 }
 
 struct Orange
 {
-	 void printColor() const override
+	void printColor() const override
 	{
 		std::cout << "Orange! "<<std::endl;
 	}
+	
 	Fruit* clone() const override
 	{
-	return new Apple(*this);
-    }
+		return new Apple(*this);
+	}
 }
 struct Lemon
 {
@@ -134,8 +135,8 @@ struct Lemon
 	}
 	Fruit* clone() const override
 	{
-	return new Lemon(*this);
-    }
+		return new Lemon(*this);
+    	}
 }
  ```
 От тук копирането става тривиално:
