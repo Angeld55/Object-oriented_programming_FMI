@@ -10,7 +10,8 @@ struct Fruit
 	virtual void printColor() const = 0;
 	
 	virtual ~Fruit(){}
-}
+};
+
 ```c++
 struct Apple
 {
@@ -18,7 +19,7 @@ struct Apple
 	{
 		std::cout << "Red or green! "<<std::endl;
 	}
-}
+};
 
 struct Orange
 {
@@ -27,7 +28,8 @@ struct Orange
 		std::cout << "Orange! "<<std::endl;
 	}
 	
-}
+};
+
 struct Lemon
 {
 	Lemon(size_t sourness) : sourness(sourness){}
@@ -37,7 +39,8 @@ struct Lemon
 	{
 		std::cout << "Yellow! "<<std::endl;
 	}
-}
+};
+
 class FruitStore
 {
 private:
@@ -57,7 +60,7 @@ public:
 	void addApple();
     	void addOrange();
      	void addLemon(size_t sourness);
-}
+};
 
 void FruitStore::addApple
 {
@@ -91,15 +94,15 @@ void FruitStore::free()
 За това дефинираме виртуална функция clone, която ще връща копие на обекта. Тази функция я разписваме във всеки от наследниците.
 
 ```c++
-```c++
+
 struct Fruit
 {
 	virtual void printColor() const = 0;
 	virtual ~Fruit(){}
 
       	virtual Fruit* clone() const = 0; //!
-}
-```c++
+};
+
 struct Apple
 {
 	 void printColor() const override
@@ -111,7 +114,7 @@ struct Apple
 		return new Apple(*this);
     	}
 	
-}
+};
 
 struct Orange
 {
@@ -124,7 +127,8 @@ struct Orange
 	{
 		return new Apple(*this);
 	}
-}
+};
+
 struct Lemon
 {
 	Lemon(size_t sourness) : sourness(sourness){}
@@ -138,7 +142,7 @@ struct Lemon
 	{
 		return new Lemon(*this);
     	}
-}
+};
  ```
 От тук копирането става тривиално:
 ```c++
