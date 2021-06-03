@@ -98,7 +98,7 @@ struct Fruit
 	virtual ~Fruit(){}
 
       	virtual Fruit* clone() const = 0; //!
-} 
+}
 ```c++
 struct Apple
 {
