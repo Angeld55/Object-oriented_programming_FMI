@@ -12,7 +12,6 @@ struct Fruit
 	virtual ~Fruit(){}
 };
 
-```c++
 struct Apple
 {
 	 void printColor() const override
