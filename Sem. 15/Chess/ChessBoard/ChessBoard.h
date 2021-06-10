@@ -37,4 +37,6 @@ public:
 	ChessBoard& operator=(const ChessBoard&) = delete;
 
 	void print() const;
+	
+	//TODO. Free memory?
 };
