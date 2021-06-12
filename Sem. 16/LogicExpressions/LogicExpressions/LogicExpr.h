@@ -123,7 +123,7 @@ namespace LogicExpressions
 		return std::move(current);
 	}
 
-	bool CheckValues(LogicExpr* expr, const std::vector<char>& vars, bool value)
+	bool CheckValues(const LogicExpr* expr, const std::vector<char>& vars, bool value)
 	{
 		size_t checksCounts = 1 << vars.size();
 
@@ -137,12 +137,12 @@ namespace LogicExpressions
 		return true;
 	}
 
-	bool isTautology(LogicExpr* expr, const std::vector<char>& vars)
+	bool isTautology(const LogicExpr* expr, const std::vector<char>& vars)
 	{
 		return CheckValues(expr, vars, true);
 	}
 
-	bool isContradiction(LogicExpr* expr, const std::vector<char>& vars)
+	bool isContradiction(const LogicExpr* expr, const std::vector<char>& vars)
 	{
 		return CheckValues(expr, vars, false);
 	}
