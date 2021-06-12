@@ -1,7 +1,7 @@
 ﻿#include "Knight.h"
 #include <cmath>
 
-Knight::Knight(bool isWhite) : Figure(isWhite)
+Knight::Knight(bool isWhite) : Figure(isWhite, KnightFigure)
 {}
 bool Knight::canBeMoved(size_t currentX, size_t currentY, size_t destX, size_t destY) const
 {

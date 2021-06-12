@@ -1,7 +1,7 @@
 #include "King.h"
 #include <cmath>
 
-King::King(bool isWhite) : Figure(isWhite)
+King::King(bool isWhite) : Figure(isWhite, KingFigure)
 {}
 bool King::canBeMoved(size_t currentX, size_t currentY, size_t destX, size_t destY) const
 {

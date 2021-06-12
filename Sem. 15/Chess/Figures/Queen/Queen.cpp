@@ -1,6 +1,6 @@
 #include "Queen.h"
 
-Queen::Queen(bool isWhite) : Bishop(isWhite), Rook(isWhite), Figure(isWhite)
+Queen::Queen(bool isWhite) : Bishop(isWhite), Rook(isWhite), Figure(isWhite, QueenFigure)
 {}
 
 bool Queen::canBeMoved(size_t currentX, size_t currentY, size_t destX, size_t destY) const

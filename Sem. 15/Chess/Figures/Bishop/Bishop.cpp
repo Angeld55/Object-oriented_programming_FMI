@@ -1,7 +1,7 @@
 #include "Bishop.h"
 #include <cmath>
 
-Bishop::Bishop(bool isWhite) : Figure(isWhite)
+Bishop::Bishop(bool isWhite) : Figure(isWhite, RookFigure)
 {}
 bool Bishop::canBeMoved(size_t currentX, size_t currentY, size_t destX, size_t destY) const
 {

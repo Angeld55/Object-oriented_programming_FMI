@@ -3,34 +3,34 @@
 
 ChessBoard::ChessBoard()
 {
-	FigureFactory factory;
+	
 	for (int i = 0; i < BOARD_SIZE; i++)
 	{
-		board[1][i].f = factory.createPawn(false);
-		board[6][i].f = factory.createPawn(true);
+		board[1][i].f = FigureFactory::createFigure(false, PawnFigure);
+		board[6][i].f = FigureFactory::createFigure(true, PawnFigure);
 	}
 
-	board[0][0].f = factory.createRook(false);
-	board[0][7].f = factory.createRook(false);
+	board[0][0].f = FigureFactory::createFigure(false, RookFigure);
+	board[0][7].f = FigureFactory::createFigure(false, RookFigure);
 
-	board[7][0].f = factory.createRook(true);
-	board[7][7].f = factory.createRook(true);
+	board[7][0].f = FigureFactory::createFigure(true, RookFigure);
+	board[7][7].f = FigureFactory::createFigure(true, RookFigure);
 
 	
-	board[0][1].f = factory.createKnight(false);
-	board[0][6].f = factory.createKnight(false);
-	board[7][1].f = factory.createKnight(true);
-	board[7][6].f = factory.createKnight(true);
+	board[0][1].f = FigureFactory::createFigure(false, KnightFigure);
+	board[0][6].f = FigureFactory::createFigure(false, KnightFigure);
+	board[7][1].f = FigureFactory::createFigure(true, KnightFigure);;
+	board[7][6].f = FigureFactory::createFigure(true, KnightFigure);
 
-	board[0][2].f = factory.createBishop(false);
-	board[0][5].f = factory.createBishop(false);
-	board[7][2].f = factory.createBishop(true);
-	board[7][5].f = factory.createBishop(true);
+	board[0][2].f = FigureFactory::createFigure(false, BishopFigure);
+	board[0][5].f = FigureFactory::createFigure(false, BishopFigure);;
+	board[7][2].f = FigureFactory::createFigure(true, BishopFigure);
+	board[7][5].f = FigureFactory::createFigure(true, BishopFigure);
 
-	board[0][3].f = factory.createKnig(false);
-	board[0][4].f = factory.createQueen(false);
-	board[7][4].f = factory.createQueen(true);
-	board[7][3].f = factory.createKnig(true);
+	board[0][3].f = FigureFactory::createFigure(false, KingFigure);
+	board[0][4].f = FigureFactory::createFigure(false, QueenFigure);
+	board[7][4].f = FigureFactory::createFigure(true, QueenFigure);
+	board[7][3].f = FigureFactory::createFigure(true, KingFigure);
 }
 
 void ChessBoard::print() const
@@ -43,4 +43,24 @@ void ChessBoard::print() const
 		}
 		std::cout << std::endl;
 	}
+}
+
+void ChessBoard::move(size_t x, size_t y, size_t destX, size_t destY)
+{
+	
+	Figure* current = board[x][y].f;
+
+	if (current->getType() == PawnFigure)
+	{
+		//Some logic.....
+	}
+	else
+	{
+		if (board[x][y].f && board[x][y].f->canBeMoved(x, y, destX, destY))
+		{
+			board[destX][destY].f = board[x][y].f;
+			board[x][y].f = nullptr;
+		}
+	}
+
 }

@@ -6,31 +6,22 @@
 #include "../Figures/Queen/Queen.h"
 #include "../Figures/Pawn/Pawn.h"
 
-Figure* FigureFactory::createPawn(bool isWhite)
+Figure* FigureFactory::createFigure(bool isWhite, FigureType type)
 {
-	return new Pawn(isWhite);
-}
-Figure* FigureFactory::createBishop(bool isWhite)
-{
-	return new Bishop(isWhite);
-}
-Figure* FigureFactory::createRook(bool isWhite)
-{
-	return new Rook(isWhite);
-}
-Figure* createQueen(bool isWhite)
-{
-	return new Queen(isWhite);
-}
-Figure* FigureFactory::createKnight(bool isWhite)
-{
-	return new Knight(isWhite);
-}
-Figure* FigureFactory::createKnig(bool isWhite)
-{
-	return new King(isWhite);
-}
-Figure* FigureFactory::createQueen(bool isWhite)
-{
-	return new Queen(isWhite);
+
+	switch (type)
+	{
+	case KingFigure:
+		return new King(isWhite);
+	case QueenFigure:
+		return new Queen(isWhite);
+	case KnightFigure:
+		return new Knight(isWhite);
+	case BishopFigure:
+		return new Bishop(isWhite);
+	case PawnFigure:
+		return new  Pawn(isWhite);
+	case RookFigure:
+		return new Rook(isWhite);
+	}
 }
