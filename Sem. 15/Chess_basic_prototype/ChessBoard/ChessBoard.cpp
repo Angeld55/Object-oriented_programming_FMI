@@ -35,6 +35,7 @@ ChessBoard::ChessBoard()
 
 void ChessBoard::print() const
 {
+	std::cout << "--------" << std::endl;
 	for (int i = 0; i < BOARD_SIZE; i++)
 	{
 		for (int j = 0; j < BOARD_SIZE; j++)
@@ -43,21 +44,23 @@ void ChessBoard::print() const
 		}
 		std::cout << std::endl;
 	}
+	std::cout << "--------" << std::endl << std::endl << std::endl;
 }
 
-void ChessBoard::move(size_t x, size_t y, size_t destX, size_t destY)
+void ChessBoard::moveFigure(size_t x, size_t y, size_t destX, size_t destY)
 {
 	
 	Figure* current = board[x][y].f;
 
 	if (current->getType() == PawnFigure)
 	{
-		//Some logic.....
+		//Some other logic.....  El'passant and other
 	}
 	else
 	{
 		if (board[x][y].f && board[x][y].f->canBeMoved(x, y, destX, destY))
 		{
+			delete board[destX][destY].f;
 			board[destX][destY].f = board[x][y].f;
 			board[x][y].f = nullptr;
 		}

@@ -10,6 +10,7 @@ class Figure
 public:
 	Figure(bool isWhite, FigureType type) :isWhite(isWhite), type(type)
 	{}
+
 	virtual bool canBeMoved(size_t currentX, size_t currentY, size_t destX, size_t destY) const = 0;
 	virtual void print() const = 0;
 

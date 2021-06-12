@@ -10,7 +10,7 @@ int main()
 
 	c.print();
 
-	c.move(0, 1, 2, 0);
+	c.moveFigure(0, 1, 2, 0);
 
 	c.print();
 }
