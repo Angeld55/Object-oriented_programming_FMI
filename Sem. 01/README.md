@@ -87,13 +87,14 @@ struct Box
 
 ###  Деклариране на обекти от новия тип
  ```c++
-Box b; //default values to height and weight
+Box b; //default values to height and width ans lenght
 
 Box b2 = {3, 4, 3.4} // height = 3, width = 3, length = 3.4;
 
 Box b3;
 b3.height = 13;
-b3.weight = 14;
+b3.width = 14;
+b3.lenght = 20;
  ```
 	
 #### Подаване във функции
