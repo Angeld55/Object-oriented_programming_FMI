@@ -13,7 +13,7 @@ void readPoint(Point& p)
 
 void printPoint(const Point& p)
 {
-	std::cout << p.x << " " << p.y <<;
+	std::cout << p.x << " " << p.y;
 }
 
 double getDist(const Point& p1, const Point& p2)
