@@ -32,7 +32,7 @@ int main()
 
  ```c++
 #include <iostream>
-void f(int a)
+void f(int& a)
 {
 	a++;
 }
@@ -46,7 +46,17 @@ int main()
 ##### Подаване по референция.
 
  ```c++
- 
+ #include <iostream>
+void f(int* a)
+{
+	(*a)++; //a++ will increment the pointer
+}
+int main()
+{
+	int a = 10;
+	f(a);
+	std::cout << a << std::endl; //11
+}
  ```
 ##### Подаване по указател.
 
