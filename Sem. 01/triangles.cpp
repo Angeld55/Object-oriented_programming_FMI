@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 struct Point
 {
@@ -37,6 +38,7 @@ void readTriangle(Triangle& tr)
 	readPoint(tr.p2);
 	readPoint(tr.p3);
 }
+
 void printTriangle(const Triangle& tr)
 {
 	printPoint(tr.p1);
@@ -58,7 +60,7 @@ double getArea(const Triangle& tr)
 	return sqrt(halfPer*(halfPer - sideA)*(halfPer - sideB)*(halfPer - sideC));
 }
 
-void swap(int& a, int& b)
+void swap(double& a, double& b)
 {
 	int temp = a;
 	a = b;
@@ -71,7 +73,7 @@ void swap(Triangle& tr1, Triangle& tr2)
 	tr2 = temp;
 }
 
-void selectionSort(int* areas,  Triangle* triangles, unsigned size)
+void selectionSort(double* areas,  Triangle* triangles, unsigned size)
 {
 	for (unsigned i = 0; i < size - 1; i++)
 	{
@@ -90,9 +92,9 @@ void selectionSort(int* areas,  Triangle* triangles, unsigned size)
 	}
 }
 
-int* calculateAreas(const Triangle* arr, int n)
+double* calculateAreas(const Triangle* arr, int n)
 {
-	int* areas = new int[n];
+	double* areas = new double[n];
 
 	for (int i = 0; i < n; i++)
 		areas[i] = getArea(arr[i]);
@@ -110,7 +112,7 @@ int main()
 	for (int i = 0; i < n; i++)
 		readTriangle(triangles[i]);
 
-	int* areas = calculateAreas(triangles,n);
+	double* areas = calculateAreas(triangles,n);
 
 	selectionSort(areas, triangles, n);
 
