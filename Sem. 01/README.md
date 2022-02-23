@@ -69,7 +69,7 @@ void f(int* a)
 int main()
 {
 	int a = 10;
-	f(a);
+	f(&a); //&a returns a pointer to a.
 	std::cout << a << std::endl; //11
 }
  ```
