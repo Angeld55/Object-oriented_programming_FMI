@@ -7,22 +7,22 @@
  ```c++
 int main()
 {
-int a = 10; // int in the stack
-int* ptr = new int(30); // int in the dyniamic memory (we use a pointer on the stack to point to the int)
+ int a = 10; // int in the stack
+ int* ptr = new int(30); // int in the dyniamic memory (we use a pointer on the stack to point to the int)
 
-std::cout << "First number: " << a << " " << " second number: " << (*ptr) << std::endl;
+ std::cout << "First number: " << a << " " << " second number: " << (*ptr) << std::endl;
 
-std::cout << "Address of second number" << ptr << std::endl;
+ std::cout << "Address of second number" << ptr << std::endl;
 
-delete ptr; //!!!
+ delete ptr; //!!!
 
-ptr = &a;
-std::cout << "Address of first number" << ptr << std::endl;
+ ptr = &a;
+ std::cout << "Address of first number" << ptr << std::endl;
 
-int& b = a; //another name for the variable
-b = 30;
+ int& b = a; //another name for the variable
+ b = 30;
 
-std::cout << "First number" << a << std::endl
+ std::cout << "First number" << a << std::endl
 
 }
  ```
