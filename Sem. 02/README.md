@@ -121,7 +121,7 @@ int main()
 ### Режими на работа
 
  ```c++
-	ifstream str("file.txt", <режим на работа>.
+	ifstream str("file.txt", <режим на работа>).
  ```
 Режимът на работа е цяло число. 
 
@@ -135,7 +135,9 @@ int main()
 | ios::binary | Превключва режима от текстов в двоичен                                                                                           | 32 |
  
 
-
+ ```c++
+	ostream file("file.txt", ios::out | ios::app).
+ ```
 
 
  ##  Задачи
