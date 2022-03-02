@@ -6,7 +6,7 @@ using namespace std;
 bool copyFile(const char* source, const char* dest)
 {
 	ifstream inputFile(source);
-	ofstream outputFile(dest, ios::app);
+	ofstream outputFile(dest);
 
 	if (!inputFile.is_open() || !outputFile.is_open())
 		return false;
