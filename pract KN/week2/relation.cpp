@@ -34,8 +34,8 @@ void addPair(relation& toAdd, int first, int second) {
 	toAdd.data[toAdd.size++] = makePair(first, second);
 }
 
-void writePair(const pair& p, std::ofstream& in) {
-	in << p.first << " " << p.second << std::endl;
+void writePair(const pair& p, std::ofstream& out) {
+	out << p.first << " " << p.second << std::endl;
 }
 
 pair readPair(std::ifstream& in) {
@@ -63,7 +63,9 @@ relation readRelation() {
 
 	if (inFile.bad())
 		throw std::exception("Problem with reading the file");
-
+	
+	// alternative to throw: return relation(); -> returns empty relation
+	
 	relation toReturn;
 	int size = 0;
 	inFile >> size;
