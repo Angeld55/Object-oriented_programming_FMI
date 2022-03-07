@@ -7,7 +7,7 @@
 ![enter image description here](https://i.ibb.co/VDdDSnM/potoci.gif)
 
 
-#####  Пример за работа с поток за вход (cin)
+#####  Пример за работа с вход от конзолата. cin (обект от тип istream).
  ```c++
 #include <iostream>
 using namespace std;
@@ -20,7 +20,7 @@ int main()
  ```
  Четем от стандартния вход.
 
-#####  Пример за работа с поток за изход (cout)
+#####  Пример за работа с поток за изход. cout (обект от тип ostream).
  ```c++
 #include <iostream>
 using namespace std;
@@ -136,7 +136,7 @@ int main()
  
 
  ```c++
-	ostream file("file.txt", ios::out | ios::app).
+	ofstream file("file.txt", ios::out | ios::app).
  ```
 
 
