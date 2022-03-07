@@ -164,7 +164,7 @@ File successfully opened!
 Name = Stefan Velkov, Email: stefan@yahoo.com, FN: 80000
 >edit 80000 stecho@abv.bg
 >print 80000
-Name = Krum Velkov, Email: stecho@abv.bg, FN: 80000
+Name = Stefan Velkov, Email: stecho@abv.bg, FN: 80000
 >save students2.csv
 file students2.csv successfully saved!
 ```
