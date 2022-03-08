@@ -53,8 +53,6 @@ size_t getLinesCount(const char* fileName)
 
 }
 
-//Angel,
-
 void parseField(char* dest, const char*& source)
 {
 	while (*source != ',' && *source != '\0')
