@@ -16,6 +16,9 @@ int main()
 	{ //write
 		Test t = { true, 45 };
 		ofstream file("testObj.bat", ios::binary);
+		
+		if (!file.open())
+			return -1;
 
 		file.write((char*)&t, sizeof(t));
 	}
@@ -23,6 +26,9 @@ int main()
 	{ //read
 		Test t;
 		ifstream file("testObj.bat", ios::binary);
+		
+		if (!file.open())
+			return -1;
 
 		file.read((char*)&t, sizeof(t));
 		std::cout << t.b << " " << t.x << std::endl;
