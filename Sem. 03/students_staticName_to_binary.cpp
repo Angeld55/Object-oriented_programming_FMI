@@ -23,11 +23,10 @@ int main()
         ofstream file("student.dat", ios::binary);
         
         if (!file.open())
-		{
-			cout << "Error while writing to binary file!" << endl;
-			delete[] s1.name, s2.name;
-			return -1;
-		}
+	{
+		cout << "Error while writing to binary file!" << endl;
+		return -1;
+	}
         
         file.write((const char*)&st, sizeof(st));  //since the data is grouped in the struct, we can save it like this.
     }
@@ -37,11 +36,10 @@ int main()
         ifstream file("student.dat", ios::binary);
         
         if (!file.open())
-		{
-			cout << "Error while reading from binary file!" << endl;
-			delete[] s1.name, s2.name;
-			return -1;
-		}
+	{
+		cout << "Error while reading from binary file!" << endl;
+		return -1;
+	}
 
         file.read((char*)&st, sizeof(st));
         
