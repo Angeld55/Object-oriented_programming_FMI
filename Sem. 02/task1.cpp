@@ -8,7 +8,7 @@ int main()
 {
 	ifstream inputFile("selfPrintingTask.cpp");
 	
-	if (inputFile.fail())
+	if (!inputFile.open())
 	{
 		cout << "Error!" << endl;
 		return -1;
