@@ -17,7 +17,7 @@ int main()
 		Test t = { true, 45 };
 		ofstream file("testObj.bat", ios::binary);
 
-		file.write((char*)&t, sizeof(t));
+		file.write((char*)&t, sizeof(t)); //since the data is grouped in the struct, we can save it like this.
 	}
 
 	{ //read
