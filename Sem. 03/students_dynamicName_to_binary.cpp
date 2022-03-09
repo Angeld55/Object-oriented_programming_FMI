@@ -56,6 +56,7 @@ int main()
 		if (!file.open())
 		{
 			cout << "Error while writing to binary file!" << endl;
+			delete[] s1.name, s2.name;
 			return -1;
 		}
 		
