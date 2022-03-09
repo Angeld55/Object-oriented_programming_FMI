@@ -52,6 +52,13 @@ int main()
 		s2.age = 50;
 
 		ofstream file("Students.dat", ios::binary);
+		
+		if (!file.open())
+		{
+			cout << "Error while writing to binary file!" << endl;
+			return -1;
+		}
+		
 		saveStudent(file, s1);
 		saveStudent(file, s2);
 
@@ -60,6 +67,13 @@ int main()
 
 	{
 		ifstream file("Students.dat", ios::binary);
+		
+		if (!file.open())
+		{
+			cout << "Error while reading from file!" << endl;
+			return -1;
+		}
+		
 		Student s1, s2;
 
 		loadStudent(file, s1);
