@@ -22,7 +22,7 @@ int main()
         
         ofstream file("student.dat", ios::binary);
         
-        file.write((const char*)&st, sizeof(st));
+        file.write((const char*)&st, sizeof(st));  //since the data is grouped in the struct, we can save it like this.
     }
     
     { //read
