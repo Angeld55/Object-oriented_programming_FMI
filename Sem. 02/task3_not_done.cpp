@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring> 
 #pragma warning(disable:4996)
 using namespace std;
 
@@ -29,6 +30,7 @@ struct StudentRecord
 struct StudentCollection
 {
 	StudentRecord* data;
+	size_t studentsCount;
 };
 
 size_t getLinesCount(const char* fileName)
@@ -101,48 +103,68 @@ void printStudent(const StudentRecord& st)
 
 }
 
-size_t initStudentCollection(StudentCollection& collection, const char* fileName)
+void initStudentCollection(StudentCollection& collection, const char* fileName)
 {
-	size_t studentsCount = getLinesCount(fileName) - 1;
-
-	collection.data = new StudentRecord[studentsCount];
-
+	size_t linesCount = getLinesCount(fileName);
+	
+	size_t studentsCount = linesCount - 1;
+	
 	ifstream file(fileName);
-	if (!file.is_open())
+	if (studentsCount == 0 || !file.is_open())
 	{
-		cout << "error";
-		return 0;
+		cout << "Error while reading from file!"  << std::endl;
+		collection.studentsCount = 0;
+		collection.data = nullptr;
+		
+		return;
 	}
+	
+	collection.data = new StudentRecord[studentsCount];
+	collection.studentsCount = studentsCount;
 
 	char buff[capacity];
-	file.getline(buff, capacity);
+	file.getline(buff, capacity); ///skip the header
 	for (int i = 0; i < studentsCount; i++)
 	{
 		file.getline(buff, capacity);
 		parseStudent(collection.data[i], buff);
+		
+		printStudent(collection.data[i]);
 	}
-
-	return studentsCount;
 }
 
-void saveToFile(const char* fileName, const StudentCollection& collection, size_t studentsCount)
+void saveToFile(const char* fileName, const StudentCollection& collection)
 {
 	ofstream file(fileName);
 	if (!file.is_open())
 		return;
 	file << "Ime, Familiya, Fakulteten nomer, Imeyl adres" << std::endl; //header;
-	for (int i = 0; i < studentsCount; i++)
-		file << collection.data[i].firstName << "," << collection.data[i].lastName << "," << collection.data[i].fnRaw << "," << collection.data[i].email << std::endl;
+	for (int i = 0; i < collection.studentsCount; i++)
+	{
+	    file << collection.data[i].firstName << "," << collection.data[i].lastName << "," << collection.data[i].fnRaw << "," << collection.data[i].email;
+        
+        bool isLast = i == collection.studentsCount - 1;
+        
+        if(!isLast)
+            file << std::endl;
+	}
 }
 int main()
 {
-	const char* fileName = "lists/all_students.csv";
+	const char* fileName = "students.txt";
 	
 	StudentCollection collection;
-	size_t studentsCount = initStudentCollection(collection, fileName);
+	initStudentCollection(collection, fileName);
 	
+	if(collection.studentsCount == 0)
+	{
+	    std::cout << "Error! No students loaded!" << std::endl;
+	    return -1;
+	}
 	//changes to students email
 
-	saveToFile(fileName, collection, studentsCount);
+	saveToFile(fileName, collection);
 	delete[] collection.data;
+	
+	return 0;
 }
