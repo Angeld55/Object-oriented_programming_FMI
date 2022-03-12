@@ -20,7 +20,7 @@ ios::noreplace | Отваря за вмъкване само ако файлът
 using namespace std;
 int main()
 {
-	fstream f("test.txt", ios::out | ios::app);
+	ifstream f("test.txt", ios::out | ios::app);
 
 	if (!f.is_open())
 	{
