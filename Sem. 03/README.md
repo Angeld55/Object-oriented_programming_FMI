@@ -97,8 +97,13 @@ int main()
 Байтовете се записват в **обратна посока**. Най-старшият байт е последен. Следователно запаментеното число е **00025fa3**, което е точно шестанйсетичния запис на числото **155555**.
  
   ### Примери за запазване на стуктури във файл.
+ 
+- запазване на структура,която не използва динамична памет - **simple_struct_binary.cpp** и **student_staticName_to_binary.cpp**
+- запазване на структура,която използва динамична памет - **students_dynamicName_to_binary.cpp**
 
- ```c++
+  ##### Пример за запазване на масив от стуктури във файл.
+
+```c++
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -133,8 +138,7 @@ int main()
 
 ![Image of the binary file after running the code](https://i.ibb.co/0JthLd6/3-A978-D14-7-C7-A-4-ABD-8-B0-C-DA27-F6-E9-CD0-A.png "Binary file")
 
-- запазване на структура,която не използва динамична памет - **simple_struct_binary.cpp** и **student_staticName_to_binary.cpp**
-- запазване на структура,която използва динамична памет - **students_dynamicName_to_binary.cpp**
+
  ### Позициониране във файл 
 TBI
 
