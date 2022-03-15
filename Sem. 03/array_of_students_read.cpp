@@ -10,19 +10,6 @@ struct Student
 	int fn;
 };
 
-void initStudent(Student& st, const char* name, int age, int fn)
-{
-	strcpy(st.name, name);
-	st.age = age;
-	st.fn = fn;
-}
-
-void saveToFile(const Student* students, size_t count, ofstream& file)
-{
-	file.write((const char*)students, count * sizeof(Student));
-}
-
-
 size_t getFileSize(ifstream& f)
 {
 	size_t currentPos = f.tellg();
