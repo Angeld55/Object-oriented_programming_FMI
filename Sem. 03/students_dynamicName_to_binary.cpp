@@ -1,93 +1,114 @@
 #include <iostream>
 #include <fstream>
-#pragma warning(disable:4996)
+
 using namespace std;
 
 
 struct Student
 {
-	char* name;
-	int age;
-	int fn;
+   char* name;
+   int fn;
+   int gradesCount;
+   double averageGrade;
 };
-
-void saveStudent(ofstream& file, const Student& st)
+void print(const Student& st)
 {
-	size_t nameLen = strlen(st.name) + 1;
-	file.write((const char*)&nameLen, sizeof(nameLen));
-	file.write(st.name, nameLen);
-	file.write((const char*)&st.age, sizeof(st.age));
-	file.write((const char*)&st.fn, sizeof(st.fn));
+   cout << st.name << " " << st.fn << " " << st.gradesCount << " " << st.averageGrade << endl;
+}
+Student createStudent(const char* name, int fn, int gradesCount, double avGrade)
+{
+   Student obj;
+
+   size_t nameLen = strlen(name);
+
+   obj.name = new char[nameLen + 1];
+   strcpy(obj.name, name);
+
+   obj.fn = fn;
+   obj.gradesCount = gradesCount;
+   obj.averageGrade = avGrade;
+
+   return obj;
+}
+void saveStudentToFile(ofstream& f, const Student& st)
+{
+   size_t nameLen = strlen(st.name);
+   
+   f.write((const char*)&nameLen, sizeof(nameLen));  //first we write the size of the name!
+   f.write(st.name, nameLen);
+   
+   f.write((const char*)&st.fn, sizeof(st.fn));
+   f.write((const char*)&st.gradesCount, sizeof(st.gradesCount));
+   f.write((const char*)&st.averageGrade, sizeof(st.averageGrade));
+
+}
+Student readStudentFromFile(ifstream& f)
+{
+   Student res;
+
+   size_t nameLen;
+
+   f.read((char *)&nameLen, sizeof(nameLen)); //first we read the size of the name!
+
+   res.name = new char[nameLen + 1];
+   f.read(res.name, nameLen);
+   res.name[nameLen] = '\0';
+
+   f.read((char *)&res.fn, sizeof(res.fn));
+   f.read((char*)&res.gradesCount, sizeof(res.gradesCount));
+   f.read((char*)&res.averageGrade, sizeof(res.averageGrade));
+
+   return res;
+}
+void freeStudent(Student& s)
+{
+   delete[] s.name;
+
+   s.averageGrade = s.fn = s.gradesCount = 0;
+
 }
 
-void loadStudent(ifstream& file, Student& st)
-{
-	size_t nameLen;
-	file.read((char*)&nameLen, sizeof(nameLen));
-
-	st.name = new char[nameLen];
-	file.read(st.name, nameLen);
-
-	file.read((char*)&st.age, sizeof(st.age));
-	file.read((char*)&st.fn, sizeof(st.fn));
-
-}
 
 int main()
 {
+   { //save students to file
+   	Student s1 = createStudent("Ivan", 1234, 2, 4);
+   	Student s2 = createStudent("Petur", 5555, 5, 5.5);
 
-	{ //writing students to binary file
+   	ofstream f1("uni.dat", ios::binary);
 
-		Student s1;
-		s1.name = new char[5];
-		strcpy(s1.name, "ivan");
-		s1.fn = 9999;
-		s1.age = 30;
+   	if (!f1.is_open())
+   	{
+   		cout << "Error" << endl;
+   		return -1;
+   	}
 
+   	saveStudentToFile(f1, s1);
+   	saveStudentToFile(f1, s2);
+   	
+   	freeStudent(s1);
+   	freeStudent(s2);
 
-		Student s2;
-		s2.name = new char[6];
-		strcpy(s2.name, "angel");
-		s2.fn = 5555;
-		s2.age = 50;
+   	f1.close();
+   }
 
-		ofstream file("Students.dat", ios::binary);
-		
-		if (!file.open())
-		{
-			cout << "Error while writing to binary file!" << endl;
-			delete[] s1.name, s2.name;
-			return -1;
-		}
-		
-		saveStudent(file, s1);
-		saveStudent(file, s2);
+   { //read students from file
+   	ifstream f2("uni.dat", ios::binary);
 
-		delete[] s1.name, s2.name;
-	}
+   	if (!f2.is_open())
+   	{
+   		cout << "Error" << endl;
+   		return -1;
+   	}
+   	Student s1 = readStudentFromFile(f2);
+   	Student s2 = readStudentFromFile(f2);
 
-	{
-		ifstream file("Students.dat", ios::binary);
-		
-		if (!file.open())
-		{
-			cout << "Error while reading from file!" << endl;
-			return -1;
-		}
-		
-		Student s1, s2;
+   	print(s1);
+   	print(s2);
 
-		loadStudent(file, s1);
-		loadStudent(file, s2);
-		std::cout << s1.name << " " << s1.age << " " << s1.fn << std::endl;
-		std::cout << s2.name << " " << s2.age << " " << s2.fn << std::endl;
+   	freeStudent(s1);
+   	freeStudent(s2);
 
-		delete[] s1.name, s2.name;
-	}
-
-
-
-	
-
-
+   	f2.close();
+   }
 }
