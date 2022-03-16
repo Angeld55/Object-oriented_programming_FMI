@@ -43,4 +43,6 @@ int main()
 	saveToFile(arr, 4, file);
 	
 	delete[] arr;
+	
+	return 0;
 }
