@@ -47,4 +47,6 @@ int main()
 		std::cout << "Name: " << arr[i].name << ", age: " << arr[i].age << ", fn: " << arr[i].fn << std::endl;
 	
 	delete[] arr;
+	
+	return 0;
 }
