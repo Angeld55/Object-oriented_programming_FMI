@@ -34,6 +34,13 @@ int main()
 	Student* arr;
 	size_t count;
 	ifstream file("students.dat");
+			
+	if(!file.is_open())
+	{
+		std::cout << "Error while opening the file!" << std::endl;
+		return -1;
+	}
+		
 	readFromFile(arr, count, file);
 
 	for (int i = 0; i < count; i++)
