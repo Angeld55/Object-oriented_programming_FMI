@@ -15,5 +15,16 @@ size_t getFileSize(std::ifstream& file)
 int main()
 {
 	ifstream file("ddz.txt");
+	
+			
+	if(!file.is_open())
+	{
+		std::cout << "Error while opening the file!" << std::endl;
+		return -1;
+	}
+		
+	
 	std::cout << getFileSize(file) << std::endl;
+	
+	return 0;
 }
