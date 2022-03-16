@@ -24,7 +24,7 @@ int main()
 	}
 		
 	
-	std::cout << getFileSize(file) << std::endl;
+	std::cout << getFileSize(file) << " bytes" << std::endl;
 	
 	return 0;
 }
