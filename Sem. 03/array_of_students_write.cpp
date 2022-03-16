@@ -32,6 +32,14 @@ int main()
 	initStudent(arr[3], "katerina", 19, 12134);
 
 	ofstream file("students.dat", ios::binary);
+		
+	if(!file.is_open())
+	{
+		std::cout << "Error while opening the file!" << std::endl;
+		delete[] arr; //!
+		return -1;
+	}
+		
 	saveToFile(arr, 4, file);
 	
 	delete[] arr;
