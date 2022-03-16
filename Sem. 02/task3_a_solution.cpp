@@ -107,7 +107,8 @@ StudentsList getStudentsListFromFile(const char* filePath)
 /* Commands */
 
 // The buffer could get dirty with leftover data, so we check only if the beginning matches
-bool isCommand(const char* inputBuffer, const char* command) {
+bool isCommand(const char* inputBuffer, const char* command)
+{
 	for (int i = 0; command[i] != '\0'; i++)
 		if (inputBuffer[i] != command[i])
 			return false;
