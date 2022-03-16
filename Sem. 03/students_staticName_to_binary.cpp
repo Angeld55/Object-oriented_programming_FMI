@@ -22,7 +22,7 @@ int main()
         
         ofstream file("student.dat", ios::binary);
         
-        if (!file.open())
+        if (!file.is_open())
 	{
 		cout << "Error while writing to binary file!" << endl;
 		return -1;
@@ -35,7 +35,7 @@ int main()
         Student st;
         ifstream file("student.dat", ios::binary);
         
-        if (!file.open())
+        if (!file.is_open())
 	{
 		cout << "Error while reading from binary file!" << endl;
 		return -1;
