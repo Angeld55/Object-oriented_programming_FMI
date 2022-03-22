@@ -42,11 +42,15 @@ public:
 	{
 		if(grade >= 2 && grade <= 6)
 			this->grade = grade;
+		else
+			this->grade = 2;
 	}
 	int setAge(int age)
 	{
 		if(age >= 0)
 			this->age = age;
+		else
+			this->age = 0;
 	}
 };
 
