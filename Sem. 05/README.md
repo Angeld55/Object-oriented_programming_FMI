@@ -56,10 +56,9 @@ int main()
 	
 	//s.grade = -1;  would not compile (grade is private)
 	
-	std::cout << s.getGrade(); //return a copy of the grade
+	std::cout << s.getGrade(); //returns a copy of the grade
 	
-	s.setAge(5); //return a copy of the grade
-
+	s.setAge(5); 
 }
 
  ```
