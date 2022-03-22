@@ -30,11 +30,11 @@ public:
 		setGrade(grade);
 		setAge(age);
 	}
-	int getGrade()
+	int getGrade() const
 	{
 		return grade;
 	}
-	int getAge()
+	int getAge() const
 	{
 		return age;
 	}
@@ -52,16 +52,14 @@ public:
 
 int main()
 {
-	while ()
-	{
-		Test t;// Object is created 
-		if ()
-		{
-			Test t2; // Object is created 
+	Student s(2,3);
+	
+	//s.grade = -1;  would not compile (grade is private)
+	
+	std::cout << s.getGrade(); //return a copy of the grade
+	
+	s.setAge(5); //return a copy of the grade
 
-		}// Object is destroyed (t2)
-
-	}//Object is destroyed (t)
 }
 
  ```
