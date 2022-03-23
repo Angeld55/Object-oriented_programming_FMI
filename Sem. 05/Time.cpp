@@ -32,11 +32,11 @@ public:
 	int compare(const Time& other) const;
 	Time getDiff(const Time& other) const;
 
+	Time getToMidnight() const;
+	bool isPartyTime() const;//23:00  05;00
+	bool isDinnerTime() const;//19:30  21:30
 
-	//bool isPartyTime() const;//23:00  05;00
-	//bool isDinnerTime() const;//19:30  21:30
-
-	void print() const;
+	void print(bool is12hoursclock) const;
 
 };
 Time::Time(size_t hours, size_t mins, size_t seconds)
@@ -105,7 +105,7 @@ void Time::tick()
 int Time::compare(const Time& other) const
 {
 	size_t mySeconds = convertToSeconds();
-	size_t otherSeconds = convertToSeconds();
+	size_t otherSeconds = other.convertToSeconds();
 
 	if (mySeconds > otherSeconds)
 		return 1;
@@ -129,24 +129,62 @@ Time Time::getDiff(const Time& other) const
 	return Time(diff);
 }
 
-void Time::print() const
+Time Time::getToMidnight() const
+{
+	Time midnight(23, 59, 59);
+	Time diff = getDiff(midnight);
+	diff.tick();
+	return diff;
+}
+bool Time::isDinnerTime() const
+{
+	Time lowerBound(20, 30, 0);
+	Time upperBound(22, 0, 0);
+	return compare(lowerBound) >= 0 && compare(upperBound) <= 0;
+}
+bool Time::isPartyTime() const
+{
+	Time lowerBound(23, 0, 0);
+	Time upperBound(6, 0, 0);
+	return compare(lowerBound) >= 0 || compare(upperBound) <= 0;
+}
+
+void Time::print(bool is12hoursclock) const
 {
 	if (hours < 10)
 		std::cout << 0;
-	std::cout << hours << ":";
+	std::cout << ((is12hoursclock && hours > 12) ? hours - 12 : hours) << ":";
 	if (mins < 10)
 		std::cout << 0;
 	std::cout << mins << ":";
 	if (seconds < 10)
 		std::cout << 0;
 	std::cout << seconds;
+	if (is12hoursclock)
+		std::cout << ((hours > 12) ? "PM" : "AM");
+	std::cout << std::endl;
 }
 
+void timeBubbleSort(Time* arr, size_t arrLen)
+{
+	for (int i = 0; i < arrLen; i++)
+	{
+		for (int j = 0; j < arrLen - 1; j++)
+		{
+			if (arr[j].compare(arr[j + 1]) > 0)
+			{
+				Time temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+}
 
 int main()
 {
-	Time t(12, 3, 4);
-
-	t.print();
-
+	Time times[10] = { Time(11, 30, 0), Time(12, 44, 29), Time(), Time(17, 15, 23), Time(23, 60, 0), Time(3, 14, 15), Time(2, 71, 82), Time(21, 22, 3), Time(17, 15, 23), Time(7, 31, 43) };
+	timeBubbleSort(times, 10);
+	for (int i = 0; i < 10; i++)
+		times[i].print(false);
 }
