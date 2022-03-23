@@ -165,19 +165,28 @@ void Time::print(bool is12hoursclock) const
 	std::cout << std::endl;
 }
 
+void swap(Time& first, Time& second)
+{
+	Time& temp = first;
+	first = second;
+	second = temp;
+}
 void timeBubbleSort(Time* arr, size_t arrLen)
 {
 	for (int i = 0; i < arrLen; i++)
 	{
-		for (int j = 0; j < arrLen - 1; j++)
+		bool isSwapped = false;
+		for (int j = 0; j < arrLen - 1 - i; j++)
 		{
 			if (arr[j].compare(arr[j + 1]) > 0)
 			{
-				Time temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
+				swap(arr[j],arr[j+1]);
+				isSwapped = true;
 			}
 		}
+		
+		if(!isSwapped)
+			return;
 	}
 }
 
