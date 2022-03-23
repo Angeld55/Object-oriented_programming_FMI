@@ -5,6 +5,7 @@
 using namespace std;
 
 const size_t capacity = 1024;
+const size_t bufferCapacity = 2.5 * capacity; // rough estimation of size of "edit fn Specialty email", where fn, Specialty and email are with their max width
 
 enum class Speciality
 {
@@ -128,8 +129,6 @@ void initStudentCollection(StudentCollection& collection, const char* fileName)
 	{
 		file.getline(buff, capacity);
 		parseStudent(collection.data[i], buff);
-		
-		printStudent(collection.data[i]);
 	}
 }
 
@@ -148,22 +147,115 @@ void saveToFile(const char* fileName, const StudentCollection& collection)
         if(!isLast)
             file << std::endl;
 	}
+	std::cout << "file " << fileName << " successfully saved!" << std::endl;
 }
+
+void accSubstr(const char*& raw, int& ind, char* output)
+{
+	for (int i = 0; raw[ind] != ' ' && raw[ind] != '\0'; i++, ind++)
+	{
+		output[i] = raw[ind];
+		output[i + 1] = '\0';
+	}
+	ind++;
+}
+
+int studentIndByFNAndSpeciality(const StudentCollection& collection, int fn, Speciality speciality) {
+	for (int i = 0; i < collection.studentsCount; i++)
+		if (collection.data[i].fn == fn && collection.data[i].studentSpeciality == speciality)
+			return i;
+
+	std::cout << "Error: No student found!" << std::endl;
+	return -1;
+}
+
+int studentIndByFNAndSpeciality(const StudentCollection& collection, const char* rawData, int& accInd)
+{
+	if (rawData[0] == ' ') accInd = 1;
+
+	char fnBuffer[capacity];
+	accSubstr(rawData, accInd, fnBuffer);
+
+	int fn = atoi(fnBuffer);
+	
+	char specBuffer[capacity];
+	accSubstr(rawData, accInd, specBuffer);
+
+	Speciality speciality;
+	if (strcmp(specBuffer, "SoftwareEngineering") == 0)
+		speciality = Speciality::softwareEngineering;
+	else if (strcmp(specBuffer, "ComputerScience") == 0)
+		speciality = Speciality::computerScience;
+
+	return studentIndByFNAndSpeciality(collection, fn, speciality);
+}
+
+int studentIndByFNAndSpeciality(const StudentCollection& collection, const char* rawData)
+{
+	int accInd = 0;
+	return studentIndByFNAndSpeciality(collection, rawData, accInd);
+}
+
+void printStudentInCollectionFromRaw(const StudentCollection& collection, const char* rawData)
+{
+	int studentInd = studentIndByFNAndSpeciality(collection, rawData);
+	if (studentInd < 0)
+		return;
+
+	printStudent(collection.data[studentInd]);
+}
+
+void editStudentEmailFromRaw(const StudentCollection& collection, const char* rawData)
+{
+	int accInd = 0, studentInd = studentIndByFNAndSpeciality(collection, rawData, accInd);
+	if (studentInd < 0)
+		return;
+
+	char emailBuffer[capacity];
+	accSubstr(rawData, accInd, emailBuffer);
+	strcpy(collection.data[studentInd].email, emailBuffer);
+}
+
 int main()
 {
-	const char* fileName = "students.txt";
-	
+	std::cout << "Open file:" << std::endl;
+
+	char buffer[bufferCapacity];
+	std::cin.getline(buffer, bufferCapacity);
+
 	StudentCollection collection;
-	initStudentCollection(collection, fileName);
+	initStudentCollection(collection, buffer);
 	
 	if(collection.studentsCount == 0)
 	{
 	    std::cout << "Error! No students loaded!" << std::endl;
 	    return -1;
 	}
-	//changes to students email
+	std::cout << "File successfully opened!" << std::endl;
 
-	saveToFile(fileName, collection);
+	do
+	{
+		std::cin >> buffer;
+		if (strcmp(buffer, "print") == 0)
+		{
+			std::cin.getline(buffer, bufferCapacity);
+			std::cout << buffer << std::endl;
+			printStudentInCollectionFromRaw(collection, buffer);
+		}
+		else if (strcmp(buffer, "edit") == 0)
+		{
+			std::cin.ignore();
+			std::cin.getline(buffer, bufferCapacity);
+			editStudentEmailFromRaw(collection, buffer);
+		}
+		else if (strcmp(buffer, "save") == 0)
+		{
+			std::cin >> buffer;
+			saveToFile(buffer, collection);
+			break;
+		}
+	} while(true);
+
 	delete[] collection.data;
 	
 	return 0;
