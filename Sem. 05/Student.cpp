@@ -56,7 +56,7 @@ public:
 		return age;
 	}
 
-	const char* const getName()//копие на указателя!!!
+	const char* const getName() const //копие на указателя!!!
 	{
 		return name;
 	}
