@@ -16,7 +16,7 @@ Time::Time(size_t seconds)
 	seconds %= 3600;
 
 	mins = seconds / 60;
-	seconds %= 61;
+	seconds %= 60;
 
 	this->seconds = seconds;
 }
