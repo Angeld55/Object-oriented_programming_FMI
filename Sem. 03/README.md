@@ -180,7 +180,8 @@ int main()
 Нека имаме двоичен файл, myData.dat, който се е получил след изпълнението на следния c++ код: 
  ```c++
 int x = 25409;
-ofstream file(“myData.dat”, ios::binary); file.write( (const char*)&x, sizeof(x));
+ofstream file(“myData.dat”, ios::binary);
+file.write( (const char*)&x, sizeof(x));
 ```
 
 Да се реализира прост интерфейс, с който да се извикват написаните фунцкии през конзолата.
