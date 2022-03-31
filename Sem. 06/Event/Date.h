@@ -8,8 +8,8 @@ class Date
 
 	size_t MAX_DAYS[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-	mutable int dayOfWeek;  //allowing to be changed by constant objects
-	mutable bool isModified = true;
+	int dayOfWeek;  //allowing to be changed by constant objects
+	bool isModified = true;
 
 	bool isLeapYear() const;
 public:
