@@ -31,8 +31,10 @@ void print(const Point& p)
 
 struct Rectangle
 {
+private:
     Point points[4];
     
+public:
     Rectangle() = default; //the same as Rectangle() {}
 
     void setPoint(size_t index, int x, int y)
@@ -44,6 +46,12 @@ struct Rectangle
         points[index].y = y;
 
     }
+    const Point& getPoint(size_t index) const
+    {
+        if(index > 3)
+            return {}; //some Error. This is a refference to a temporary memory, so a better solution would be to throw an exception.
+        return points[index];
+    }
     double getPer() const
     {
         return 2 * points[0].getDistance(points[1]) + 2 * points[1].getDistance(points[2]);
@@ -54,7 +62,7 @@ void print(const Rectangle& rect)
 {
     for(int i = 0; i < 4; i++)
     {
-        print(rect.points[i]);
+        print(rect.getPoint(i));
     }
 }
 
