@@ -6,6 +6,7 @@ using namespace std;
 const size_t MAX_NAME_SIZE = 22;
 struct Student
 {
+	//gender should be BEFORE fn so the struct would be 28 bytes.
 	char name[MAX_NAME_SIZE + 1];
    	bool isMale;
 	size_t fn;
