@@ -31,13 +31,13 @@ int main()
  Всяка една от тезу функции **извиква рекурсивно същите функции връху член-данните.**
  ####  Пример за конструктора по подразбиране:
  
-![enter image description here](https://i.ibb.co/s2m8XtC/1.png)
+![enter image description here](https://i.ibb.co/smKkDpJ/def-constr.png)
  
   ####  Пример за деструктора:
 ![enter image description here](https://i.ibb.co/qNHfSTL/def-constr.png)
 
  ####  Пример за копиращия конструктор:
-![enter image description here](https://i.ibb.co/vLphfG2/destr.png)
+![enter image description here](https://i.ibb.co/6Pxfvqv/cc.png)
 ### Проблем при функциите, генерирани от компилатора:
 
 Да разгледаме следния код:
