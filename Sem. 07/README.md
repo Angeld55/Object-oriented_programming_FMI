@@ -37,7 +37,7 @@ int main()
 ![enter image description here](https://i.ibb.co/qNHfSTL/def-constr.png)
 
  ####  Пример за копиращия конструктор:
-![enter image description here](https://i.ibb.co/6Pxfvqv/cc.png)
+![enter image description here](https://i.ibb.co/QmCh9z6/cc.png)
 ### Проблем при функциите, генерирани от компилатора:
 
 Да разгледаме следния код:
