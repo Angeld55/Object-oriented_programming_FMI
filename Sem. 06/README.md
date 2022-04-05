@@ -17,44 +17,64 @@
 
 **Забележка:** Копиращият конструктор създава нов обект, а оператор= модифицира вече съществуващ такъв!
 
-### Пример с копиращ конструктор.
+ ```c++
 
-```c++
 #include <iostream>
 
-struct A
+using namespace std;
+
+struct Test 
 {
-	A(int a)
+
+	Test()
 	{
-		std::cout << "Constructor with one int parameter of A" << std::endl;
+	cout << "Default constructor" <<endl;
 	}
 
-	A(const A& other)
+	Test(const Test& other)
 	{
-		std::cout << "Copy constructor of A" << std::endl;
+	cout << "Copy constructor" <<endl;
 	}
 
-	~A()
+	Test& operator=(const Test& other)
 	{
-		std::cout << "Destructor of A" << std::endl;
+	cout << "operator=" <<endl;
+	}
+
+	~Test()
+	{
+	cout << "Destructor" <<endl;
 	}
 };
 
-void f(A object)
-{ //Copy constructor of A
-	std::cout << "f()" << std::endl;
-} //Destructor of A
-
-void g(A& object)
-{ 
-	std::cout << "g()" << std::endl;
+void f(Test object)
+{
+	//do Stuff
 }
 
+
+void g(Test& object)
+{
+	//do Stuff
+}
 int main()
 {
-	A obj(3); //Constructor with one int parameter of A
-	f(obj);
-	g(obj);
+    Test t; //Default constructor;
+	
+    Test t2(t)  // Copy constructor
+    Test t3(t2) // Copy constructor	
+    Test t2 = t3 // operator=
+    Test t3 = t //  operator=
+    
+    Test newTest = t; //Copy constructor !!!!!!!
+	
+    f(t); // Copy constructor	
+    g(t); // nothing. We are passing it as a reference. We are not copying it!
+    
+    Test* ptr = new Test();  // Default constructor // we create a new object in the dynamic memory. The destructor must be invoked explicitly  (with delete)
+	
+    delete ptr; // Destructor	
+	 
+} //Destructor Destructor Destructor Destructor
 
-} //Destructor of A
  ```
