@@ -93,7 +93,7 @@ bool player::isBroke() const {
 }
 
 bool player::comparePassword(const char* pwd) const {
-	return pwd != nullptr && (strcmp(password, pwd) == 0);
+	return pwd == nullptr || (strcmp(password, pwd) == 0);
 }
 
 betType player::makeBet() const {
