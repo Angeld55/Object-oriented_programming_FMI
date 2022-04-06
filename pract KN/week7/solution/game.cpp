@@ -2,7 +2,6 @@
 #include<iostream>
 #include<time.h>
 #include<cmath>
-#include<windows.h>
 
 void game::generateNumber() {
 	srand(time(NULL));
