@@ -14,7 +14,7 @@ void Person::free()
 	delete[] name;
 }
 
-Person::Person(const char* name, int age) : age(3)
+Person::Person(const char* name, int age)
 {
 	setName(name);
 	setAge(age);
