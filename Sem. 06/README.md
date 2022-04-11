@@ -63,8 +63,8 @@ int main()
 	
     Test t2(t)  // Copy constructor
     Test t3(t2) // Copy constructor	
-    Test t2 = t3 // operator=
-    Test t3 = t //  operator=
+    t2 = t3 // operator=
+    t3 = t //  operator=
     
     Test newTest = t; //Copy constructor !!!!!!!
 	
