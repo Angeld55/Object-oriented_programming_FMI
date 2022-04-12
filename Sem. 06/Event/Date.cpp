@@ -6,12 +6,16 @@ using namespace std;
 
 bool Date::isLeapYear() const
 {
-if (year <= 1916)
-	return year % 4 == 0;
-return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+	if (year <= 1916)
+		return year % 4 == 0;
+	return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
 }
 
-
+void Date::validateDateByChangedCalendars() 
+{
+	if (year == 1916 && month == 4 && day >= 1 && day <= 13) // invalid days due to change in callendars 
+		day = 15;
+}
 
 Date::Date(size_t day, size_t month, size_t year)
 {
@@ -40,6 +44,7 @@ void Date::setYear(size_t year)
 	else
 		MAX_DAYS[1] = 28;
 	isModified = true;
+	validateDateByChangedCalendars();
 }
 void Date::setMonth(size_t month)
 {
@@ -48,7 +53,12 @@ void Date::setMonth(size_t month)
 		month = 1;
 	}
 	this->month = month;
+
+	if (day > MAX_DAYS[month - 1])
+		day = MAX_DAYS[month - 1];
+
 	isModified = true;
+	validateDateByChangedCalendars();
 }
 void Date::setDay(size_t day)
 {
@@ -56,8 +66,9 @@ void Date::setDay(size_t day)
 	{
 		day = 1;
 	}
-	isModified = true;
 	this->day = day;
+	isModified = true;
+	validateDateByChangedCalendars();
 }
 void Date::print() const
 {
@@ -86,7 +97,7 @@ bool Date::areEqual(const Date& other) const
 	return year == other.year && month == other.month && day == other.day;
 }
 
-int Date::getDayOfWeek() 
+int Date::getDayOfWeek()  const
 {
 
 	if (!isModified)

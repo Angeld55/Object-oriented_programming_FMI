@@ -19,6 +19,6 @@ public:
 
 	void print() const;
 
-	int getEventsDayOfWeek(); //can't be const (date.getDayOfWeek is not a constant function)
+	int getEventsDayOfWeek() const; //can't be const (date.getDayOfWeek is not a constant function)
 							  // how can we fix it ???
 };

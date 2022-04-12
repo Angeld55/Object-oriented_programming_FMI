@@ -35,7 +35,7 @@ const char* Event::getName() const
 	return name;
 }
 
-int Event::getEventsDayOfWeek()
+int Event::getEventsDayOfWeek() const
 {
 	return date.getDayOfWeek();
 }
