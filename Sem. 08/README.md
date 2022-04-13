@@ -211,16 +211,16 @@ int main()
 	((dict *= "Zebra") *= "Alex");
 	
 	WordCollection result = dict + dict2;
-        std::cout << result << std::endl; {Alex, Ivan, Petur, Zebra}
+        std::cout << result << std::endl; // {Alex, Ivan, Petur, Zebra}
 	
 	WordCollection result2 = dict - dict2;
-        std::cout << result2 << std::endl;  {Ivan, Petur}
+        std::cout << result2 << std::endl; // {Ivan, Petur}
 	
 	result2 << "NewWOrd";
 	result2 \= "NonExistingWord"
-	std::cout << result2 << std::endl;  {Ivan, NewWOrd, Petur}
+	std::cout << result2 << std::endl;  //{Ivan, NewWOrd, Petur}
 	std::cin >> result2; //въвеждаме "Job"
-	std::cout << result2 << std::endl;  {Ivan, Job, NewWOrd, Petur}
+	std::cout << result2 << std::endl;  //{Ivan, Job, NewWOrd, Petur}
 
 	
 }
