@@ -20,7 +20,7 @@ public:
 
 
 
-	//stream opeartors   ( std::cout>> c1)  (std::cin<<c1 )
+	//stream opeartors   ( std::cout << c1)  (std::cin >> c1 )
 	friend std::ostream& operator<<(std::ostream&, const Complex&);
 	friend std::istream& operator>>(std::istream&, Complex&);
 
