@@ -49,4 +49,4 @@ bool operator||(const Nvector& lhs, const Nvector& rhs);
 size_t operator%(const Nvector& lhs, const Nvector& rhs);
 
 //are perpendicular
-bool operator||(const Nvector& lhs, const Nvector& rhs);
+bool operator|=(const Nvector& lhs, const Nvector& rhs);
