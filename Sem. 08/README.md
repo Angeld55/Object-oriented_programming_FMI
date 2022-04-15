@@ -41,7 +41,7 @@ Complex& Complex::operator+=(const Complex& other)
  ```
 Вече може да правим следното:
 ```c++
-ina main()
+int main()
 {
 	Complex c(1,3); //1 + 3i;
 	Complex c2(10,20) // 10 + 2i;
