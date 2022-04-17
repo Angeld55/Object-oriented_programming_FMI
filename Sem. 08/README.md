@@ -216,7 +216,7 @@ int main()
 	WordCollection result2 = dict - dict2;
         std::cout << result2 << std::endl; // {Ivan, Petur}
 	
-	result2 << "NewWOrd";
+        "NewWOrd" >> result2;
 	result2 \= "NonExistingWord"
 	std::cout << result2 << std::endl;  //{Ivan, NewWOrd, Petur}
 	std::cin >> result2; //въвеждаме "Job"
