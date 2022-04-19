@@ -1,5 +1,6 @@
 #include "StringPool.h"
 
+//definitely not the best algorithmic approach. Used as an example for array of pointers.
 void StringPool::copyFrom(const StringPool& other)
 {
 	data = new MyString * [other.count];
