@@ -20,7 +20,7 @@ public:
 	StringPool& operator=(const StringPool& other);
 	
 	StringPool& operator*=(const MyString& word);
-	StringPool& operator/=(const MyString& other);
+	StringPool& operator/=(const MyString& word);
 
 	bool operator[](const MyString& str) const;
 
