@@ -24,7 +24,7 @@ Complex& Complex::operator-=(const Complex& other)
 }
 Complex& Complex::operator*=(const Complex& other)
 {
-	int oldReal = real;
+	double oldReal = real;
 	real = real*other.real - im*other.im;
 	im = oldReal*other.im + im * other.real;
 	return *this;
