@@ -19,14 +19,13 @@ class SomeCollection
  - Възможно е да имаме "празна клетка", като се възползваме от възможната nullptr стойнот.
 
 
-####  Изключения
+###  Изключения
 ![enter image description here](https://i.ibb.co/hDMRzMB/df-drawio-1.png)
 
  - Защо е хубаво да извикваме .close() на потоците екпслицитно ?
 
-####  Move сменатики
+###  Move сменатики
 
-# Move семантики
 #### Подаване на стойност по референция
 ```c++
 #include <iostream>
