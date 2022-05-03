@@ -12,6 +12,7 @@ class MyString
 public:
 	MyString();
 	MyString(const char*);
+	MyString(size_t n); //convert constructor
 
 	MyString(const MyString&);
 
