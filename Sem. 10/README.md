@@ -69,13 +69,13 @@ public:
 	}
 	A& operator=(const A& other)
 	{
-		nestedObject= other.nestedObject;
-		size = other.size;
-
+		
 		if (this != &other)
 		{
 			free();
-			copyFrom(other);
+                        nestedObject= other.nestedObject;
+		        size = other.size;
+                        copyFrom(other);
 		}
 		return *this;
 	}
