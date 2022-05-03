@@ -38,8 +38,3 @@ int main()
 		q.pop();
 	}
 }
-//copy constr
-// destr
-//destr
-//destr
-//destr
