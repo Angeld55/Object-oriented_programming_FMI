@@ -20,6 +20,27 @@ MyString::MyString()
 	size = 0;
 }
 
+size_t getNumSize(size_t num)
+{
+	size_t res = 0;
+	while(num)
+	{
+		res++;
+		num/=10;
+	}
+}
+MyString(size_t n)
+{
+	int numSize = getNumSize(n);
+	str = new char[numSize + 1];
+	
+	str[numSize] = '\0';
+	
+	for(size_t i = 0; i < numSize; i++, n/=10)
+		str[numSize - 1 - i] = (n % 10) + '0';
+	size = numSize;
+}
+
 MyString::MyString(const char* data)
 {
 	size = strlen(data);
