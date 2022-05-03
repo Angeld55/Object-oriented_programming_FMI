@@ -23,20 +23,21 @@ MyString::MyString()
 size_t getNumSize(size_t num)
 {
 	size_t res = 0;
-	while(num)
+	while (num)
 	{
 		res++;
-		num/=10;
+		num /= 10;
 	}
+	return res;
 }
-MyString(size_t n)
+MyString::MyString(size_t n)
 {
 	int numSize = getNumSize(n);
 	str = new char[numSize + 1];
-	
+
 	str[numSize] = '\0';
-	
-	for(size_t i = 0; i < numSize; i++, n/=10)
+
+	for (size_t i = 0; i < numSize; i++, n /= 10)
 		str[numSize - 1 - i] = (n % 10) + '0';
 	size = numSize;
 }
