@@ -9,6 +9,7 @@ void Person::copyFrom(const Person& other)
 	strcpy(name, other.name);
 	age = other.age;
 }
+
 void Person::free()
 {
 	delete[] name;
@@ -19,6 +20,7 @@ Person::Person(const char* name, int age)
 	setName(name);
 	setAge(age);
 }
+
 Person::Person(const Person& other)
 {
 	copyFrom(other);
@@ -64,6 +66,7 @@ Person::~Person()
 {
 	free();
 }
+
 void Person::print() const
 {
 	std::cout << name << " " << age << std::endl;
