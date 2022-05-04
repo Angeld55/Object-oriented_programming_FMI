@@ -3,7 +3,7 @@
 class Person
 {
 	char* name = nullptr;
-	int age;
+	int age = 0;
 
 	void copyFrom(const Person& other);
 	void free();
