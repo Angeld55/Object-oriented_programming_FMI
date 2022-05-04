@@ -13,11 +13,20 @@ void MyString::free()
 	delete[] str;
 }
 
-MyString::MyString()
+MyString::MyString(const char* data)
 {
-	str = new char[1];
-	str[0] = '\0';
-	size = 0;
+	if(data == nullptr)
+	{
+		str = new char[1];
+		str[0] = '\0';
+		size = 0;
+	}
+	else
+	{
+		size = strlen(data);
+		str = new char[size + 1];
+		strcpy(str, data);
+	}
 }
 
 size_t getNumSize(size_t num)
