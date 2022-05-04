@@ -22,9 +22,18 @@ MyString::MyString()
 
 MyString::MyString(const char* data)
 {
-	size = strlen(data);
-	str = new char[size + 1];
-	strcpy(str, data);
+	if(data == nullptr)
+	{
+		str = new char[1];
+		str[0] = '\0';
+		size = 0;
+	}
+	else
+	{
+		size = strlen(data);
+		str = new char[size + 1];
+		strcpy(str, data);
+	}
 }
 
 MyString::MyString(const MyString& other)
