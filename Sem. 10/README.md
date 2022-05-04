@@ -96,7 +96,7 @@ public:
 using namespace std;
 
 template <class T>
-T sum(T a, T b)
+T sum(const T& a, const T& b)
 {
     return a + b;
 }
