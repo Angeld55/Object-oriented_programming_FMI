@@ -57,7 +57,7 @@ void MyQueue<T>::push(T&& obj)
 	if (size == capacity)
 		resize();
 
-	data[put] = obj; //move operator =
+	data[put] = std::move(obj); //move operator =
 	(++put) %= capacity;
 	size++;
 }
