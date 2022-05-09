@@ -19,7 +19,7 @@ public:
 		return symbolData;
 	}
 
-	const T& getAbstractData() const {
+	T getAbstractData() const {
 		return abstractData;
 	}
 
