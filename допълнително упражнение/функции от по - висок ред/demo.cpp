@@ -9,7 +9,7 @@ private:
 	T abstractData;
 
 public:
-	Entity(int iArg, char cArg, T aArg) : integerData(iArg), symbolData(cArg), abstractData(aArg) {}
+	Entity(int iArg, char cArg, const T& aArg) : integerData(iArg), symbolData(cArg), abstractData(aArg) {}
 
 	int getIntegerData() const {
 		return integerData;
@@ -19,7 +19,7 @@ public:
 		return symbolData;
 	}
 
-	T getAbstractData() const {
+	const T& getAbstractData() const {
 		return abstractData;
 	}
 
