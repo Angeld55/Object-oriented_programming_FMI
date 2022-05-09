@@ -57,6 +57,7 @@ Complex operator+(const Complex& lhs, const Complex& rhs) { //a+b
 
 	return result;
 }
+
 //Операторите -, *, / са аналогични с +. 
 Complex operator-(const Complex& lhs, const Complex& rhs) {
 	Complex result(lhs);
