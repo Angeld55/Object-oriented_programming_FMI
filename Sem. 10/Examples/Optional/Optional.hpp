@@ -12,6 +12,9 @@ public:
 	Optional();
 	Optional(const T& obj);
 
+	Optional(const Optional<T>& other);
+	Optional<T> operator=(const Optional<T>& other);
+
 	bool containsData() const;
 	const T& getData() const;
 	void setData(const T& el);
@@ -71,4 +74,23 @@ void Optional<T>::clear()
 {
 	free();
 	data = nullptr;
+}
+
+
+template <typename T>
+Optional<T>::Optional(const Optional<T>& other)
+{
+	copyFrom(other);
+}
+
+
+template <typename T>
+Optional<T> Optional<T>::operator=(const Optional<T>& other)
+{
+	if (this != &other)
+	{
+		free();
+		copyFrom(other);
+	}
+	return *this;
 }
