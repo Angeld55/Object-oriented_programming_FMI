@@ -106,6 +106,16 @@ void f(A& obj)
 	obj.a++;
 }
 
+void g(A* ptr)
+{
+	(*ptr).a++;
+}
+
+void t(B& obj)
+{
+	obj.b++;
+}
+
 int main()
 {
 	A obj1;
@@ -113,6 +123,12 @@ int main()
 	
 	f(obj1); //OK!
 	f(obj2); //OK!
+	
+	g(&obj1); //OK!
+	g(&obj2); //OK!
+	
+	t(obj2);  //OK!
+	//t(obj1)// not ok!
 }
  ```
 
