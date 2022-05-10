@@ -4,7 +4,7 @@
 class Student : public Person
 {
 	size_t fn = 0;
-	size_t grade = 2;
+
 public:
 	Student() = default;
 	Student(const char* name, int age, size_t fn);
