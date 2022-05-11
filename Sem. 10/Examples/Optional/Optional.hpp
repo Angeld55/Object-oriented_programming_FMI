@@ -13,7 +13,7 @@ public:
 	Optional(const T& obj);
 
 	Optional(const Optional<T>& other);
-	Optional<T> operator=(const Optional<T>& other);
+	Optional<T>& operator=(const Optional<T>& other);
 
 	bool containsData() const;
 	const T& getData() const;
@@ -85,7 +85,7 @@ Optional<T>::Optional(const Optional<T>& other)
 
 
 template <typename T>
-Optional<T> Optional<T>::operator=(const Optional<T>& other)
+Optional<T>& Optional<T>::operator=(const Optional<T>& other)
 {
 	if (this != &other)
 	{
