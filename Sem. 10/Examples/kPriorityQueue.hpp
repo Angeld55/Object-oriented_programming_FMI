@@ -114,7 +114,7 @@ void kPriorityQueue<T>::pop()
 }
 
 template<typename T>
-const T &kPriorityQueue<T>::peek() const 
+const T& kPriorityQueue<T>::peek() const 
 {
 
     for (int i = maxPriority - 1; i >= 0; i--)
