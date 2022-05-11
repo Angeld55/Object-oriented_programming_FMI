@@ -33,13 +33,8 @@ struct StudentCollection
 	size_t studentsCount;
 };
 
-size_t getLinesCount(const char* fileName)
+size_t getLinesCount(ifstream& file)
 {
-	ifstream file(fileName);
-
-	if (!file.is_open())
-		return 0;
-
 	size_t count = 0;
 
 	while (!file.eof())
@@ -48,8 +43,8 @@ size_t getLinesCount(const char* fileName)
 		file.getline(buff, capacity);
 		count++;
 	}
-
-	file.close();
+	
+	file.seekg(0, ios::beg); //resets the stream's get position.
 
 	return count;
 
@@ -105,9 +100,6 @@ void printStudent(const StudentRecord& st)
 
 void initStudentCollection(StudentCollection& collection, const char* fileName)
 {
-	size_t linesCount = getLinesCount(fileName);
-	
-	size_t studentsCount = linesCount - 1;
 	
 	ifstream file(fileName);
 	if (studentsCount == 0 || !file.is_open())
@@ -118,6 +110,10 @@ void initStudentCollection(StudentCollection& collection, const char* fileName)
 		
 		return;
 	}
+	
+	size_t linesCount = getLinesCount(fileName);
+	
+	size_t studentsCount = linesCount - 1;
 	
 	collection.data = new StudentRecord[studentsCount];
 	collection.studentsCount = studentsCount;
