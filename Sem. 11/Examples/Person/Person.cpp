@@ -60,6 +60,8 @@ void Person::setName(const char* name)
 
 void Person::setAge(int age)
 {
+	if(age < 0 || age > 120)
+		age = 40;
 	this->age = age;
 }
 
