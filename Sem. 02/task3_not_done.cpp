@@ -102,7 +102,7 @@ void initStudentCollection(StudentCollection& collection, const char* fileName)
 {
 	
 	ifstream file(fileName);
-	if (studentsCount == 0 || !file.is_open())
+	if (!file.is_open())
 	{
 		cout << "Error while reading from file!"  << std::endl;
 		collection.studentsCount = 0;
@@ -111,9 +111,14 @@ void initStudentCollection(StudentCollection& collection, const char* fileName)
 		return;
 	}
 	
-	size_t linesCount = getLinesCount(fileName);
+	size_t linesCount = getLinesCount(file);
 	
 	size_t studentsCount = linesCount - 1;
+	
+	if(studentsCount == 0)
+	{
+	    return;
+	}
 	
 	collection.data = new StudentRecord[studentsCount];
 	collection.studentsCount = studentsCount;
