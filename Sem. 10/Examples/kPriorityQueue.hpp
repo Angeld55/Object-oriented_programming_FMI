@@ -105,7 +105,7 @@ void kPriorityQueue<T>::pop()
     for (int i = maxPriority - 1; i >= 0; i--)
     {
         if (!queues[i].isEmpty()) 
-	    {
+	{
             queues[i].pop();
             elementsCount--;
             return;
