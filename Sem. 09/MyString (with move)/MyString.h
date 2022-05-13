@@ -8,6 +8,8 @@ class MyString
 
 	void copyFrom(const MyString& other);
 	void free();
+	
+	void concat(const MyString& other);
 
 public:
 	MyString();
@@ -23,7 +25,6 @@ public:
 	~MyString();
 
 	size_t getSize() const;
-	void concat(const MyString& other);
 
 	const char* c_str() const;
 
