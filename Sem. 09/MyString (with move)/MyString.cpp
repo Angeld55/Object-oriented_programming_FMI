@@ -98,7 +98,7 @@ std::istream& operator>>(std::istream& stream, MyString& str)
 {
 	delete[] str.str;
 	char buff[1024];
-	stream >> buff;
+	stream >>  std::setw(1024) >> buff;
 
 	str.size = strlen(buff);
 	str.str = new char[str.size + 1];
