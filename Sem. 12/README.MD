@@ -189,7 +189,7 @@ int main()
 	//from base-class pointer
 	animals[0]->sayHello(); // Hello, I am a dog!
 	animals[1]->sayHello(); // Hello, I am a cat!
-	animals[2]->sayHello(); // Hello, I am a random animal!
+	animals[2]->sayHello(); // Hello, I am a mouse!
 
 	delete animals[0], animals[1], animals[2];
 	delete[] animals;
