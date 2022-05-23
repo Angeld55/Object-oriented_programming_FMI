@@ -65,7 +65,7 @@ struct C : public A
 
 int main()
 {
-	А* ptrs[2];
+	A* ptrs[2];
 	ptrs[0] = new A();
 	ptrs[1] = new B();
 	ptrs[2] = new C();
