@@ -68,7 +68,7 @@ int main()
 	А* ptrs[2];
 	ptrs[0] = new A();
 	ptrs[1] = new B();
-	ptrs[2] = new B();
+	ptrs[2] = new C();
 	
 	ptrs[0]->f(); // A::f()
 	ptrs[1]->f(); // B::f()
