@@ -56,7 +56,7 @@ MyString::MyString()
 {
 	str = new char[1];
 	str[0] = '\0';
-	size = 1;
+	size = 0;
 }
 
 MyString::MyString(const MyString& other)
