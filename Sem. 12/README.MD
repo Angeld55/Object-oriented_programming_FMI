@@ -29,6 +29,8 @@ int main()
 	
 	bPtr->f(); // B::f()
 	aPtr->f(); // A::f()
+	
+	delete bPtr;
 }
  ```
 
@@ -65,10 +67,14 @@ struct C : public A
 
 int main()
 {
-	A* ptrs[2];
-	ptrs[0] = new A();
-	ptrs[1] = new B();
-	ptrs[2] = new C();
+	A* ptrs[3];
+	A obj1;
+	B obj2;
+	C obj3;
+	
+	ptrs[0] = &obj1;
+	ptrs[1] = &obj2;
+	ptrs[2] = &obj3;
 	
 	ptrs[0]->f(); // A::f()
 	ptrs[1]->f(); // B::f()
