@@ -9,12 +9,15 @@ class MyString
 	void copyFrom(const MyString& other);
 	void free();
 
+	void concatFrom(const MyString& other);
+
 public:
 	MyString();
 	MyString(const char*);
+	MyString(size_t n); //convert constructor
 
 	MyString(const MyString&);
-	
+
 	MyString(MyString&&); //move constructor that accepts rvalue;
 
 	MyString& operator=(const MyString& other);
@@ -23,7 +26,6 @@ public:
 	~MyString();
 
 	size_t getSize() const;
-	void concat(const MyString& other);
 
 	const char* c_str() const;
 
@@ -39,6 +41,3 @@ MyString operator+(const MyString& lhs, const MyString& rhs);
 bool operator==(const MyString& lhs, const MyString& rhs);
 bool operator<=(const MyString& lhs, const MyString& rhs);
 bool operator<(const MyString& lhs, const MyString& rhs);
-
-
-//MyString name = "sdfsdf"

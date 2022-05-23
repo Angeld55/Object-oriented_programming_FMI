@@ -1,6 +1,7 @@
 #include "MyString.h"
 #include <cstring>
 #include <iostream>
+#include <iomanip>
 
 void MyString::copyFrom(const MyString& other)
 {
@@ -51,11 +52,11 @@ MyString::MyString(size_t n)
 	size = numSize;
 }
 
-MyString::MyString(const char* data)
+MyString::MyString()
 {
-	size = strlen(data);
-	str = new char[size + 1];
-	strcpy(str, data);
+	str = new char[1];
+	str[0] = '\0';
+	size = 1;
 }
 
 MyString::MyString(const MyString& other)
@@ -64,8 +65,6 @@ MyString::MyString(const MyString& other)
 }
 MyString& MyString::operator=(const MyString& other)
 {
-	std::cout << "op=" << std::endl;
-
 	if (this != &other)
 	{
 		free();
@@ -83,7 +82,7 @@ size_t MyString::getSize() const
 {
 	return size;
 }
-void MyString::concat(const MyString& other)
+void MyString::concatFrom(const MyString& other)
 {
 	char* temp = new char[getSize() + other.getSize() + 1];
 	strcpy(temp, str);
@@ -101,7 +100,7 @@ const char* MyString::c_str() const
 
 MyString& MyString::operator+=(const MyString& other)
 {
-	concat(other);
+	concatFrom(other);
 	return *this;
 }
 
@@ -151,12 +150,10 @@ MyString::MyString(MyString&& otherString)
 	str = otherString.str;
 	size = otherString.size;
 	otherString.str = nullptr;
-	std::cout << "move constr" << std::endl;
 }
 
 MyString& MyString::operator=(MyString&& otherString)
 {
-	std::cout << "move op=" << std::endl;
 
 	if (this != &otherString)
 	{

@@ -1,6 +1,7 @@
 #include "MyString.h"
 #include <cstring>
 #include <iostream>
+#include <iomanip>
 
 void MyString::copyFrom(const MyString& other)
 {
@@ -11,13 +12,6 @@ void MyString::copyFrom(const MyString& other)
 void MyString::free()
 {
 	delete[] str;
-}
-
-MyString::MyString()
-{
-	str = new char[1];
-	str[0] = '\0';
-	size = 0;
 }
 
 MyString::MyString(const char* data)
@@ -34,6 +28,35 @@ MyString::MyString(const char* data)
 		str = new char[size + 1];
 		strcpy(str, data);
 	}
+}
+
+size_t getNumSize(size_t num)
+{
+	size_t res = 0;
+	while (num)
+	{
+		res++;
+		num /= 10;
+	}
+	return res;
+}
+MyString::MyString(size_t n)
+{
+	int numSize = getNumSize(n);
+	str = new char[numSize + 1];
+
+	str[numSize] = '\0';
+
+	for (size_t i = 0; i < numSize; i++, n /= 10)
+		str[numSize - 1 - i] = (n % 10) + '0';
+	size = numSize;
+}
+
+MyString::MyString()
+{
+	str = new char[1];
+	str[0] = '\0';
+	size = 1;
 }
 
 MyString::MyString(const MyString& other)
@@ -59,7 +82,7 @@ size_t MyString::getSize() const
 {
 	return size;
 }
-void MyString::concat(const MyString& other)
+void MyString::concatFrom(const MyString& other)
 {
 	char* temp = new char[getSize() + other.getSize() + 1];
 	strcpy(temp, str);
@@ -77,7 +100,7 @@ const char* MyString::c_str() const
 
 MyString& MyString::operator+=(const MyString& other)
 {
-	concat(other);
+	concatFrom(other);
 	return *this;
 }
 
@@ -98,7 +121,7 @@ std::istream& operator>>(std::istream& stream, MyString& str)
 {
 	delete[] str.str;
 	char buff[1024];
-	stream >> buff;
+	stream >>  std::setw(1024) >> buff;
 
 	str.size = strlen(buff);
 	str.str = new char[str.size + 1];
@@ -131,6 +154,7 @@ MyString::MyString(MyString&& otherString)
 
 MyString& MyString::operator=(MyString&& otherString)
 {
+
 	if (this != &otherString)
 	{
 		free();

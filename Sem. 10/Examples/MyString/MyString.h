@@ -9,6 +9,8 @@ class MyString
 	void copyFrom(const MyString& other);
 	void free();
 
+	void concatFrom(const MyString& other);
+
 public:
 	MyString();
 	MyString(const char*);
@@ -24,7 +26,6 @@ public:
 	~MyString();
 
 	size_t getSize() const;
-	void concat(const MyString& other);
 
 	const char* c_str() const;
 
