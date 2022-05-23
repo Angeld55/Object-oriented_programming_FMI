@@ -8,9 +8,11 @@ Shape::Shape(size_t pointsCount) : pointsCount(pointsCount)
 void Shape::copyFrom(const Shape& other)
 {
 	points = new point[other.pointsCount];
-
+	
 	for (int i = 0; i < other.pointsCount; i++)
 		points[i] = other.points[i];
+	
+	pointsCount = other.pointsCount;
 }
 void Shape::free()
 {
