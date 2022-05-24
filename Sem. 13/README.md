@@ -124,7 +124,7 @@ struct Orange
 	
 	Fruit* clone() const override
 	{
-		return new Apple(*this);
+		return new Orange(*this);
 	}
 };
 
