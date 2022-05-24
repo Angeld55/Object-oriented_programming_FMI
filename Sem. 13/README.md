@@ -7,11 +7,11 @@
 ```c++
 struct A
 {
-	int f()
+	virtual int f()
 	{
 		return 1;
 	}
-	int g()
+	virtual int g()
 	{
 		return 1;
 	}
