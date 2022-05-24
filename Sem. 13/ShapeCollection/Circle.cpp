@@ -19,3 +19,8 @@ bool Circle::isPointIn(int x, int y) const
 	Shape::point p(x, y);
 	return p.getDist(getPointAtIndex(0)) <= radius;
 }
+Shape* Circle::clone() const
+{
+	Shape* copy = new Circle(*this);
+	return copy;
+}

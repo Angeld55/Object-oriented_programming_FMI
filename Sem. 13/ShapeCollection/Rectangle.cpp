@@ -31,3 +31,8 @@ bool Rectangle::isPointIn(int x, int y) const
 	return p.x >= getPointAtIndex(0).x && p.y >= getPointAtIndex(1).x &&
 		p.y <= getPointAtIndex(0).y && p.y >= getPointAtIndex(2).y;
 }
+Shape* Rectangle::clone() const
+{
+	Shape* copy = new Rectangle(*this);
+	return copy;
+}

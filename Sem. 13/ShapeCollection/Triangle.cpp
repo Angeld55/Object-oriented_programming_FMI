@@ -34,3 +34,9 @@ bool Triangle::isPointIn(int x, int y) const
 	return abs(t1.getArea() + t2.getArea() + t3.getArea() - getArea()) <= std::numeric_limits<double>::epsilon();
 
 }
+
+Shape* Triangle::clone() const
+{
+	Shape* copy = new Triangle(*this);
+	return copy;
+}

@@ -17,12 +17,33 @@ void printPers(const Shape* const * shapes, size_t shapesCount)
 		cout << shapes[i]->getPer() << endl;
 }
 
+void checkPointIn(const Shape* const* shapes, size_t shapesCount, int x, int y)
+{
+	for (int i = 0; i < shapesCount; i++)
+		cout << shapes[i]->isPointIn(x,y) << endl;
+}
+
 void freeCollection(Shape** shapes, size_t shapesCount)
 {
 	for (int i = 0; i < shapesCount; i++)
 			delete shapes[i];
 		delete[] shapes;
 }
+
+struct A
+{
+	virtual void f() const
+	{
+		;
+	}
+};
+struct B : public A
+{
+	void f() const final
+	{
+
+	}
+};
 int main()
 {
 		Shape** arr = new Shape*[4];
@@ -33,9 +54,13 @@ int main()
 		arr[3] = new Triangle(1, 1, 2, 2, 3, 3);
 
 		printAreas(arr, 4);
+		std::cout << endl;
 		printPers(arr, 4);
+		std::cout << endl;
+
+		checkPointIn(arr, 4, 3, 3);
+		
 
 		freeCollection(arr, 4);
 	
-
 }

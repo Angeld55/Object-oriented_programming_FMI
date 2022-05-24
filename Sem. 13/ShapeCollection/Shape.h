@@ -36,8 +36,9 @@ public:
 
 	void setPoint(size_t pointIndex, int x, int y);
 
-	virtual double getArea() const = 0; //pure virtual
-	virtual double getPer()  const = 0; // pure virtual
+	virtual double getArea() const = 0;
+	virtual double getPer()  const = 0; 
 	virtual bool isPointIn(int x, int y) const = 0;
+	virtual Shape* clone() const = 0;
 
 };
