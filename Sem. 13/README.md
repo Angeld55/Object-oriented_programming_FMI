@@ -40,7 +40,7 @@ struct C : public B
  ```
 
 
-![enter image description here](https://i.ibb.co/VNZyrFS/vtable-2-1.png)
+![enter image description here](https://i.ibb.co/dbzJTtm/vtable-2-1.png)
 
 ## Колекция.
 
