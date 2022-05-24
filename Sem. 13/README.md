@@ -12,7 +12,7 @@ struct Fruit
 	virtual ~Fruit(){}
 };
 
-struct Apple
+struct Apple : public Fruit
 {
 	 void printColor() const override
 	{
@@ -20,7 +20,7 @@ struct Apple
 	}
 };
 
-struct Orange
+struct Orange : public Fruit
 {
 	void printColor() const override
 	{
@@ -29,7 +29,7 @@ struct Orange
 	
 };
 
-struct Lemon
+struct Lemon : public Fruit
 {
 	Lemon(size_t sourness) : sourness(sourness){}
 	
@@ -102,7 +102,7 @@ struct Fruit
       	virtual Fruit* clone() const = 0; //!
 };
 
-struct Apple
+struct Apple : public Fruit
 {
 	 void printColor() const override
 	{
@@ -115,7 +115,7 @@ struct Apple
 	
 };
 
-struct Orange
+struct Orange : public Fruit
 {
 	void printColor() const override
 	{
@@ -128,7 +128,7 @@ struct Orange
 	}
 };
 
-struct Lemon
+struct Lemon : public Fruit
 {
 	Lemon(size_t sourness) : sourness(sourness){}
 	
