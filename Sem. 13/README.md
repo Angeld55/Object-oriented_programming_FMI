@@ -1,5 +1,47 @@
 
 # Колекции от обекти в полиморфна йерархия. Копиране и триене.
+
+Виртуални таблици - таблица с указатели към функции. 
+
+```c++
+struct A
+{
+	int f()
+	{
+		return 1;
+	}
+	int g()
+	{
+		return 1;
+	}
+};
+
+struct B : public A
+{
+	int f() override
+	{
+		return 2;
+	}
+};
+
+struct C : public B
+{
+	int f() override
+	{
+		return 3;
+	} 
+	int g() override
+	{
+		return 3;
+	}
+};
+
+
+ ```
+
+
+![enter image description here](https://i.ibb.co/VNZyrFS/vtable-2-1.png)
+
 ## Колекция.
 
 Можем да реализираме колекция от различни типове (но с общ базов клас), чрез масив от указатели. Указателите трябва да са от типа на базовия клас.
