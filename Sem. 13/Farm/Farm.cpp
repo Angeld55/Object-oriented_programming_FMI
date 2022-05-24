@@ -8,7 +8,7 @@ void Farm::free()
 }
 void Farm::copyFrom(const Farm& other)
 {
-	animals = new Animal * [other.animalsCount];
+	animals = new Animal * [other.capacity];
 	animalsCount = other.animalsCount;
 	capacity = other.capacity;
 
