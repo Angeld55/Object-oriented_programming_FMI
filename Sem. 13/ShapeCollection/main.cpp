@@ -2,6 +2,7 @@
 #include "ShapeCollection.h"
 using namespace std;
 
+//we don't include the diffrent shapes. 
 int main()
 {
 	ShapeCollection s;
