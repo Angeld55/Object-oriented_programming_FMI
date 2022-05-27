@@ -195,7 +195,7 @@ void FruitStore::copyFrom(const FruitStore& other)
 {
 	fruits = new Fruit*[other. capacity];
 	for(int i = 0; i < other.count; i++)
-		fruits[i] = other.fruits[u]->clone();
+		fruits[i] = other.fruits[i]->clone();
 	count = other.count;
 	capacity = other.capacity;
 }
