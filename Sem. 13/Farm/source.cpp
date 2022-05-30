@@ -1,8 +1,8 @@
 #include <iostream>
-#include "Farm.h"
-#include "Dog.h"
-#include "Cat.h"
-#include "Mouse.h"
+#include "Collection/Farm.h"
+#include "Animals/Dog.h"
+#include "Animals/Cat.h"
+#include "Animals/Mouse.h"
 
 int main()
 {
