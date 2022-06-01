@@ -15,7 +15,7 @@ public:
 
 	virtual Animal* clone()  const = 0;//създава копие на текущия обект.
 
-	virtual ~Animal() {} //!!!
+	virtual ~Animal() = default; //!!!
 
 	AnimalType getType() const
 	{
