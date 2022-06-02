@@ -82,8 +82,10 @@ bool Farm::addAnimal(Animal::AnimalType animalType)
 		if (animalsCount == capacity)
 			resize();
 		animals[animalsCount++] = ptr;
-	}
 		
+		return true;
+	}
+	return false;
 }
 
 size_t Farm::getCount() const
