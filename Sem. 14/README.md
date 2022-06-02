@@ -3,6 +3,7 @@
 ## Множествено наследяване.
 Множественото наследяване позволява на "детски" клас да наследява от повече от един родителски клас.
 ![enter image description here](https://d33wubrfki0l68.cloudfront.net/67512abb598d0aef77410deee207b42323b17f8e/70284/wp-content/uploads/2018/07/multiple-inheritance.png)
+
 Копиращия конструктор и оператор= (независимо дали ги имплементираме ние) трябва да изглеждат така:
 ```c++
 MyClass(const MyClass& other) : SuperClass1(other), SuperClass2(other), SuperClass3(other), SuperClass4(other)
@@ -28,6 +29,7 @@ MyClass(const MyClass& other)
 
 
 ![enter image description here](https://i.stack.imgur.com/MqMW0.png)
+
 **Проблем**: Многократно наследяване на базов клас – нееднозначност при използване.
 В класът **D** има две истанции на **A**. Искаме характеристиките на **А** да бъдат наследени само веднъж.
 
