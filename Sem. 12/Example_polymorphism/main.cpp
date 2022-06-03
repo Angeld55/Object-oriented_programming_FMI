@@ -30,20 +30,6 @@ void freeCollection(Shape** shapes, size_t shapesCount)
 		delete[] shapes;
 }
 
-struct A
-{
-	virtual void f() const
-	{
-		;
-	}
-};
-struct B : public A
-{
-	void f() const final
-	{
-
-	}
-};
 int main()
 {
 		Shape** arr = new Shape*[4];
