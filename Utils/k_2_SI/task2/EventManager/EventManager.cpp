@@ -18,9 +18,7 @@ void EventManager::copyFrom(const EventManager& other)
 	capacity = other.capacity;
 
 	for (size_t i = 0; i < eventsCount; i++)
-	{
 		events[i] = other.events[i]->clone();
-	}
 }
 
 void EventManager::resize()
