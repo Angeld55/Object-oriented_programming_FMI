@@ -13,7 +13,7 @@ void ShapeCollection::free()
 }
 void ShapeCollection::copyFrom(const ShapeCollection& other)
 {
-	shapes = new Shape* [other.shapesCount];
+	shapes = new Shape* [other.capacity];
 	shapesCount = other.shapesCount;
 	capacity = other.capacity;
 
