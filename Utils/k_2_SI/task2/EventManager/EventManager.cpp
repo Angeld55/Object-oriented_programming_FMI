@@ -68,13 +68,11 @@ void EventManager::addEvent(Event* event)
 void EventManager::addEventTypeA(size_t startH, size_t startM, size_t endH, size_t endM, const char* name)
 {
 	//validation 
-
 	addEvent(new EventTypeA(startH, startM, endH, endM, name));
 }
 void EventManager::addEventTypeB(size_t startH, size_t startM, size_t breakH, size_t breakM, size_t endH, size_t endM)
 {
 	//validation 
-
 	addEvent(new EventTypeB(startH, startM, endH, endM, breakH, breakM));
 }
 void EventManager::addEventTypeC(size_t startH, size_t startM, size_t break1H, size_t break1M, size_t break2H, size_t break2M, size_t endH, size_t endM)
