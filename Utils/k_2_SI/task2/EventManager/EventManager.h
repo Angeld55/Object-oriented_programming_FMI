@@ -22,7 +22,7 @@ public:
 
 	void addEventTypeA(size_t startH, size_t startM, size_t endH, size_t endM, const char* name);
 	void addEventTypeB(size_t startH, size_t startM, size_t breakH, size_t breakM, size_t endH, size_t endM);
-	void addEventTypeC(size_t startH, size_t startM, size_t break1H, size_t break1M, size_t break2H, size_t break2M, size_t endH, size_t endM);
+	void addEventTypeC(size_t startH, size_t startM, size_t break1H, size_t break1M, size_t break2H, size_t break2M);
 
 	Time getDuration(size_t ind) const;
 	size_t getEventsCountDuringTime(size_t hours, size_t mins);

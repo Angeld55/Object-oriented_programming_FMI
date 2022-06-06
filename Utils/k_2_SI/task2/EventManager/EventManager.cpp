@@ -79,10 +79,10 @@ void EventManager::addEventTypeB(size_t startH, size_t startM, size_t breakH, si
 
 	addEvent(new EventTypeB(startH, startM, endH, endM, breakH, breakM));
 }
-void EventManager::addEventTypeC(size_t startH, size_t startM, size_t break1H, size_t break1M, size_t break2H, size_t break2M, size_t endH, size_t endM)
+void EventManager::addEventTypeC(size_t startH, size_t startM, size_t break1H, size_t break1M, size_t break2H, size_t break2M)
 {
 	//validation
-	addEvent(new EventTypeC(startH, startM, endH, endM, break1H, break1M, break2H, break2M));
+	addEvent(new EventTypeC(startH, startM, break1H, break1M, break2H, break2M));
 
 }
 Time EventManager::getDuration(size_t ind) const

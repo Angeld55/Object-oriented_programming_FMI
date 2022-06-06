@@ -1,6 +1,6 @@
 #include "EventTypeC.h"
 
-EventTypeC::EventTypeC(size_t startH, size_t startM, size_t endH, size_t endM, size_t break1H, size_t break1M, size_t break2H, size_t break2M) : Event(type, startH, startM, endH, endM), break1(break1H, break1M), break2(break2H, break2M)
+EventTypeC::EventTypeC(size_t startH, size_t startM, size_t break1H, size_t break1M, size_t break2H, size_t break2M) : Event(type, startH, startM, 23, 59), break1(break1H, break1M), break2(break2H, break2M)
 {}
 
 bool EventTypeC::duringTime(const Time& time) const
