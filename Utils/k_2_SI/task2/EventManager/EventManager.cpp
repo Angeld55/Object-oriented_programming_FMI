@@ -18,9 +18,7 @@ void EventManager::copyFrom(const EventManager& other)
 	capacity = other.capacity;
 
 	for (size_t i = 0; i < eventsCount; i++)
-	{
 		events[i] = other.events[i]->clone();
-	}
 }
 
 void EventManager::resize()
@@ -70,13 +68,11 @@ void EventManager::addEvent(Event* event)
 void EventManager::addEventTypeA(size_t startH, size_t startM, size_t endH, size_t endM, const char* name)
 {
 	//validation 
-
 	addEvent(new EventTypeA(startH, startM, endH, endM, name));
 }
 void EventManager::addEventTypeB(size_t startH, size_t startM, size_t breakH, size_t breakM, size_t endH, size_t endM)
 {
 	//validation 
-
 	addEvent(new EventTypeB(startH, startM, endH, endM, breakH, breakM));
 }
 void EventManager::addEventTypeC(size_t startH, size_t startM, size_t break1H, size_t break1M, size_t break2H, size_t break2M)
