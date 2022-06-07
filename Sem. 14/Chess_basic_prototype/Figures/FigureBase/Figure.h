@@ -17,5 +17,5 @@ public:
 	bool getIsWhite() const { return isWhite; };
 	FigureType getType() const { return type; }
 
-	virtual ~Figure(){};
+	virtual ~Figure() = default;
 };

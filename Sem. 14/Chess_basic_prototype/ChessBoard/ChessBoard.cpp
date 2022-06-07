@@ -60,7 +60,7 @@ void ChessBoard::moveFigure(size_t x, size_t y, size_t destX, size_t destY)
 	{
 		if (board[x][y].f && board[x][y].f->canBeMoved(x, y, destX, destY))
 		{
-			delete board[destX][destY].f;
+			delete board[destX][destY].f; //взимане на фигура
 			board[destX][destY].f = board[x][y].f;
 			board[x][y].f = nullptr;
 		}
