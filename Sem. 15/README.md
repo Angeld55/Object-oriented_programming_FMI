@@ -14,7 +14,7 @@
  - Бинарна операция, която има ляв логически израз и десен логически израз
  - Унарна операция, която има друг логически израз
 
-![enter image description here]([https://i.ibb.co/rcT4jb4/Untitled-Diagram-drawio-1.png](https://i.ibb.co/tsYHjRN/Untitled-Diagram-drawio-2.png))
+![enter image description here](https://i.ibb.co/tsYHjRN/Untitled-Diagram-drawio-2.png)
 
 ## Пресмятане на стойност на израз
 За да пресметнем стойност на израз ни трябва **булева интерпретация** (оценка на всяка участваща променлива).  За това въвеждаме чисто виртуална функция **evaluate**.
