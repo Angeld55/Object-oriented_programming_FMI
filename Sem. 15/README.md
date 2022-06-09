@@ -50,3 +50,28 @@
 
 ![enter image description here](https://i.ibb.co/xFrVxsG/Untitled-Diagram2-drawio-2-1.png)
 
+
+### Задача
+Реализирайте клас за работа с изрази от множества. Трябва да имате:
+
+- Функция за прасване на израз от стринг.
+- Функция, която приема елемент и връща дали елементът е част от полученото от израза множество
+- Функция, която приема 2 израза и връща дали се получава едно и също множество.
+
+ ```c++
+int main()
+{
+	//v - union
+	//^ - intersection
+	SetCalculator s("(((A^B)vC)vX)");
+
+	SetExpression::Element el;
+	el.set('A', true); //element is in set A
+	el.set('B', false); // element is NOT in set B
+	el.set('C', true); // element is in set C
+
+	std::cout << s.isElementIn(el);
+
+}
+ ```
+
