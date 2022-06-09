@@ -148,34 +148,8 @@ class ExpressionCalculator
 		}
 	};
 
-	BooleanExpr::BooleanInterpretation convert(size_t number, bool vars[26]) const
-	{
-		BooleanExpr::BooleanInterpretation inter;
-
-		for (int i = 25; i >= 0; i--)
-		{
-			if (vars[i])
-			{
-				if (number % 2 == 1)
-					inter.setValue('A' + i, 1);
-				number /= 2;
-			}
-		}
-		return inter;
-	}
-
-	bool checkAll(BooleanExpr* expr, bool value) const
-	{
-		size_t varsCount = expr->countVars;
-		size_t intersCount = 1 << varsCount; ///!!!!! 2^varsCount
-
-		for (int i = 0; i < intersCount; i++)
-		{
-			if (expr->eval(convert(i, expr->vars)) != value)
-				return false;
-		}
-		return true;
-	}
+	BooleanExpr::BooleanInterpretation convertFromNumber(size_t number, bool vars[26]) const;
+	bool checkAll(BooleanExpr* expr, bool value) const;
 
 	BooleanExpr* expr;
 	void copyFrom(const ExpressionCalculator& other);
