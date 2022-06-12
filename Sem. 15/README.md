@@ -63,6 +63,10 @@ int main()
 {
 	//v - union
 	//^ - intersection
+        // '\' - set minus
+        // '!' - complement
+        // 'x' - relative complement
+
 	SetCalculator s("(((A^B)vC)vX)");
 
 	SetExpression::Element el;
@@ -72,6 +76,9 @@ int main()
 
 	std::cout << s.isElementIn(el);
 
+        SetCalculator s1("(A^B)");
+        SetCalculator s2("(!((!A)v(!B)))");
+        s1 == s2; // true (De morgan laws)
 }
  ```
 
