@@ -29,6 +29,5 @@ public:
 
 	bool areEqual(const Date& other) const;
 
-	int getDayOfWeek() const; //cant be const, because of changings dayOfWeek and isModified 
-						// can we get around this ??
+	int getDayOfWeek() const; 
 };
