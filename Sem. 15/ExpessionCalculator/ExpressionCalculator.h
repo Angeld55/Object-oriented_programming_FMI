@@ -88,8 +88,12 @@ class ExpressionCalculator
 
 			switch (op)
 			{
-			case 'v': return  left->eval(interpret) || right->eval(interpret);
-			case '^': return left->eval(interpret) && right->eval(interpret);
+			case OR: return  left->eval(interpret) || right->eval(interpret);
+			case AND: return left->eval(interpret) && right->eval(interpret);
+			case IMPL: return !left->eval(interpret) || right->eval(interpret);
+			case IFF: bool first = left->eval(interpret); bool second = right->eval(interpret); return first == second;
+			case XOR: bool first = left->eval(interpret); bool second = right->eval(interpret); return first != second;
+
 			default: return false;
 				break;
 			}
