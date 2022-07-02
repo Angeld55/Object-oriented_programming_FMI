@@ -15,13 +15,13 @@ class ExpressionCalculator
 	class BooleanExpr
 	{
 	public:
-		bool vars[26] = { false };
+		bool vars[26] = { false }; // which variables are in the expression
 		size_t countVars = 0;
 
 
 		struct BooleanInterpretation
 		{
-			bool values[26] = { false };
+			bool values[26] = { false }; //values assigned to every variable
 			BooleanInterpretation()
 			{	}
 			void setValue(char ch, bool value)
