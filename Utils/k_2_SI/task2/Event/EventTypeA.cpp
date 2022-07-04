@@ -11,7 +11,7 @@ void EventTypeA::free()
 	delete[] name;
 }
 
-EventTypeA::EventTypeA(size_t startH, size_t startM, size_t endH, size_t endM, const char* name) : Event(type, startH, startM, endH, endM)
+EventTypeA::EventTypeA(size_t startH, size_t startM, size_t endH, size_t endM, const char* name) : Event(Event::EventType::typeA, startH, startM, endH, endM)
 {
 	setName(name);
 }
