@@ -131,7 +131,7 @@ void PairOfOptionals<T, D>::copyFrom(const PairOfOptionals<T, D>& other)
 		first = nullptr;
 
 	if (containsSecond())
-		second = new T(*other.second);
+		second = new D(*other.second);
 	else
 		second = nullptr;
 }
