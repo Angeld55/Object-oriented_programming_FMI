@@ -96,9 +96,9 @@ int main()
 	using namespace Univeristy;
 
 	University uni{ "Ivan Petrov", 434, Major::Cs ,
-					"Peter Ivanov", 987, Major::Si,
-					"Alex Angelov", 12, Major::I  ,
-					"Kristian Kasabov", 12, Major::I} ;
+			"Peter Ivanov", 987, Major::Si,
+			"Alex Angelov", 12, Major::I  ,
+			"Kristian Kasabov", 12, Major::I} ;
 
 	printUni(uni);
 	std::cout << "----------------" << std::endl;
