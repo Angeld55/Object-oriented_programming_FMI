@@ -121,7 +121,7 @@ int main()
  
 
  ```c++
-	ofstream file("file.txt", ios::out | ios::app).
+	ofstream file("file.txt").
  ```
 
 
