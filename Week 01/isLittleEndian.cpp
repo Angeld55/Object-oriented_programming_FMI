@@ -1,6 +1,6 @@
 #include <iostream>
 
-bool isBigEndian()
+bool isLittleEndian()
 {
 	union endiannessTest {
 		uint32_t n = 1;
@@ -11,7 +11,7 @@ bool isBigEndian()
 
 int main()
 {
-   std::cout << isBigEndian();
+   std::cout << isLittleEndian();
 
 }
 
