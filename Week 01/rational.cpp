@@ -36,7 +36,7 @@ unsigned getGcd(unsigned a, unsigned b)
 void rationalize(Rational& rat)
 {
     assert(isValid(rat));
-    unsigned gcd = getGcd((unsigned)rat.nom, rat.denom);
+    unsigned gcd = getGcd((unsigned int)rat.nom, (unsigned int)rat.denom);
     
     rat.nom /= gcd;
     rat.denom /= gcd;
