@@ -1,4 +1,4 @@
-
+(част от примерите са в папката week 1)
 ##  Потоци и Файлове (част 1). Текстови файлове.
 Видове потоци:
  - Потоци за вход (istream).
@@ -121,7 +121,7 @@ int main()
  
 
  ```c++
-	ofstream file("file.txt", ios::out | ios::app).
+	ofstream file("file.txt").
  ```
 
 
