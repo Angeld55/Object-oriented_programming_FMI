@@ -2,8 +2,6 @@
 #include <fstream>
 #include <assert.h>
 
-
-
 int main()
 {
     {
