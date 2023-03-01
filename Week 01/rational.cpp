@@ -45,15 +45,9 @@ void rationalize(Rational& rat)
 Rational& plusEq(Rational& lhs, const Rational& rhs)
 {
     assert(isValid(lhs) && isValid(rhs));
-    int lhsOldDenom = lhs.denom;
     lhs.nom *= rhs.denom;
-    lhs.denom *= rhs.denom;
-    
-    Rational rhsCopy = rhs;
-    rhsCopy.nom *= lhsOldDenom;
-
-    lhs.nom += rhsCopy.nom;
-    
+	lhs.nom += rhs.nom*lhs.denom;
+    lhs.denom *= rhs.denom;    
     rationalize(lhs);
     return lhs;
 }
