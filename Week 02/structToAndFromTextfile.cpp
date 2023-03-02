@@ -27,11 +27,11 @@ void readStudentFromFile(std::ifstream& ifs, Student& st)
 {
 	ifs.getline(st.name, 1024);
 	ifs >> st.age;
-	ifs.ignore();
+	ifs.ignore(); //ignore the \n
 	int majorInt;
 	ifs >> majorInt;
 	st.studentMajor = (major)majorInt;
-	ifs.ignore();
+	ifs.ignore(); //ignore the \n
 }
 
 void writeArrayToFile(const char* fileName, const Student* students, size_t size)
@@ -43,6 +43,7 @@ void writeArrayToFile(const char* fileName, const Student* students, size_t size
 
 	for (unsigned i = 0; i < size; i++)
 		saveStudentToFile(outputStream, students[i]);
+	outputStream.close();
 }
 
 Student* readArrayFromFile(const char* fileName, size_t& size)
@@ -59,6 +60,7 @@ Student* readArrayFromFile(const char* fileName, size_t& size)
 
 	for (unsigned int i = 0; i < size; i++)
 		readStudentFromFile(inputStream, result[i]);
+	inputStream.close();
 	return result;
 }
 
