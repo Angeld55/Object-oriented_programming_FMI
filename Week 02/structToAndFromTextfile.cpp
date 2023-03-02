@@ -67,7 +67,7 @@ Student* readArrayFromFile(const char* fileName, size_t& size)
 int main()
 {
 	Student st[2] = { "Ivan", 34, major::Se,
-					 "Petur", 20, major::Is };
+			  "Petur", 20, major::Is };
 
 	writeArrayToFile("students.txt", st, 2);
 
