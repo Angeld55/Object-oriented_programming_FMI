@@ -76,5 +76,6 @@ int main()
 
 	for (int i = 0; i < size; i++)
 		std::cout << result[i].name << " " << result[i].age <<" " << (int)result[i].studentMajor << std::endl;
+        delete[] result;
 }
 
