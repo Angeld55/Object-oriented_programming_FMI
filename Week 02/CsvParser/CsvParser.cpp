@@ -23,7 +23,7 @@ struct Row
 struct CsvFile
 {
     Row columnsNames;
-    Row rows[250];
+    Row rows[globalConstants::MAX_ROWS_COUNT];
     size_t rowsCount = 0;
 };
 
@@ -94,6 +94,7 @@ void saveCsvToFile(const CsvFile& file, const char* fileName)
     saveCsvRow(file.columnsNames, ofs);
     for (int i = 0; i < file.rowsCount; i++)
         saveCsvRow(file.rows[i], ofs);
+    ofs.close();
 }
 
 int getColumnIndex(const CsvFile& csvFile, const char* columnName)
