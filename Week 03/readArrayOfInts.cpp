@@ -13,8 +13,7 @@ size_t getFileSize(std::ifstream& file)
 
 int main()
 {
-	std::ifstream ifs("myfile.dat", std::ios::out |
-									std::ios::binary);
+	std::ifstream ifs("myfile.dat", std::ios::in | std::ios::binary);
 
 	size_t fileSize = getFileSize(ifs);
 	size_t arrSize = fileSize / sizeof(int);
