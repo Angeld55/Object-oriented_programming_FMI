@@ -37,8 +37,8 @@ Row readRow(std::ifstream& ifs)
     while (!ss.eof())
     {
         size_t& valuesCount = currentRow.valuesCount;
-        ss.getline(currentRow.values[valuesCount++].str, 
-                   globalConstants::VALUE_MAX_SIZE, ',');
+        ss.getline(currentRow.values[valuesCount++].str,
+            globalConstants::VALUE_MAX_SIZE, ',');
     }
     return currentRow;
 }
@@ -55,7 +55,7 @@ CsvFile parseFromFile(const char* str)
 
     while (!input.eof())
         resultFile.rows[resultFile.rowsCount++] = readRow(input);
-    
+
     input.close();
     return resultFile;
 }
@@ -115,7 +115,7 @@ bool changeValue(CsvFile& csvFile, const char* columnName, const char* valueToCh
     {
         if (strcmp(csvFile.rows[i].values[columnIndex].str, valueToChange) == 0)
         {
-            strcpy(csvFile.rows[i].values[columnIndex].str, changeWith);
+            strcpy_s(csvFile.rows[i].values[columnIndex].str, globalConstants::VALUE_MAX_SIZE, changeWith);
             return true;
         }
     }
