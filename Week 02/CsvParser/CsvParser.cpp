@@ -38,7 +38,7 @@ Row readRow(std::ifstream& ifs)
     {
         size_t& valuesCount = currentRow.valuesCount;
         ss.getline(currentRow.values[valuesCount++].str,
-            globalConstants::VALUE_MAX_SIZE, ',');
+                   globalConstants::VALUE_MAX_SIZE, ',');
     }
     return currentRow;
 }
