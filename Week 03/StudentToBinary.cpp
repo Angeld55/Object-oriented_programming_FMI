@@ -15,6 +15,9 @@ int main()
 {
 	{
 		std::ofstream ofs("file.dat", std::ios::out | std::ios::binary);
+		
+		if(!ofs.is_open())
+			return -1;
 
 		Student st{ "Ivan", 10, 1234 };
 
@@ -24,6 +27,9 @@ int main()
 		Student st;
 		
 		std::ifstream ifs("file.dat", std::ios::in | std::ios::binary);
+		
+		if(!ifs.is_open())
+			return -1;
 
 		ifs.read( (char*)&st, sizeof(Student));
 
