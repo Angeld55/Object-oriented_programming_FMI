@@ -20,10 +20,18 @@ HexViewerFile init(const char* str)
 	std::ifstream ifs(str, std::ios::in | std::ios::binary);
 	HexViewerFile myFile;
 
+	if(!ifs.is_open())
+	{
+	    myFile.data = nullptr;
+	    myFile.dataSize = 0;
+	    return myFile;
+	}    
+
 	myFile.dataSize = getFileSize(ifs);
 	myFile.data = new unsigned char[myFile.dataSize];
 	ifs.read((char*)myFile.data, myFile.dataSize);
-
+    
+    ifs.close();
 	return myFile;
 }
 
