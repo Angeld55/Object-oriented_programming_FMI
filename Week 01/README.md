@@ -1,13 +1,13 @@
 #  **Преговор на указатели, референции и динамична памет. Увод в ООП. Обекти. Структури и обединения**
 
-- [Преговор. Указатели, референции, динамична памет.](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/main/Sem.%2001/README.md#%D0%BF%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%BE%D1%80-%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B5%D0%BD%D1%86%D0%B8%D0%B8-%D0%B4%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%BD%D0%B0-%D0%BF%D0%B0%D0%BC%D0%B5%D1%82)
-- [Обектно-ориентирано програмиране](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/main/Sem.%2001/README.md#%D0%BE%D0%B1%D0%B5%D0%BA%D1%82%D0%BD%D0%BE-%D0%BE%D1%80%D0%B8%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%B0%D0%BD%D0%BE-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%B8%D1%80%D0%B0%D0%BD%D0%B5)
-- [Структури](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/main/Sem.%2001/README.md#%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B8)
-- [Представяне в паметта и подравняване](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/main/Sem.%2001/README.md#%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D1%8F%D0%BD%D0%B5-%D0%B2-%D0%BF%D0%B0%D0%BC%D0%B5%D1%82%D1%82%D0%B0-%D0%B8-%D0%BF%D0%BE%D0%B4%D1%80%D0%B0%D0%B2%D0%BD%D1%8F%D0%B2%D0%B0%D0%BD%D0%B5)
-- [Обединения](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/main/Sem.%2001/README.md#%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F)
-- [Енумерации](https://github.com/Angeld55/Object-oriented_programming_FMI/tree/main/Sem.%2001#%D0%B5%D0%BD%D1%83%D0%BC%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8-enums)
-- [Namespaces](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/main/Sem.%2001/README.md#namespaces)
-- [Задачи](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/main/Sem.%2001/README.md#%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
+- [Преговор. Указатели, референции, динамична памет.](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/master/Week%2001/README.md#%D0%BF%D1%80%D0%B5%D0%B3%D0%BE%D0%B2%D0%BE%D1%80-%D1%83%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D0%B8-%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B5%D0%BD%D1%86%D0%B8%D0%B8-%D0%B4%D0%B8%D0%BD%D0%B0%D0%BC%D0%B8%D1%87%D0%BD%D0%B0-%D0%BF%D0%B0%D0%BC%D0%B5%D1%82)
+- [Обектно-ориентирано програмиране](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/master/Week%2001/README.md#%D0%BE%D0%B1%D0%B5%D0%BA%D1%82%D0%BD%D0%BE-%D0%BE%D1%80%D0%B8%D0%B5%D0%BD%D1%82%D0%B8%D1%80%D0%B0%D0%BD%D0%BE-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%B8%D1%80%D0%B0%D0%BD%D0%B5)
+- [Структури](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/master/Week%2001/README.md#%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B8)
+- [Представяне в паметта и подравняване](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/master/Week%2001/README.md#%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D1%8F%D0%BD%D0%B5-%D0%B2-%D0%BF%D0%B0%D0%BC%D0%B5%D1%82%D1%82%D0%B0-%D0%B8-%D0%BF%D0%BE%D0%B4%D1%80%D0%B0%D0%B2%D0%BD%D1%8F%D0%B2%D0%B0%D0%BD%D0%B5)
+- [Обединения](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/master/Week%2001/README.md#%D0%BE%D0%B1%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F)
+- [Енумерации](https://github.com/Angeld55/Object-oriented_programming_FMI/tree/master/Week%2001#%D0%B5%D0%BD%D1%83%D0%BC%D0%B5%D1%80%D0%B0%D1%86%D0%B8%D0%B8-enums)
+- [Namespaces](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/master/Week%2001/README.md#namespaces)
+- [Задачи](https://github.com/Angeld55/Object-oriented_programming_FMI/blob/master/Week%2001/README.md#%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
 
 ##  **Преговор. Указатели, референции, динамична памет.**
 <img style="object-fit:contain;" align="right" width="450" height="600" src="https://study.com/cimages/multimages/16/1724cf83-a8ad-4ad5-aeca-0311114a819c_memory_alloc_cpp.png">
