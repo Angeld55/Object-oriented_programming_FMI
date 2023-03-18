@@ -36,21 +36,21 @@ public:
 		setSeconds(secondsFromMidnight);
 	}
 
-	void setHours(unsigned hours) //Колизия при имена
+	void setHours(unsigned hours)
 	{
 		if (isInInterval(23, hours))
 			this->hours = hours;
 		else
 			this->hours = 0;
 	}
-	void setMins(unsigned mins) //Колизия при имена
+	void setMins(unsigned mins)
 	{
 		if (isInInterval(59, mins))
 			this->mins = mins;
 		else
 			this->mins = 0;
 	}
-	void setSeconds(unsigned seconds) //Колизия при имена
+	void setSeconds(unsigned seconds)
 	{
 		if (isInInterval(59, seconds))
 			this->seconds = seconds;
