@@ -4,6 +4,7 @@ using namespace std;
 
 class Time
 {
+	//the best way is to store them in to a single variable (only for seconds). 
 	unsigned hours; //[0...23]
 	unsigned mins; // [0...59]
 	unsigned seconds; //[0...59]
