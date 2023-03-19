@@ -266,13 +266,6 @@ public:
 
 int main()
 {
-	{
-		Test t; // Object is created 
-		{
-			Test t2; // Object is created 
-		} // Object is destroyed (t2)
-
-	} //Object is destroyed (t)
 }
 ```
 
