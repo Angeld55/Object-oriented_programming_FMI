@@ -85,8 +85,6 @@ void Student::setName(const char* name)
 
 }
 
-
-
 int main()
 {
 	Student st("Fsdfsdf", 3434);
