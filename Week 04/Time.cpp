@@ -14,16 +14,18 @@ class Time
 		return value <= upperInterval;
 	}
 public:
+
 	Time(unsigned hours, unsigned mins, unsigned seconds)
 	{
 		setHours(hours);
 		setMins(mins);
 		setSeconds(seconds);
 	}
-	Time() : Time(0,0,0)
+
+	Time() : Time(0, 0, 0)
 	{}
 
-	Time(unsigned secondsFromMidnight) //4000 - 3600
+	Time(unsigned secondsFromMidnight) 
 	{
 		if (!isInInterval(24 * 3600, secondsFromMidnight))
 			secondsFromMidnight = 0;
@@ -44,6 +46,7 @@ public:
 		else
 			this->hours = 0;
 	}
+
 	void setMins(unsigned mins)
 	{
 		if (isInInterval(59, mins))
@@ -51,6 +54,7 @@ public:
 		else
 			this->mins = 0;
 	}
+
 	void setSeconds(unsigned seconds)
 	{
 		if (isInInterval(59, seconds))
@@ -58,20 +62,23 @@ public:
 		else
 			this->seconds = 0;
 	}
+
 	unsigned getHours() const
 	{
 		return hours;
 	}
+
 	unsigned getMins() const
 	{
 		return mins;
 	}
+
 	unsigned getSeconds() const
 	{
 		return seconds;
 	}
 
-	unsigned getToSecondsFromMidnight() const
+	unsigned getSecondsFromMidnight() const
 	{
 		return hours * 3600 + mins * 60 + seconds;
 	}
@@ -80,25 +87,67 @@ public:
 	{
 		std::cout << hours << " : " << mins << " : " << seconds << std::endl;
 	}
+
+	void tick()
+	{
+		unsigned seconds = getSecondsFromMidnight();
+		seconds++;
+		Time newObj(seconds);
+
+		*this = newObj; //копие
+	}
+
+	Time getToMidnight() const
+	{
+		Time midnight(23, 59, 59);
+		Time diff = getDiff(midnight);
+		diff.tick();
+		return diff;
+	}
+
+	bool isDinnerTime() const
+	{
+		Time lowerBound(20, 30, 0);
+		Time upperBound(22, 0, 0);
+		return compare(lowerBound) >= 0 && compare(upperBound) <= 0;
+	}
+
+	bool isPartyTime() const
+	{
+		Time lowerBound(23, 0, 0);
+		Time upperBound(6, 0, 0);
+		return compare(lowerBound) >= 0 || compare(upperBound) <= 0;
+	}
+
+	int compare(const Time& other) const
+	{
+		int mySeconds = getSecondsFromMidnight();
+		int otherSeconds = other.getSecondsFromMidnight();
+
+		return mySeconds - otherSeconds;
+	}
+
+	Time getDiff(const Time& other) const
+	{
+		unsigned mySeconds = getSecondsFromMidnight();
+		unsigned otherSeconds = other.getSecondsFromMidnight();
+
+		size_t diff;
+
+		if (mySeconds > otherSeconds)
+			diff = mySeconds - otherSeconds;
+		else
+			diff = otherSeconds - mySeconds;
+
+		return Time(diff);
+	}
+
 };
 
-int compareTimes(const Time& lhs, const Time& rhs)
-{
-	int lhsSeconds = lhs.getToSecondsFromMidnight();
-	int rhsSeconds = rhs.getToSecondsFromMidnight();
-	return lhsSeconds - rhsSeconds;
-}
-
-Time diff(const Time& lhs, const Time& rhs)
-{
-	int diff = lhs.getToSecondsFromMidnight() - rhs.getToSecondsFromMidnight();
-	unsigned diffInSeconds = abs(diff);
-	return Time(diffInSeconds);
-}
 
 int main()
 {
-	Time t(12,4,55);
+	Time t(12, 4, 55);
 
 	t.print();
 
