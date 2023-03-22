@@ -4,7 +4,7 @@ using namespace std;
 
 class PrimeIterator
 {
-	size_t _value;
+	unsigned _value;
 
 	bool isPrime(size_t n)
 	{
@@ -19,13 +19,13 @@ class PrimeIterator
 		return true;
 	}
 public:
-	PrimeIterator(size_t value)
+	PrimeIterator(unsigned value)
 	{
 		setValue(value);
 	}
 	PrimeIterator() : PrimeIterator(2)
 	{}
-	
+
 	size_t getValue() const
 	{
 		return _value;
@@ -53,7 +53,7 @@ public:
 };
 int main()
 {
-	
-	for (PrimeIterator i(2); i.getValue() < 100 ; i.goToNext())
+
+	for (PrimeIterator i(2); i.getValue() < 100; i.goToNext())
 		std::cout << i.getValue() << std::endl;
 }
