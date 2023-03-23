@@ -97,8 +97,8 @@ int Date::getDayOfWeek() const
 bool Date::isEqualTo(const Date& other) const
 {
 	return day == other.day &&
-		   month == other.month &&
-		   year == other.year;
+		month == other.month &&
+		year == other.year;
 }
 
 void Date::print() const

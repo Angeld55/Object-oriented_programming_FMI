@@ -28,9 +28,7 @@ public:
 	bool isEqualTo(const Date& d) const;
 
 	void print() const;
-
 	void goToNextDay();
-	
 	int getDayOfWeek() const;
 
 };

@@ -60,7 +60,7 @@ void Time::tick()
 	seconds++;
 	Time newObj(seconds);
 
-	*this = newObj; //РєРѕРїРёРµ
+	*this = newObj; //копие
 }
 
 int Time::compare(const Time& other) const
