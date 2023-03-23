@@ -4,7 +4,7 @@ bool EventCollection::addEvent(const Event& event)
 {
 	if (count == 20)
 		return false;
-	data[count++] = event; // копие!!!
+	data[count++] = event; // copy!!!
 	return true;
 }
 
