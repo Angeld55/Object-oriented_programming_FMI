@@ -1,13 +1,13 @@
 #include <iostream>
-#include "EventCollection/EventCollection.h"
+#include "Interval.h"
+
 int main()
 {
-	EventCollection ev;
-	
-	ev.addEvent(Event("Party", 31, 12, 2023, 23, 0, 0, 23, 30, 00));
-	ev.addEvent(Event("Sleep", 1, 1, 2024, 5, 0, 0, 11, 30, 00));
+	Interval v1(1, 10);
 
+	Interval v2(2, 8);
 
-	std::cout << ev.getByIndex(1).getDate().getYear();
+	Interval v3 = intersectIntervals(v1, v2);
 
+	std::cout << v1.getA() << " " << v2.getB() << std::endl;
 }
