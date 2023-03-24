@@ -38,22 +38,25 @@ public:
 			_value = 2;
 	}
 
-	void goToNext()
+	PrimeIterator& goToNext()
 	{
-		//???
+		//todo: calc upper bound
 		while (!isPrime(++_value)) {}
+		return *this;
 	}
-	void goToPrev()
+	PrimeIterator& goToPrev()
 	{
-		if (_value == 2)
-			return;
-		while (!isPrime(--_value)) {}
+		if (_value != 2)
+		{
+			while (!isPrime(--_value)) {}
+		}
+		return *this;
 	}
 
 };
 int main()
 {
 
-	for (PrimeIterator i(2); i.getValue() < 100; i.goToNext())
+	for (PrimeIterator i(2); i.getValue() < 100; i.goToNext().goToNext()) //step is two
 		std::cout << i.getValue() << std::endl;
 }
