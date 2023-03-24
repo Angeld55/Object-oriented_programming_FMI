@@ -11,8 +11,8 @@ Event::Event(const char* name, const Date& date, const Time& startTime, const Ti
 Event::Event(const char* name, unsigned day, unsigned month, unsigned year,
 			 unsigned startTimeHours, unsigned startTimeMins, unsigned startTimeSecs,
 			  unsigned endTimeHours, unsigned endTimeMins, unsigned endTimeSecs) : _date(day, month, year),
-																		           _startTime(startTimeHours, startTimeMins, startTimeSecs),
-																			       _endTime(endTimeHours, endTimeMins, endTimeSecs)
+									                       _startTime(startTimeHours, startTimeMins, startTimeSecs),
+											       _endTime(endTimeHours, endTimeMins, endTimeSecs)
 { 
 	setName(name);
 	validateTimes();
