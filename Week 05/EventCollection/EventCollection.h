@@ -4,7 +4,7 @@
 class EventCollection
 {
 	Event data[20];
-	unsigned count = 0; // 0 ... count - 1 са валидни обекти  count ... 19 са деф. стойности
+	unsigned count = 0; // 0 ... count - 1 СЃР° РґРѕР±Р°РІРµРЅРё. РћС‚ count РґРѕ 19 СЃР° РѕР±РµРєС‚Рё СЃСЉР·РґР°РґРµРЅРё СЃ default-РЅР° СЃС‚РѕР№РЅРѕСЃС‚,
 
 public:
 	EventCollection() = default;
