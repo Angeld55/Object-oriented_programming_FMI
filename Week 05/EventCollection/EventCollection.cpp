@@ -16,7 +16,7 @@ void EventCollection::remove(unsigned ind)
 	count--;
 }
 
-const Event& EventCollection::getByIndex(unsigned ind)
+const Event& EventCollection::getByIndex(unsigned ind) const
 {
 	if (ind >= count)
 		throw "Error";
