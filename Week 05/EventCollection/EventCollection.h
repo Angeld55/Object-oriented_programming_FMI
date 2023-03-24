@@ -10,5 +10,5 @@ public:
 	EventCollection() = default;
 	bool addEvent(const Event& event);
 	void remove(unsigned ind);
-	const Event& getByIndex(unsigned ind);
+	const Event& getByIndex(unsigned ind) const;
 };
