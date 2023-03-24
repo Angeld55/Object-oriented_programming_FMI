@@ -3,7 +3,7 @@
 #include <cstring>
 using namespace std;
 
-//constructor and destructor example
+//constructor and destructor example. No copying!
 struct Student
 {
 	char* name;
