@@ -12,7 +12,7 @@ void EventCollection::remove(unsigned ind)
 {
 	if (ind >= count)
 		return;
-	std::swap(data[ind], data[count - 1]);
+        data[ind] = data[count - 1]; //std::swap(data[ind], data[count - 1]);
 	count--;
 }
 
