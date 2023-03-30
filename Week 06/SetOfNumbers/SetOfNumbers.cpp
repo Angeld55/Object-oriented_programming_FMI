@@ -99,10 +99,10 @@ bool SetOfNumbers::addNumber(unsigned number)
 {
     if (number > maxNumber || contains(number))
         return false;
-    unsigned buckedIndex = getBucketIndex(number);
+    unsigned bucketIndex = getBucketIndex(number);
     unsigned char mask = getMask(number);
 
-    data[buckedIndex] |= mask;
+    data[bucketIndex] |= mask;
 
     return true;
 }
@@ -110,10 +110,10 @@ bool SetOfNumbers::removeNumber(unsigned number)
 {
     if (number > maxNumber || !contains(number))
         return false;
-    unsigned buckedIndex = getBucketIndex(number);
+    unsigned bucketIndex = getBucketIndex(number);
     unsigned char mask = getMask(number);
 
-    data[buckedIndex] ^= mask;
+    data[bucketIndex] ^= mask;
 
     return true;
 }
