@@ -10,11 +10,11 @@ void Student::copyName(const char* newName)
 }
 void Student::copyGrades(const int* newGrades, size_t newGradesCount)
 {
+	gradesCount = newGradesCount;
+	
 	grades = new int[gradesCount];
 	for (unsigned i = 0; i < gradesCount; i++)
 		grades[i] = newGrades[i];
-
-	gradesCount = newGradesCount;
 }
 
 void Student::copyFrom(const Student& other)
