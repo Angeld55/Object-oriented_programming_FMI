@@ -76,7 +76,7 @@ int main()
     delete ptr; // Destructor	
 	 
 } //Destructor Destructor Destructor Destructor
-
+```
 
 **Задача 1:**
 Напишете клас, който е за работа със събитие. Събитието се характеризира с име (низ до 20 символа), дата, начален час и краен час.
