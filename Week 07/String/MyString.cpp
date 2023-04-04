@@ -2,7 +2,7 @@
 
 MyString operator+(const MyString& lhs, const MyString& rhs)
 {
-	MyString result; //не заделя памет!
+	MyString result;  //TBI ??
 
 	return result;
 }
