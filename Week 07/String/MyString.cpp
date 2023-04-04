@@ -1,6 +1,9 @@
+#include "MyString.h"
+
 MyString operator+(const MyString& lhs, const MyString& rhs)
 {
-  //TBI
+	MyString result; //не заделя памет!
+
 	return result;
 }
 
@@ -31,6 +34,23 @@ MyString::MyString(const char* data)
 	strcpy(_data, data);
 	
 }
+
+MyString::MyString(const MyString& other)
+{
+	copyFrom(other);
+}
+
+MyString& MyString::operator=(const MyString& other)
+{
+	if (this != &other)
+	{
+		free();
+		copyFrom(other);
+	}
+	return *this;
+}
+
+
 void MyString::free()
 {
 	delete[] _data;
@@ -43,19 +63,14 @@ MyString::~MyString()
 
 size_t MyString::length() const
 {
-	return size; //!!!!
+	return size;
 }
 
-void MyString::copyFrom(const char* data)
+void MyString::copyFrom(const MyString& other)
 {
-	size = strlen(data);
+	size = other.size;
 	_data = new char[size + 1];
-	strcpy(_data, data);
-}
-
-void f(const MyString& str)
-{
-	std::cout << str[0];
+	strcpy(_data, other._data);
 }
 
 char& MyString::operator[](size_t index) //Неконстантен достъп
