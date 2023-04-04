@@ -23,3 +23,4 @@ public:
 	char operator[](size_t index) const;
 	~MyString();
 };
+MyString operator+(const MyString& lhs, const MyString& rhs);
