@@ -135,7 +135,8 @@ public:
 	{
 		if(index >= _count)
 			return;
- 
+ 		
+		//check for nullptr if the order is not preserved
 		std::swap(_data[index], _data[_count - 1]);
  
 		delete _data[_count - 1];
