@@ -7,7 +7,7 @@ class News
 public:
 	News(const char* filePath)
 	{
-		if (!filePath || strlen(filePath) > 1024)
+		if (!filePath || strlen(filePath) >= 1024)
 			return;
  
 		strcpy(_filePath, filePath);
