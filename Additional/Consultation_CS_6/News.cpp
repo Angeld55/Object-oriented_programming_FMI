@@ -39,7 +39,7 @@ std::ostream& operator<<(std::ostream& os, const News& current)
 	return os;
 }
  
- 
+//only move op= is missing.
 class NewsSite
 {
 	News** _data;
