@@ -166,7 +166,7 @@ int main()
 		n1.addNews(News("Novina2"));
  
  
-		NewsSite n2 = n2;
+		NewsSite n2 = n1;
  
 		n2.removeNews(0);
 
