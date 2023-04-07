@@ -66,7 +66,7 @@ Nvector& Nvector::operator-=(const Nvector& other)
 	return *this;
 }
 
-const Nvector operator+(const Nvector& lhs, const Nvector& rhs)
+Nvector operator+(const Nvector& lhs, const Nvector& rhs)
 {
 	Nvector lhsCopy(lhs);
 	lhsCopy += rhs;
@@ -74,7 +74,7 @@ const Nvector operator+(const Nvector& lhs, const Nvector& rhs)
 	return lhsCopy;
 }
 
-const Nvector operator-(const Nvector& lhs, const Nvector& rhs)
+Nvector operator-(const Nvector& lhs, const Nvector& rhs)
 {
 	Nvector lhsCopy(lhs);
 	lhsCopy -= rhs;
