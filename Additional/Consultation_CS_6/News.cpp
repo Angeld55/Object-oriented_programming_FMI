@@ -159,8 +159,7 @@ public:
 int main()
 {
  
-	while (1)
-	{
+	
 		NewsSite n1(8);
  
 		n1.addNews(News("Novina1"));
@@ -170,6 +169,5 @@ int main()
 		NewsSite n2 = n2;
  
 		n2.removeNews(0);
-	}
-	return 0;
+
 }
