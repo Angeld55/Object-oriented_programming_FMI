@@ -34,12 +34,12 @@ public:
 	friend std::istream& operator>>(std::istream&, Nvector& v);
 };
 
-const Nvector operator+(const Nvector& lhs, const Nvector& rhs);
-const Nvector operator-(const Nvector& lhs, const Nvector& rhs);
+Nvector operator+(const Nvector& lhs, const Nvector& rhs);
+Nvector operator-(const Nvector& lhs, const Nvector& rhs);
 
-const Nvector operator*(const Nvector& lhs, size_t scalar);
+Nvector operator*(const Nvector& lhs, size_t scalar);
 //So it could be commutative
-const Nvector operator*(size_t scalar, const Nvector& lhs);
+Nvector operator*(size_t scalar, const Nvector& lhs);
 
 //are parallel
 bool operator||(const Nvector& lhs, const Nvector& rhs);
