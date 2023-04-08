@@ -92,7 +92,7 @@ bool operator==(const PrimeIterator & lhs, const PrimeIterator & rhs)
 
 bool operator!=(const PrimeIterator& lhs, const PrimeIterator& rhs)
 {
-	return lhs.getValue() == rhs.getValue();
+	return lhs.getValue() != rhs.getValue();
 }
 
 int main()
