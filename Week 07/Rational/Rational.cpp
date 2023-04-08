@@ -21,6 +21,7 @@ Rational::Rational(int nom, int denom)
 {
 	setNom(nom);
 	setDenom(denom);
+	rationalize();
 }
 
 int Rational::getNom() const
@@ -39,7 +40,7 @@ void Rational::setNom(int nom)
 void Rational::setDenom(int denom)
 {
 	if (denom == 0)
-		denom = 0;
+		denom = 1;
 	_denom = denom;
 }
 
@@ -74,6 +75,7 @@ Rational& Rational::operator+=(const Rational& other)
 	_denom *= other._denom;
 	int newOtherNom = other._nom * oldDenom;
 	_nom += newOtherNom;
+	rationalize();
 	return *this;
 }
 Rational& Rational::operator-=(const Rational& other)
@@ -88,6 +90,7 @@ Rational& Rational::operator*=(const Rational& other)
 {
 	_nom *= other._nom;
 	_denom *= other._denom;
+	rationalize();
 	return *this;
 }
 
