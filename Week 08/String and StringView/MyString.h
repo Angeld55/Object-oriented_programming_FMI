@@ -4,7 +4,7 @@
 class MyString
 {
 	char* _data;
-	size_t size;
+	size_t _length;
 
 	void copyFrom(const MyString& data);
 	void free();

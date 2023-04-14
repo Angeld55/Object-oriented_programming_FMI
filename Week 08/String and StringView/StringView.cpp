@@ -11,14 +11,17 @@ size_t StringView::length() const
 {
 	return _end - _begin;
 }
-char StringView::operator[](size_t ind) const
+char StringView::operator[](size_t index) const
 {
-	return _begin[ind];
+	return _begin[index];
 }
 
-StringView StringView::substr(size_t from, size_t howMany) const
+StringView StringView::substr(size_t from, size_t length) const
 {
-	return StringView(_begin + from, _begin + from + howMany);
+	if (_begin + from + length > _end)
+		throw std::length_error("Error, Substr out of range");
+
+	return StringView(_begin + from, _begin + from + length);
 }
 
 std::ostream& operator<<(std::ostream& os, const StringView& strView)
