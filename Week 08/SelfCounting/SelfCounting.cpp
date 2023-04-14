@@ -5,7 +5,10 @@
 unsigned SelfCounting::liveObjectsCount = 0;
 unsigned SelfCounting::createdCount = 0;
 
-SelfCounting::SelfCounting() : SelfCounting(42)
+SelfCounting::SelfCounting() : SelfCounting(42)  //initialization of constants
+						//can only be done while creating them
+						//so the only possible way is in
+						//the initialization list
 {
 }
 
