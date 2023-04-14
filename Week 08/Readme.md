@@ -1,6 +1,6 @@
 
 
-##  Static. Изключения. Масиви от указатели към обекти.
+##  Ключова дума static. Изключения. Масиви от указатели към обекти.
 
 ###  Изключения
 ![enter image description here](https://i.ibb.co/hDMRzMB/df-drawio-1.png)
