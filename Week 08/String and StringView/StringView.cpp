@@ -7,7 +7,7 @@ StringView::StringView(const char* str) : StringView(str, str + strlen(str)) {}
 
 StringView::StringView(const MyString& str) : StringView(str.c_str()) {}
 
-size_t StringView::length()
+size_t StringView::length() const
 {
 	return _end - _begin;
 }
@@ -16,7 +16,7 @@ char StringView::operator[](size_t ind) const
 	return _begin[ind];
 }
 
-StringView StringView::substr(size_t from, size_t howMany)
+StringView StringView::substr(size_t from, size_t howMany) const
 {
 	return StringView(_begin + from, _begin + from + howMany);
 }
