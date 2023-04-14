@@ -11,10 +11,10 @@ public:
 	StringView(const char* str); //terminatedString
 	StringView(const MyString& string);
 
-	size_t length();
+	size_t length() const;
 	char operator[](size_t ind) const;
 
-	StringView substr(size_t begin, size_t howMany);
+	StringView substr(size_t begin, size_t howMany) const;
 	friend std::ostream& operator<<(std::ostream&, const StringView& strView);
 	
 };
