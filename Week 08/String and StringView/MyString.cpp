@@ -1,15 +1,14 @@
 #include "MyString.h"
 
-
- MyString::MyString(size_t capacity)
+MyString::MyString(size_t capacity)
 {
-	size = capacity - 1;
+	_length = capacity - 1;
 	_data = new char[capacity];
 }
 
 MyString operator+(const MyString& lhs, const MyString& rhs)
 {
-	MyString result(lhs.length() + rhs.length() + 1);
+	MyString result(lhs._length + rhs._length + 1);
 
 	result[0] = '\0';
 	strcat(result._data, lhs._data);
@@ -20,14 +19,13 @@ MyString operator+(const MyString& lhs, const MyString& rhs)
 
 MyString& MyString::operator+=(const MyString& other)
 {
-	char* result = new char[length() + other.length() + 1];
+	char* result = new char[(_length += other._length) + 1];
 	result[0] = '\0'; 
 	strcat(result, _data);
 	strcat(result, other._data);
 
 	delete[] _data;
 	_data = result;
-	size = length() + other.length();
 
 	return *this;
 }
@@ -35,8 +33,8 @@ MyString& MyString::operator+=(const MyString& other)
 MyString::MyString() : MyString(1)
 {
 	_data[0] = '\0';
-	size = 0;
 }
+
 MyString::MyString(const char* data) : MyString(strlen(data) + 1)
 {
 	strcpy(_data, data);	
@@ -63,6 +61,7 @@ void MyString::free()
 	delete[] _data;
 	_data = nullptr;
 }
+
 MyString::~MyString()
 {
 	free();
@@ -70,13 +69,13 @@ MyString::~MyString()
 
 size_t MyString::length() const
 {
-	return size;
+	return _length;
 }
 
 void MyString::copyFrom(const MyString& other)
 {
-	size = other.size;
-	_data = new char[size + 1];
+	_length = other._length;
+	_data = new char[_length + 1];
 	strcpy(_data, other._data);
 }
 
@@ -92,7 +91,7 @@ char MyString::operator[](size_t index) const //Константен достъ�
 
 MyString MyString::substr(size_t begin, size_t howMany) const
 {
-	if (begin + howMany > size)
+	if (begin + howMany > _length)
 		throw std::length_error("Error, Substr out of range");
 	
 
@@ -119,8 +118,8 @@ std::istream& operator>>(std::istream& is, MyString& str)
 	is >> buff; // is.getLine(buff, 1024);
 
 	delete[] str._data;
-	str.size = strlen(buff);
-	str._data = new char[str.size + 1];
+	str._length = strlen(buff);
+	str._data = new char[str._length + 1];
 	strcpy(str._data, buff);
 	return is;
 }
