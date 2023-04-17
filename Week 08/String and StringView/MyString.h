@@ -40,4 +40,4 @@ MyString operator+(const MyString& lhs, const MyString& rhs);
 
 std::ostream& operator<<(std::ostream& os, const MyString& str);
 
-std::istream& operator>>(std::istream& os, const MyString& str);
+std::istream& operator>>(std::istream& os, MyString& str);
