@@ -14,7 +14,7 @@ public:
 	size_t length() const;
 	char operator[](size_t ind) const;
 
-	StringView substr(size_t begin, size_t howMany) const;
+	StringView substr(size_t from, size_t length) const;
 	friend std::ostream& operator<<(std::ostream&, const StringView& strView);
 	
 };
