@@ -5,7 +5,7 @@
 
 void printSubstring(const StringView& view)
 {
-	std::cout << view;
+	std::cout << view << std::endl;
 }
 
 
@@ -30,4 +30,16 @@ int main()
 	std::cout << questionMark.length() << std::endl;
 
 	printSubstring(StringView(result).substr(9, 8));
+	
+	MyString cmpTestStr1 = "Abc";
+	MyString cmpTestStr2 = "Abd";
+
+	std::cout << (cmpTestStr1 < cmpTestStr2) << std::endl;
+	std::cout << (cmpTestStr1 <= cmpTestStr2) << std::endl;
+	std::cout << (cmpTestStr1 > cmpTestStr2) << std::endl;
+	std::cout << (cmpTestStr1 >= cmpTestStr2) << std::endl;
+	std::cout << (cmpTestStr1 == cmpTestStr2) << std::endl;
+	std::cout << (cmpTestStr1 != cmpTestStr2) << std::endl;
+
+
 }

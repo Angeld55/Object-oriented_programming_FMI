@@ -123,3 +123,30 @@ std::istream& operator>>(std::istream& is, MyString& str)
 	strcpy(str._data, buff);
 	return is;
 }
+
+
+bool operator<(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) < 0;
+}
+
+bool operator<=(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) <= 0;
+}
+bool operator>=(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) >= 0;
+}
+bool operator>(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) > 0;
+}
+bool operator==(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) == 0;
+}
+bool operator!=(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) != 0;
+}
