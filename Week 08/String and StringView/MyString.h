@@ -14,11 +14,9 @@ public:
 
 	MyString();
 	MyString(const char* data);
-
-
 	MyString(const MyString& other);
 	MyString& operator=(const MyString& other);
-
+	~MyString();
 
 	//move semantics on the next lecture
 	//MyString(MyString&& other) = delete; 
@@ -32,8 +30,7 @@ public:
 
 	char& operator[](size_t index);
 	char operator[](size_t index) const;
-	~MyString();
-
+	
 	const char* c_str() const;
 
 	friend MyString operator+(const MyString& lhs, const MyString& rhs);
