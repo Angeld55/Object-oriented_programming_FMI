@@ -1,4 +1,4 @@
-#include "FlightScanner.h"
+#include "FlightsScanner.h"
 #include "Utills.h"
 
 #include <cstring>
@@ -9,21 +9,21 @@
 #include <sstream>
 #include <cstdio>
 
-void FlightScanner::handleAirport(char* airport) const
+void FlightsScanner::handleAirport(char* airport) const
 {
 	if (strlen(airport) != 3)
 		throw std::length_error("The airport size should be exactly 3");
 	toUpper(airport);
 }
 
-FlightScanner::FlightScanner(const char* input, const char* output, int scanInterval)
+FlightsScanner::FlightsScanner(const char* input, const char* output, int scanInterval)
 {
 	strcpy(inputFileName, input);
 	strcpy(outputFileName, output);
 	sec = scanInterval;
 }
 
-FlightScanner::FlightRecord FlightScanner::parseLine(const char* line) const
+FlightsScanner::FlightRecord FlightsScanner::parseLine(const char* line) const
 {
 	FlightRecord record;
 	std::stringstream current(line);
@@ -74,14 +74,14 @@ FlightScanner::FlightRecord FlightScanner::parseLine(const char* line) const
 	return record;
 }
 
-void FlightScanner::saveRecord(std::ofstream& ofs, const FlightRecord& record) const
+void FlightsScanner::saveRecord(std::ofstream& ofs, const FlightRecord& record) const
 {
 	const static double EU_TO_LEV = 1.95;
 	ofs << record.origin << " " << record.dest << " " << record.amount * EU_TO_LEV << std::endl;
 }
 
 
-bool FlightScanner::readAndExportData(std::ifstream& input)
+bool FlightsScanner::readAndExportData(std::ifstream& input)
 {
 
 	std::ofstream ofs(outputFileName, std::ios::out | std::ios::app);
@@ -134,7 +134,7 @@ bool FlightScanner::readAndExportData(std::ifstream& input)
 	}
 	return errorOccured;
 }
-void FlightScanner::run()
+void FlightsScanner::run()
 {
 	while (true)
 	{

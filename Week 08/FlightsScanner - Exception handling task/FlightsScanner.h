@@ -1,7 +1,7 @@
 #pragma once
 #include <fstream>
 
-class FlightScanner
+class FlightsScanner
 {
 	char inputFileName[1024] = "";
 	char outputFileName[1024] = "";
@@ -22,6 +22,6 @@ class FlightScanner
 	void saveRecord(std::ofstream& ofs, const FlightRecord& record) const;
 
 public:
-	FlightScanner(const char* input, const char* output, int scanInterval);
+	FlightsScanner(const char* input, const char* output, int scanInterval);
 	void run();
 };
