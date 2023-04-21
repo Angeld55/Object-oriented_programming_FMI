@@ -37,7 +37,7 @@ FlightsScanner::FlightRecord FlightsScanner::parseLine(const char* line) const
 	{
 		handleAirport(record.origin);
 	}
-	catch (const std::exception& exc)
+	catch (const std::exception& exc)  //catching and throwing so we print the reason for the exception (the origin)
 	{
 		std::cout << "Error while processing the origin. Given: " << record.origin << std::endl;
 		throw;
@@ -81,7 +81,7 @@ void FlightsScanner::saveRecord(std::ofstream& ofs, const FlightRecord& record) 
 }
 
 
-bool FlightsScanner::readAndExportData(std::ifstream& input)
+bool FlightsScanner::readAndExportData(std::ifstream& input) //we don't want the exceptions to leave this function!!
 {
 
 	std::ofstream ofs(outputFileName, std::ios::out | std::ios::app);
