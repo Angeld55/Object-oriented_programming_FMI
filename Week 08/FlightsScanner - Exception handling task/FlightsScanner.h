@@ -17,7 +17,7 @@ class FlightsScanner
 	};
 
 	void handleAirport(char* airport) const;
-	FlightRecord parseLine(const char* line) const;
+	void parseLine(const char* line, FlightRecord& record) const;
 	bool readAndExportData(std::ifstream& input);
 	void saveRecord(std::ofstream& ofs, const FlightRecord& record) const;
 

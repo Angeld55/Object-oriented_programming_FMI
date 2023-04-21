@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <cstdio>
+#pragma warning (disable : 4996)
 
 void FlightsScanner::handleAirport(char* airport) const
 {
@@ -23,9 +24,8 @@ FlightsScanner::FlightsScanner(const char* input, const char* output, int scanIn
 	sec = scanInterval;
 }
 
-FlightsScanner::FlightRecord FlightsScanner::parseLine(const char* line) const
+void FlightsScanner::parseLine(const char* line, FlightsScanner::FlightRecord& record) const
 {
-	FlightRecord record;
 	std::stringstream current(line);
 
 	current >> record.origin;
@@ -71,7 +71,6 @@ FlightsScanner::FlightRecord FlightsScanner::parseLine(const char* line) const
 		record.amount = DEFAULT_AMOUNT;
 		throw;
 	}
-	return record;
 }
 
 void FlightsScanner::saveRecord(std::ofstream& ofs, const FlightRecord& record) const
@@ -101,17 +100,17 @@ bool FlightsScanner::readAndExportData(std::ifstream& input) //we don't want the
 		FlightRecord record;
 		try
 		{
-			record = parseLine(line);
+			parseLine(line, record);
 			saveRecord(ofs, record);
 		}
 		catch (const std::invalid_argument& exc)
 		{
-			std::cout << "Invalid arugment occured on line " << lineIndex << ": " << exc.what() << std::endl;
+			std::cout << "Invalid arugment occured on line " << lineIndex << ": " << exc.what() << ". The flight will NOT be saved! " << std::endl;
 			errorOccured = true;
 		}
 		catch (const std::length_error& exc)
 		{
-			std::cout << "Lenght error occured on line " << lineIndex << ": " << exc.what() << std::endl;
+			std::cout << "Lenght error occured on line " << lineIndex << ": " << exc.what() << ". The flight will NOT be saved! " << std::endl;
 			errorOccured = true;
 		}
 		catch (const std::bad_cast& exc)
@@ -122,12 +121,12 @@ bool FlightsScanner::readAndExportData(std::ifstream& input) //we don't want the
 		}
 		catch (const std::exception& exc)
 		{
-			std::cout << "Unknow error occured on line " << lineIndex << ": " << exc.what() << std::endl;
+			std::cout << "Unknow error occured on line " << lineIndex << ": " << exc.what() << ". The flight will NOT be saved! " << std::endl; 
 			errorOccured = true;
 		}
 		catch (...)
 		{
-			std::cout << "Unknown error occured on line " << lineIndex << std::endl;
+			std::cout << "Unknown error occured on line " << lineIndex << ". The flight will NOT be saved! " << std::endl;
 			errorOccured = true;
 		}
 		lineIndex++;

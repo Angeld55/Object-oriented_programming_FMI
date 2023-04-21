@@ -1,9 +1,8 @@
 #include <iostream>
-#include "FlightScanner.h"
+#include "FlightsScanner.h"
 
 int main()
 {
-	FlightScanner scanner("inputFlights.txt", "outputFlights.txt", 10);
-
+	FlightsScanner scanner("inputFlights.txt", "outputFlights.txt", 10);
 	scanner.run();
 }
