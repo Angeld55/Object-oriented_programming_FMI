@@ -62,6 +62,27 @@ DynamicArrayOfPointers::~DynamicArrayOfPointers()
 {
 	free();
 }
+void DynamicArrayOfPointers::moveFrom(DynamicArrayOfPointers&& other)
+{
+	_data = other._data;
+	other._data = nullptr;
+	_capacity = other._capacity;
+	_count = other._count;
+}
+
+DynamicArrayOfPointers::DynamicArrayOfPointers(DynamicArrayOfPointers&& other) noexcept
+{
+	moveFrom(std::move(other));
+}
+DynamicArrayOfPointers& DynamicArrayOfPointers::operator=(DynamicArrayOfPointers&& other) noexcept
+{
+	if (this != &other)
+	{
+		free();
+		moveFrom(std::move(other));
+	}
+	return *this;
+}
 
 void DynamicArrayOfPointers::pushBack(const A& current)
 {
@@ -76,7 +97,7 @@ void DynamicArrayOfPointers::pushBack(A&& obj)
 	if (_count >= _capacity)
 		resize(_capacity * 2);
 
-	_data[_count++] = new A(std::move(obj)); 
+	_data[_count++] = new A(std::move(obj));  //move ctor
 }
 
 void DynamicArrayOfPointers::removeAt(size_t index)
@@ -108,7 +129,7 @@ void DynamicArrayOfPointers::popBack()
 	_count--;
 }
 
-void DynamicArrayOfPointers::setAt(const A& obj, size_t index)
+void DynamicArrayOfPointers::setAtIndex(const A& obj, size_t index)
 {
 	/*
 	delete _data[index];
@@ -124,6 +145,17 @@ void DynamicArrayOfPointers::setAt(const A& obj, size_t index)
 	}
 }
 
+void DynamicArrayOfPointers::setAtIndex(A&& obj, size_t index)
+{
+
+	if (_data[index] != nullptr)
+		*_data[index] = obj;
+	else
+	{
+		_data[index] = new A(std::move(obj)); //move c-tor
+		_count++;
+	}
+}
 
 size_t DynamicArrayOfPointers::size() const
 {

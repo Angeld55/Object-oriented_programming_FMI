@@ -13,13 +13,16 @@ private:
 	A* arr;
 	size_t size;
 	size_t capacity;
-
+	void moveFrom(DynamicArray&& other);
 public:
 	DynamicArray();
 	DynamicArray(size_t capacity);
 	DynamicArray(const DynamicArray& other);
 	DynamicArray& operator=(const DynamicArray& other);
 	~DynamicArray();
+
+	DynamicArray(DynamicArray&& other) noexcept;
+	DynamicArray& operator=(DynamicArray&& other) noexcept;
 
 private:
 	void copyFrom(const DynamicArray& other);
@@ -32,7 +35,8 @@ public:
 
 	void popBack(); //removes the last element
 
-	void set(const A& element, size_t index);
+	void setAtIndex(const A& element, size_t index);
+	void setAtIndex(A&& element, size_t index);
 
 	size_t getSize() const;
 	bool isEmpty() const;

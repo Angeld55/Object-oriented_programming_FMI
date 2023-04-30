@@ -18,8 +18,8 @@ public:
 	MyString& operator=(const MyString& other);
 	~MyString();
 
-	MyString(MyString&& other); 
-	MyString& operator=(MyString&& other); 
+	MyString(MyString&& other) noexcept; 
+	MyString& operator=(MyString&& other) noexcept; 
 	
 	size_t length() const;
 	MyString& operator+=(const MyString& other);

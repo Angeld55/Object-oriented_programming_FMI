@@ -1,5 +1,6 @@
 #include "DynamicArrayOfA.h"
 #include <exception>
+#include <utility>
 
 DynamicArray::DynamicArray() : DynamicArray(8) {}
 
@@ -47,6 +48,21 @@ DynamicArray::~DynamicArray()
 	free();
 }
 
+DynamicArray::DynamicArray(DynamicArray&& other) noexcept
+{
+	moveFrom(std::move(other));
+}
+
+DynamicArray& DynamicArray::operator=(DynamicArray&& other) noexcept
+{
+
+	if (this != &other)
+	{
+		free();
+		moveFrom(std::move(other));
+	}
+	return *this;
+}
 
 void DynamicArray::copyFrom(const DynamicArray& other)
 {
@@ -60,12 +76,18 @@ void DynamicArray::copyFrom(const DynamicArray& other)
 	capacity = other.capacity;
 }
 
+void DynamicArray::moveFrom(DynamicArray&& other)
+{
+	arr = other.arr;
+	other.arr = nullptr;
+	size = other.size;
+}
+
 
 void DynamicArray::free()
 {
 	delete[] arr;
 }
-
 
 void DynamicArray::resize(size_t newCap)
 {
@@ -81,7 +103,6 @@ void DynamicArray::resize(size_t newCap)
 }
 
 
-
 void DynamicArray::pushBack(const A& newElem)
 {
 	if (size >= capacity)
@@ -95,7 +116,7 @@ void DynamicArray::pushBack(A&& newElem)
 	if (size >= capacity)
 		resize(capacity * 2);
 
-	arr[size++] = std::move(newElem);
+	arr[size++] = std::move(newElem); //move op =
 }
 
 
@@ -110,13 +131,22 @@ void DynamicArray::popBack()
 		resize(capacity / 2);
 }
 
-void DynamicArray::set(const A& element, size_t index)
+void DynamicArray::setAtIndex(const A& element, size_t index)
 {
 	if(index >= size)
 		throw std::length_error("No such index!");
 
 	arr[index] = element;
 }
+
+void DynamicArray::setAtIndex(A&& element, size_t index)
+{
+	if (index >= size)
+		throw std::length_error("No such index!");
+
+	arr[index] = std::move(element); //move op =
+}
+
 
 size_t DynamicArray::getSize() const
 {
