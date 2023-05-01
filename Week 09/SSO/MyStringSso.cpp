@@ -132,7 +132,7 @@ MyString& MyString::operator+=(const MyString& other)
 {
 	size_t newStrSize = length() + other.length();
 
-	if (newStrSize <= 15)
+	if (newStrSize <= MyString::SSO_MAX_SIZE - 1)
 	{ //sso is aplied in the current object
 		strcat(ssoData, other.ssoData);
 		ssoData[MyString::SSO_MAX_SIZE - 1] = MyString::SSO_MAX_SIZE - 1 - newStrSize;
