@@ -103,7 +103,7 @@ size_t MyString::length() const
 {
 	if (isSso())
 	{
-		return MyString::SSO_MAX_SIZE - ssoData[MyString::SSO_MAX_SIZE - 1];
+		return MyString::SSO_MAX_SIZE - 1 - ssoData[MyString::SSO_MAX_SIZE - 1];
 	}
 	else
 	{
