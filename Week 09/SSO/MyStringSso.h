@@ -2,22 +2,25 @@
 #pragma once
 class MyString
 {
-	union 
+	static const short SSO_MAX_SIZE = sizeof(char*) + sizeof(size_t);
+
+	union
 	{
 		struct
 		{
 			char* _data;
-			size_t _size ;
+			size_t _size;
 		};
-		char ssoData[sizeof(_data) + sizeof(_size)]{'\0'};
+		char ssoData[MyString::SSO_MAX_SIZE]{ '\0' };
 	};
-	
+
 	bool isSso() const;
-	void copyFrom(const MyString& data);
+	void move(MyString&& other);
+	void copyFrom(const MyString& other);
 	void free();
-	
+
 	explicit MyString(size_t size);
-	
+
 	void notUsingSso();
 public:
 
@@ -29,7 +32,7 @@ public:
 
 	MyString(MyString&& other) noexcept;
 	MyString& operator=(MyString&& other) noexcept;
-	
+
 	MyString& operator+=(const MyString& other);
 
 	const char* c_str() const;
@@ -37,9 +40,9 @@ public:
 
 	char& operator[](size_t index);
 	char operator[](size_t index) const;
-	
+
 	~MyString();
-	
+
 	friend MyString operator+(const MyString& lhs, const MyString& rhs);
 };
 std::ostream& operator<<(std::ostream& os, const MyString& obj);
