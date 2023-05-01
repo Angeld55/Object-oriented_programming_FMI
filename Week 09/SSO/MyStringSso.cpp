@@ -108,7 +108,7 @@ size_t MyString::length() const
 	else
 	{
 		size_t realSize = _size;
-		size_t mask = ~(1 << 31); //we remove the bit of the size that shows us that SSO is applied.
+		size_t mask = ~(1 << 63); //we remove the bit of the size that shows us that SSO is not applied.
 		return realSize & mask;
 	}
 }
