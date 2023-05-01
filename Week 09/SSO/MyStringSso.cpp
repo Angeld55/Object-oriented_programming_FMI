@@ -14,9 +14,9 @@ MyString::MyString(const char* data)
 {
 	size_t currentSize = strlen(data);
 
-	if (currentSize <= MyString::SSO_MAX_SIZE - 1) //SSO
+	if (currentSize <= MyString::SSO_MAX_SIZE) //SSO
 	{
-		ssoData[MyString::SSO_MAX_SIZE - 1] = MyString::SSO_MAX_SIZE - 1 - currentSize;
+		ssoData[MyString::SSO_MAX_SIZE] = MyString::SSO_MAX_SIZE - currentSize;
 		strcpy(ssoData, data);
 	}
 	else
@@ -29,7 +29,7 @@ MyString::MyString(const char* data)
 }
 void MyString::notUsingSso()
 {
-	ssoData[MyString::SSO_MAX_SIZE - 1] |= (1 << 7);
+	ssoData[MyString::SSO_MAX_SIZE] |= (1 << 7);
 }
 
 MyString::MyString(MyString&& other) noexcept
@@ -67,7 +67,7 @@ void MyString::move(MyString&& other) {
 	if (other.isSso())
 	{
 		strcpy(ssoData, other.ssoData);
-		ssoData[MyString::SSO_MAX_SIZE - 1] = other.ssoData[MyString::SSO_MAX_SIZE - 1]; //copy the size
+		ssoData[MyString::SSO_MAX_SIZE] = other.ssoData[MyString::SSO_MAX_SIZE]; //copy the size
 	}
 	else
 	{
@@ -91,7 +91,7 @@ MyString::~MyString()
 
 bool MyString::isSso() const
 {
-	return (ssoData[MyString::SSO_MAX_SIZE - 1] & (1 << 7)) == 0;
+	return (ssoData[MyString::SSO_MAX_SIZE] & (1 << 7)) == 0;
 }
 
 const char* MyString::c_str() const
@@ -103,7 +103,7 @@ size_t MyString::length() const
 {
 	if (isSso())
 	{
-		return MyString::SSO_MAX_SIZE - 1 - ssoData[MyString::SSO_MAX_SIZE - 1];
+		return MyString::SSO_MAX_SIZE - ssoData[MyString::SSO_MAX_SIZE];
 	}
 	else
 	{
@@ -124,7 +124,7 @@ void MyString::copyFrom(const MyString& other)
 	else
 	{
 		strcpy(ssoData, other.ssoData);
-		ssoData[MyString::SSO_MAX_SIZE - 1] = other.ssoData[MyString::SSO_MAX_SIZE - 1]; //copy the size
+		ssoData[MyString::SSO_MAX_SIZE] = other.ssoData[MyString::SSO_MAX_SIZE]; //copy the size
 	}
 }
 
@@ -132,10 +132,10 @@ MyString& MyString::operator+=(const MyString& other)
 {
 	size_t newStrSize = length() + other.length();
 
-	if (newStrSize <= MyString::SSO_MAX_SIZE - 1)
+	if (newStrSize <= MyString::SSO_MAX_SIZE)
 	{ //sso is aplied in the current object
 		strcat(ssoData, other.ssoData);
-		ssoData[MyString::SSO_MAX_SIZE - 1] = MyString::SSO_MAX_SIZE - 1 - newStrSize;
+		ssoData[MyString::SSO_MAX_SIZE] = MyString::SSO_MAX_SIZE - newStrSize;
 	}
 	else
 	{
@@ -173,7 +173,7 @@ MyString operator+(const MyString& lhs, const MyString& rhs)
 {
 	size_t newStrSize = lhs.length() + rhs.length();
 
-	if (newStrSize <= MyString::SSO_MAX_SIZE - 1)
+	if (newStrSize <= MyString::SSO_MAX_SIZE)
 	{
 		MyString res(lhs);
 		res += rhs;

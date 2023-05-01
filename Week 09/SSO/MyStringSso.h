@@ -2,7 +2,7 @@
 #pragma once
 class MyString
 {
-	static const short SSO_MAX_SIZE = sizeof(char*) + sizeof(size_t);
+	static const short SSO_MAX_SIZE = sizeof(char*) + sizeof(size_t) - 1;
 
 	union
 	{
@@ -11,7 +11,7 @@ class MyString
 			char* _data;
 			size_t _size;
 		};
-		char ssoData[MyString::SSO_MAX_SIZE]{ '\0' };
+		char ssoData[MyString::SSO_MAX_SIZE + 1]{ '\0' };
 	};
 
 	bool isSso() const;
