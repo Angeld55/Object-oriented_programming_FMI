@@ -64,16 +64,12 @@ MyString& MyString::operator=(const MyString& other)
 }
 
 void MyString::move(MyString&& other) {
-	if (other.isSso())
+	_data = other._data;
+	_size = other._size;
+	
+	if (!other.isSso())
 	{
-		strcpy(ssoData, other.ssoData);
-		ssoData[MyString::SSO_MAX_SIZE] = other.ssoData[MyString::SSO_MAX_SIZE]; //copy the size
-	}
-	else
-	{
-		_data = other._data;
 		other._data = nullptr;
-		_size = other._size;
 		notUsingSso();
 	}
 }
