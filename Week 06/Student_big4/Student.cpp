@@ -75,8 +75,8 @@ const size_t Student::getGradesCount() const
 
 void Student::setName(const char* newName)
 {
-	if (!newName)
-		return; //another check ?
+	if (!newName || newName == name)
+		return;
 	delete[] name;
 
 	copyName(newName);
