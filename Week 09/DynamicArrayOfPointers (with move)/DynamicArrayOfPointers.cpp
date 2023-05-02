@@ -68,6 +68,7 @@ void DynamicArrayOfPointers::moveFrom(DynamicArrayOfPointers&& other)
 	other._data = nullptr;
 	_capacity = other._capacity;
 	_count = other._count;
+	other._count = 0; 
 }
 
 DynamicArrayOfPointers::DynamicArrayOfPointers(DynamicArrayOfPointers&& other) noexcept
