@@ -45,6 +45,5 @@ public:
 
 	friend MyString operator+(const MyString& lhs, const MyString& rhs);
 };
-std::ostream& operator<<(std::ostream& os, const MyString& obj);
 
-MyString operator+(const MyString& lhs, const MyString& rhs);
+std::ostream& operator<<(std::ostream& os, const MyString& obj);

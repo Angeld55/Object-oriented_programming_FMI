@@ -19,6 +19,4 @@ public:
 	
 };
 
-std::ostream& operator<<(std::ostream&, const StringView& strView);
-
 //TODO: implement comparison operators 

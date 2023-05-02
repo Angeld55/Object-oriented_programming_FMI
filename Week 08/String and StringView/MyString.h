@@ -34,13 +34,10 @@ public:
 	const char* c_str() const;
 
 	friend MyString operator+(const MyString& lhs, const MyString& rhs);
-	friend std::istream& operator>>(std::istream&, MyString& str);
+	friend std::istream& operator>>(std::istream& is, MyString& str);
 };
-MyString operator+(const MyString& lhs, const MyString& rhs);
 
 std::ostream& operator<<(std::ostream& os, const MyString& str);
-
-std::istream& operator>>(std::istream& os, MyString& str);
 
 bool operator<(const MyString& lhs, const MyString& rhs);
 bool operator<=(const MyString& lhs, const MyString& rhs);
