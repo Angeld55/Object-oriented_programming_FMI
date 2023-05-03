@@ -64,6 +64,7 @@ Teacher& Teacher::operator=(Teacher&& other)
 {
 	if (this != &other)
 	{
+		Person::operator=(std::move(other));
 		free();
 		moveFrom(std::move(other));
 	}
