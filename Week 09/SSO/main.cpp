@@ -4,6 +4,8 @@
 int main()
 {
     MyString sts("ABC");
+
+    std::cout << sts.c_str() << std::endl;
     
     sts+="xyz";
 

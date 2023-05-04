@@ -104,7 +104,8 @@ size_t MyString::length() const
 	else
 	{
 		size_t realSize = _size;
-		size_t mask = ~(1 << (sizeof(_size) * 8 - 1)); //we remove the bit of the size that shows us that SSO is not applied.
+		size_t mask = 1;
+		mask = ~(mask << (sizeof(_size) * 8 - 1)); //we remove the bit of the size that shows us that SSO is not applied.
 		return realSize & mask;
 	}
 }
@@ -183,4 +184,29 @@ MyString operator+(const MyString& lhs, const MyString& rhs)
 		res.notUsingSso();
 		return res;
 	}
+}
+bool operator<(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) < 0;
+}
+
+bool operator<=(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) <= 0;
+}
+bool operator>=(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) >= 0;
+}
+bool operator>(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) > 0;
+}
+bool operator==(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) == 0;
+}
+bool operator!=(const MyString& lhs, const MyString& rhs)
+{
+	return strcmp(lhs.c_str(), rhs.c_str()) != 0;
 }
