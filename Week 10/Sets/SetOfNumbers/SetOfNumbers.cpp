@@ -43,6 +43,27 @@ SetOfNumbers::~SetOfNumbers()
     free();
 }
 
+SetOfNumbers::SetOfNumbers(SetOfNumbers&& other) 
+{
+    moveFrom(std::move(other));
+}
+SetOfNumbers& SetOfNumbers::operator=(SetOfNumbers&& other)
+{
+    if (this != &other)
+    {
+        free();
+        moveFrom(std::move(other));
+    }
+    return *this;
+}
+void SetOfNumbers::moveFrom(SetOfNumbers&& other)
+{
+    data = other.data;
+    other.data = nullptr;
+    maxNumber = other.maxNumber;
+    other.maxNumber = 0;
+}
+
 void SetOfNumbers::copyFrom(const SetOfNumbers& other)
 {
     unsigned bucketsCount = other.getBucketsCount();

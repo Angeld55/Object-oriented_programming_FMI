@@ -10,6 +10,8 @@ class SetByString : SetOfNumbers
     void copyFrom(const SetByString& other);
     void free();
 
+    void moveFrom(SetByString&& other);
+
 public:
     SetByString(unsigned n, const char* data);
     SetByString(const SetByString& other);

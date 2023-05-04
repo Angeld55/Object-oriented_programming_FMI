@@ -13,6 +13,8 @@ class SetOfNumbers
     unsigned getBucketsCount() const;
 
     unsigned char getMask(unsigned number) const;
+
+    void moveFrom(SetOfNumbers&& other);
 public:
     SetOfNumbers() = default;
     SetOfNumbers(unsigned n);
@@ -20,6 +22,9 @@ public:
     SetOfNumbers(const SetOfNumbers& other);
     SetOfNumbers& operator=(const SetOfNumbers& other);
     ~SetOfNumbers();
+
+    SetOfNumbers(SetOfNumbers&& other);
+    SetOfNumbers& operator=(SetOfNumbers&& other);
 
     bool contains(unsigned number) const;
 

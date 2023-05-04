@@ -35,11 +35,16 @@ SetByString::SetByString(const SetByString& other) : SetOfNumbers(other)
 {
     copyFrom(other);
 }
-
-SetByString::SetByString(SetByString&& other) : SetOfNumbers(std::move(other))
+void SetByString::moveFrom(SetByString&& other)
 {
     str = other.str;
     other.str = nullptr;
+}
+
+
+SetByString::SetByString(SetByString&& other) : SetOfNumbers(std::move(other))
+{
+    moveFrom(std::move(other));
 }
 
 SetByString& SetByString::operator=(SetByString&& other)
@@ -48,8 +53,7 @@ SetByString& SetByString::operator=(SetByString&& other)
     {
         SetOfNumbers::operator=(std::move(other));
         free();
-        str = other.str;
-        other.str = nullptr;
+        moveFrom(std::move(other));
     }
     return *this;
 }
