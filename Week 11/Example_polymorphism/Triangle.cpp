@@ -13,7 +13,7 @@ double Triangle::getArea() const
 	Shape::point p2 = getPointAtIndex(1);
 	Shape::point p3 = getPointAtIndex(2);
 
-	return abs(p1.x*p2.y + p2.x*p3.y + p3.x*p1.y - p1.y * p2.x - p2.y*p3.x - p3.y*p1.x) / 2.00;
+	return abs(p1.x*p2.y + p2.x*p3.y + p3.x*p1.y - p1.y * p2.x - p2.y*p3.x - p3.y*p1.x) / 2.00; //formula with the determinant
 }
 double Triangle::getPer() const
 {
