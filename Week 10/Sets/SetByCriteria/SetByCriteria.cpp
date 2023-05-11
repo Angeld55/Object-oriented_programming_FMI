@@ -21,7 +21,7 @@ void SetByCriteria::fillSet()
 }
 
 
-bool SetByCriteria::conatins(int i) const
+bool SetByCriteria::contains(int i) const
 {
     return SetOfNumbers::contains(i);
 }
