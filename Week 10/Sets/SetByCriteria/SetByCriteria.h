@@ -16,7 +16,7 @@ private:
 
 public:
     SetByCriteria(unsigned n, bool (*incl)(unsigned n), bool (*excl)(unsigned n));
-    bool conatins(int i) const;
+    bool contains(int i) const;
     void print() const;
 
     void setInclude(bool (*incl)(unsigned n));
