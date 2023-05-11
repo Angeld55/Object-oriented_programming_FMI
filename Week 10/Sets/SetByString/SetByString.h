@@ -20,7 +20,7 @@ public:
     SetByString& operator=(const SetByString& other);
     ~SetByString();
 
-    bool conatins(int i) const;
+    bool contains(int i) const;
     void print() const;
     void setAt(unsigned ind, char ch);
 };
