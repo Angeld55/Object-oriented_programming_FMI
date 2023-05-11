@@ -81,7 +81,7 @@ void SetOfNumbers::free()
 
 unsigned SetOfNumbers::getBucketsCount() const
 {
-    return (maxNumber + 1) / 8 + 1;
+    return maxNumber / 8 + 1;
 }
 
 
@@ -90,7 +90,7 @@ SetOfNumbers::SetOfNumbers(unsigned n)
     data = new unsigned char[n / 8 + 1];
     for (unsigned i = 0; i < (n / 8 + 1); i++)
         data[i] = 0;
-    maxNumber = n - 1;
+    maxNumber = n;
 }
 
 unsigned SetOfNumbers::getBucketIndex(unsigned number) const
