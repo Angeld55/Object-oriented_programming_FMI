@@ -72,9 +72,9 @@ SetByString& SetByString::operator=(const SetByString& other)
 SetByString::~SetByString()
 {
     free();
-}// извиква се дестр на SetOfNumbers
+}// ГЁГ§ГўГЁГЄГўГ  Г±ГҐ Г¤ГҐГ±ГІГ° Г­Г  SetOfNumbers
 
-bool SetByString::conatins(int i) const
+bool SetByString::contains(int i) const
 {
     return SetOfNumbers::contains(i);
 }
