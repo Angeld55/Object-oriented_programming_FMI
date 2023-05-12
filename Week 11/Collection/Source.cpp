@@ -48,4 +48,10 @@ int main()
 			std::cout << i << " ";
 		}
 	}
+	
+	delete[] c1;
+	delete[] c2;
+	delete[] c3;
+	delete[] leftUnion;
+	delete[] intersect;
 }
