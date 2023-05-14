@@ -17,7 +17,7 @@ void IntervalCollection::copyFrom(const IntervalCollection& other)
 		data[i] = other.data[i];
 	}
 }
-IntervalCollection::IntervalCollection(size_t start, size_t end)
+IntervalCollection::IntervalCollection(int start, int end)
 {
 	if (end < start)
 	{
@@ -26,7 +26,7 @@ IntervalCollection::IntervalCollection(size_t start, size_t end)
 
 	this->start = start;
 	this->end = end;
-	size_t size = end - start;
+	int size = end - start;
 
 	data = new int[size] {0};
 }
