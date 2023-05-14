@@ -1,17 +1,18 @@
 #pragma once
 #include"Collection.h"
-#include<stddef.h>
+
 class IntervalCollection : public Collection
 {
 private:
 	int* data;
-	size_t start;
-	size_t end;
+	int start;
+	int end;
+	
 	void free();
 	void copyFrom(const IntervalCollection&);
 	void moveFrom(IntervalCollection&& other);
 public:
-	IntervalCollection(size_t start, size_t end);
+	IntervalCollection(int start, int end);
 
 	IntervalCollection(const IntervalCollection&);
 	IntervalCollection(IntervalCollection&&);
