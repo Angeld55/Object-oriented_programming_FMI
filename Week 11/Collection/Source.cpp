@@ -49,9 +49,9 @@ int main()
 		}
 	}
 	
-	delete[] c1;
-	delete[] c2;
-	delete[] c3;
-	delete[] leftUnion;
-	delete[] intersect;
+	delete c1;
+	delete c2;
+	delete c3;
+	delete leftUnion;
+	delete intersect;
 }
