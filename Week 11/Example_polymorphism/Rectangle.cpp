@@ -9,18 +9,18 @@ Rectangle::Rectangle(int x1, int y1, int x3, int y3) : Shape(4)
 }
 double Rectangle::getArea() const
 {
-	Shape::point p0 = getPointAtIndex(0);
-	Shape::point p1 = getPointAtIndex(1);
-	Shape::point p3 = getPointAtIndex(3);
+	const Shape::point& p0 = getPointAtIndex(0);
+	const Shape::point& p1 = getPointAtIndex(1);
+	const Shape::point& p3 = getPointAtIndex(3);
 
 	return p0.getDist(p1) * p0.getDist(p3);
 
 }
 double Rectangle::getPer() const
 {
-	Shape::point p0 = getPointAtIndex(0);
-	Shape::point p1 = getPointAtIndex(1);
-	Shape::point p3 = getPointAtIndex(3);
+	const Shape::point& p0 = getPointAtIndex(0);
+	const Shape::point& p1 = getPointAtIndex(1);
+	const Shape::point& p3 = getPointAtIndex(3);
 
 	return 2*(p0.getDist(p1) + p0.getDist(p3));
 }
