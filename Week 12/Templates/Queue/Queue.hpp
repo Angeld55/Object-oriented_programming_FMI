@@ -4,7 +4,7 @@ template <typename T>
 class MyQueue
 {
 	T* data;
-	size_t capacity;
+	size_t capacity; 
 	size_t size;
 
 	size_t get;
