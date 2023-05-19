@@ -9,7 +9,7 @@ private:
 	size_t size = 0;
 public:
 
-    void push(const T& obj);
+   	void push(const T& obj);
 	void push(T&& obj);
 
 	const T& peek() const;
