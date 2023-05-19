@@ -3,7 +3,8 @@
 #include <exception>
 template <typename T>
 class Optional
-{
+{	
+	//TBI move and operator*
 	T* data; //DYN MEM
 
 	void copyFrom(const Optional<T>& other);
