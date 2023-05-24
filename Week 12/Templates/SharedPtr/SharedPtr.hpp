@@ -20,6 +20,8 @@ public:
 
 	const T& operator*() const;
 	T& operator*();
+	const T* operator->() const;
+	T* operator->();
 
 	~SharedPtr();
 };
@@ -105,4 +107,15 @@ template <typename T>
 SharedPtr<T>::~SharedPtr()
 {
 	free();
+}
+
+
+template<typename T>
+T* SharedPtr<T>::operator->() {
+	return data;
+}
+
+template<typename T>
+const T* SharedPtr<T>::operator->() const {
+	return data;
 }
