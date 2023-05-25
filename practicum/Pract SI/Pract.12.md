@@ -1,12 +1,12 @@
 ﻿## Задачи
 
-**Задача 1.** Реализирайте темплейтен клас **Vector**, който има минимум следните функции:
+**Задача 1.** Реализирайте темплейтен клас **Vector**, който има минимум следните функции:<br />
 
-[**push_back**](https://cplusplus.com/reference/vector/vector/push_back/) - добавя елемент в края на вектора (да може и да се прави копие на подадения обект, и да се откраднат данните му)
-[**pop_back**](https://cplusplus.com/reference/vector/vector/pop_back/) - изтрива последния елемент на вектора
-[**insert**](https://cplusplus.com/reference/vector/vector/insert/) - добавя елемент на даден индекс във вектора
-[**erase**](https://cplusplus.com/reference/vector/vector/erase/) - изтрива елемент на даден индекс във вектора
-[**clear**](https://cplusplus.com/reference/vector/vector/clear/) - изчиства данните във вектора
+[**push_back**](https://cplusplus.com/reference/vector/vector/push_back/) - добавя елемент в края на вектора (да може и да се прави копие на подадения обект, и да се откраднат данните му)<br />
+[**pop_back**](https://cplusplus.com/reference/vector/vector/pop_back/) - изтрива последния елемент на вектора<br />
+[**insert**](https://cplusplus.com/reference/vector/vector/insert/) - добавя елемент на даден индекс във вектора<br />
+[**erase**](https://cplusplus.com/reference/vector/vector/erase/) - изтрива елемент на даден индекс във вектора<br />
+[**clear**](https://cplusplus.com/reference/vector/vector/clear/) - изчиства данните във вектора<br />
 
 
 **Задача 2.**  Windows forms е UI framework за лесно създаване на приложения за windows. Той
