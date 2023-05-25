@@ -1,6 +1,6 @@
+#pragma once
 #include <iostream>
 #include <memory>
-
 
 template <typename T>
 class SharedPtr
@@ -12,6 +12,7 @@ class SharedPtr
 	void copyFrom(const SharedPtr<T>& other);
 
 public:
+	SharedPtr();
 	SharedPtr(T* data);
 
 	SharedPtr(const SharedPtr<T>& other);
@@ -19,6 +20,8 @@ public:
 
 	const T& operator*() const;
 	T& operator*();
+	const T* operator->() const;
+	T* operator->();
 
 	~SharedPtr();
 };
@@ -26,6 +29,10 @@ public:
 template <typename T>
 void SharedPtr<T>::free()
 {
+	if(data == nullptr && pointersCount == nullptr)
+	{
+		return;
+	}
 	if (*pointersCount == 1)
 	{
 		delete data;
@@ -41,6 +48,13 @@ void SharedPtr<T>::copyFrom(const SharedPtr<T>& other)
 	data = other.data;
 	pointersCount = other.pointersCount;
 	(*pointersCount)++;
+}
+
+template <typename T>
+SharedPtr<T>::SharedPtr()
+{
+	data = nullptr;
+	pointersCount = nullptr;
 }
 
 template <typename T>
@@ -72,23 +86,36 @@ SharedPtr<T>& SharedPtr<T>::operator=(const SharedPtr<T>& other)
 template <typename T>
 const T& SharedPtr<T>::operator*() const
 {
-	return data;
+	if(data == nullptr)
+	{
+		throw std::runtime_error("Pointer not set");
+	}
+	return *data;
 }
 
 template <typename T>
 T& SharedPtr<T>::operator*()
 {
-	return data;
+	if(data == nullptr)
+	{
+		throw std::runtime_error("Pointer not set");
+	}
+	return *data;
 }
 
 template <typename T>
 SharedPtr<T>::~SharedPtr()
 {
-	if (*pointersCount == 1)
-	{
-		delete data;
-		delete pointersCount;
-	}
-	else
-		(*pointersCount)--;
+	free();
+}
+
+
+template<typename T>
+T* SharedPtr<T>::operator->() {
+	return data;
+}
+
+template<typename T>
+const T* SharedPtr<T>::operator->() const {
+	return data;
 }
