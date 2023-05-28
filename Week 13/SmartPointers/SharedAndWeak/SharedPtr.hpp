@@ -5,8 +5,40 @@
 template <typename T>
 class SharedPtr
 {
+	template <typename T> friend class WeakPtr;
+
+	struct Counter
+	{
+		unsigned useCount = 0;
+		unsigned weakCount = 0;
+
+		void removeSharedPtr()
+		{
+			useCount--;
+			if (useCount == 0)
+				weakCount--;
+		}
+		void removeWeakPtr()
+		{
+			weakCount--;
+		}
+
+		void addSharedPtr()
+		{
+			useCount++;
+			if (useCount == 1)
+				weakCount++;
+		}
+
+		void addWeakPtr()
+		{
+			weakCount++;
+		}
+
+	};
+
 	T* data;
-	unsigned* pointersCount;
+	Counter* counter;
 
 	void free();
 	void copyFrom(const SharedPtr<T>& other);
@@ -29,40 +61,43 @@ public:
 template <typename T>
 void SharedPtr<T>::free()
 {
-	if(data == nullptr && pointersCount == nullptr)
+	if(data == nullptr && counter == nullptr)
 		return;
 
-	if (*pointersCount == 1)
-	{
+	counter->removeSharedPtr();
+
+	if (counter->useCount == 0) 
 		delete data;
-		delete pointersCount;
-	}
-	else
-		(*pointersCount)--;
+
+	if (counter->weakCount == 0)
+		delete counter;
 }
 
 template <typename T>
 void SharedPtr<T>::copyFrom(const SharedPtr<T>& other)
 {
 	data = other.data;
-	pointersCount = other.pointersCount;
-	if (pointersCount)
-		(*pointersCount)++;
+	counter = other.counter;
+	if (counter)
+		counter->addSharedPtr();
 }
 
 template <typename T>
 SharedPtr<T>::SharedPtr()
 {
 	data = nullptr;
-	pointersCount = nullptr;
+	counter = nullptr;
 }
 
 template <typename T>
 SharedPtr<T>::SharedPtr(T* data)
 {
 	this->data = data;
-	if(this->data)
-		pointersCount = new unsigned(1);
+	if (this->data)
+	{
+		counter = new Counter();
+		counter->addSharedPtr();
+	}
 }
 
 template <typename T>
