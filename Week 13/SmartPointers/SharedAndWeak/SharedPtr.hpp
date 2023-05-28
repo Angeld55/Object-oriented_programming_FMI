@@ -42,6 +42,7 @@ class SharedPtr
 
 	void free();
 	void copyFrom(const SharedPtr<T>& other);
+	void moveFrom(SharedPtr<T>&& other);
 
 public:
 	SharedPtr();
@@ -49,6 +50,9 @@ public:
 
 	SharedPtr(const SharedPtr<T>& other);
 	SharedPtr& operator=(const SharedPtr<T>& other);
+
+	SharedPtr(SharedPtr<T>&& other);
+	SharedPtr& operator=(SharedPtr<T>&& other);
 
 	const T& operator*() const;
 	T& operator*();
@@ -104,6 +108,31 @@ template <typename T>
 SharedPtr<T>::SharedPtr(const SharedPtr<T>& other)
 {
 	copyFrom(other); 
+}
+
+template <typename T>
+void SharedPtr<T>::moveFrom(SharedPtr<T>&& other)
+{
+	data = other.data;
+	other.data = nullptr;
+
+	conter = other.counter;
+	other.counter = nullptr;
+}
+template <typename T>
+SharedPtr<T>::SharedPtr(SharedPtr<T>&& other)
+{
+	moveFrom(std::move(other));
+}
+template <typename T>
+SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr<T>&& other)
+{
+	if (this != other)
+	{
+		free();
+		moveFrom(std::move(other));
+	}
+	return *this;
 }
 
 template <typename T>

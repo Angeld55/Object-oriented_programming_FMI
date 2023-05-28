@@ -7,6 +7,7 @@ class WeakPtr
 	SharedPtr<T>::Counter* counter;
 	void copyFrom(const WeakPtr<T>& other);
 	void free();
+	void moveFrom(WeakPtr<T>&& other);
 
 public:
 	WeakPtr();
@@ -14,6 +15,9 @@ public:
 	WeakPtr(SharedPtr<T>& ptr);
 	WeakPtr(const WeakPtr<T>& other);
 	WeakPtr& operator=(const WeakPtr<T>& other);
+
+	WeakPtr(WeakPtr<T>&& other);
+	WeakPtr& operator=(WeakPtr<T>&& other);
 	~WeakPtr();
 
 	bool expired() const;
@@ -26,6 +30,33 @@ WeakPtr<T>::WeakPtr()
 	counter = nullptr;
 }
 
+template <typename T>
+void WeakPtr<T>::moveFrom(WeakPtr<T>&& other)
+{
+	data = other.data;
+	other.data = nullptr;
+
+	conter = other.counter;
+	other.counter = nullptr;
+}
+
+
+template <typename T>
+WeakPtr<T>::WeakPtr(WeakPtr<T>&& other)
+{
+	moveFrom(std::move(other));
+}
+
+template <typename T>
+WeakPtr<T>& WeakPtr<T>::operator=(WeakPtr<T>&& other)
+{
+	if (this != other)
+	{
+		free();
+		moveFrom(std::move(other));
+	}
+	return *this;
+}
 
 template <typename T>
 WeakPtr<T>::WeakPtr(SharedPtr<T>& ptr)
