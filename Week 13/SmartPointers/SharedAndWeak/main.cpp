@@ -11,6 +11,7 @@ struct A
 	~A() {
 		std::cout << "~A()" << std::endl;
 	}
+
 };
 int main()
 {
@@ -18,6 +19,7 @@ int main()
 	{
 		SharedPtr<A> pt(new A());
 		wp = pt;
+
 		std::cout << wp.expired() << std::endl;
 	}
 

@@ -116,7 +116,7 @@ void SharedPtr<T>::moveFrom(SharedPtr<T>&& other)
 	data = other.data;
 	other.data = nullptr;
 
-	conter = other.counter;
+	counter = other.counter;
 	other.counter = nullptr;
 }
 template <typename T>

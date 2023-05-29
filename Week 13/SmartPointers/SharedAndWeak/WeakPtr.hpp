@@ -1,5 +1,5 @@
 #include "SharedPtr.hpp"
-
+#include <stdexcept>
 template <typename T>
 class WeakPtr
 {
@@ -36,7 +36,7 @@ void WeakPtr<T>::moveFrom(WeakPtr<T>&& other)
 	data = other.data;
 	other.data = nullptr;
 
-	conter = other.counter;
+	counter = other.counter;
 	other.counter = nullptr;
 }
 
@@ -50,7 +50,7 @@ WeakPtr<T>::WeakPtr(WeakPtr<T>&& other)
 template <typename T>
 WeakPtr<T>& WeakPtr<T>::operator=(WeakPtr<T>&& other)
 {
-	if (this != other)
+	if (this != &other)
 	{
 		free();
 		moveFrom(std::move(other));
