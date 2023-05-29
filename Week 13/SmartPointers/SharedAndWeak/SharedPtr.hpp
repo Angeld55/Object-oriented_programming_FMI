@@ -127,7 +127,7 @@ SharedPtr<T>::SharedPtr(SharedPtr<T>&& other)
 template <typename T>
 SharedPtr<T>& SharedPtr<T>::operator=(SharedPtr<T>&& other)
 {
-	if (this != other)
+	if (this != &other)
 	{
 		free();
 		moveFrom(std::move(other));
