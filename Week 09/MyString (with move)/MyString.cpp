@@ -79,11 +79,15 @@ void MyString::copyFrom(const MyString& other)
 	strcpy(_data, other._data);
 }
 
-MyString::MyString(MyString&& other) noexcept
-{
-	_data = other._data; // to function moveFrom ?
+void MyString::move(MyString&& other) {
+	_data = other._data;
 	other._data = nullptr;
 	_length = other._length;
+}
+
+MyString::MyString(MyString&& other) noexcept
+{
+	move(std::move(other));
 }
 
 MyString& MyString::operator=(MyString&& other) noexcept
@@ -91,9 +95,7 @@ MyString& MyString::operator=(MyString&& other) noexcept
 	if (this != &other)
 	{
 		free();
-		_data = other._data;
-		other._data = nullptr;
-		_length = other._length;
+		move(std::move(other));
 	}
 	return *this;
 }
