@@ -17,6 +17,6 @@ struct A
 int main()
 {
 	
-	std::unique_ptr<A> ptr = ptr;
+	std::unique_ptr<A> ptr(new A());
 
 }
