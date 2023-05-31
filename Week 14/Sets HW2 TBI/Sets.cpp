@@ -346,7 +346,7 @@ Set* setFactory(const char* fileName) {
 	case 1: return createNotDividedByAnySet(in); break;
 	case 2: return createNotDividedByOnlyOneSet(in); break;
 	case 3: return createIntersectionOfSets(in); break;
-	case 4: return createIntersectionOfSets(in); break;
+	case 4: return createUnionOfSets(in); break;
 	default: throw std::runtime_error("Invalid mode"); break;
 	}
 }
