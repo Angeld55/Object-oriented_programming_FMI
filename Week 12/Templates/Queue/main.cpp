@@ -230,7 +230,7 @@ public:
 
 };
 
-template <typename T, T D, typename K>
+template <typename T, typename D, typename K>
 class Tripple
 {
 	Pair<Pair<T, D>, K> data;
