@@ -1,7 +1,7 @@
 #include <iostream>
 #include <exception>
-#include "../MyString/MyString.h"
-#include "../MyString/StringView.h"
+#include "MyString/MyString.h"
+#include "MyString/StringView.h"
 
 const char AND = '^';
 const char OR = 'v';

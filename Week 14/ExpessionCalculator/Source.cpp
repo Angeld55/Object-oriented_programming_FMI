@@ -1,7 +1,7 @@
 #include <iostream>
 #include <exception>
-#include "../MyString/MyString.h"
-#include "../ExpessionCalculator/ExpressionCalculator.h"
+#include "MyString/MyString.h"
+#include "ExpressionCalculator.h"
 
 int main()
 {
