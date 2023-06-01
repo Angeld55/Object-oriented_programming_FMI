@@ -1,7 +1,7 @@
 #include "SharedPtr.hpp"
 #include <stdexcept>
 template <typename T>
-class WeakPtr
+class WeakPtr : public SharedPtr<T>
 {
 	T* data;
 	SharedPtr<T>::Counter* counter;
