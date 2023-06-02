@@ -10,10 +10,10 @@ private:
 public:
 	UnaryOperation(char op, SetExpression* sub);
 
-	virtual bool isElementIn(const Element& el) const override;
-	virtual SetExpression* clone() const override;
+	bool isElementIn(const Element& el) const override;
+	SetExpression* clone() const override;
 
-	virtual ~UnaryOperation();
+	~UnaryOperation();
 };
 
 
@@ -27,8 +27,8 @@ private:
 public:
 	BinaryOperation(char op, SetExpression* left, SetExpression* right);
 
-	virtual bool isElementIn(const Element& el) const override;
-	virtual SetExpression* clone() const override;
+	bool isElementIn(const Element& el) const override;
+	SetExpression* clone() const override;
 
-	virtual ~BinaryOperation();
+	~BinaryOperation();
 };
