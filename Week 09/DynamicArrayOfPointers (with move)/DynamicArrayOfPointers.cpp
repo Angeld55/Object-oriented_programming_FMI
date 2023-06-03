@@ -110,7 +110,7 @@ void DynamicArrayOfPointers::removeAt(size_t index)
 	_data[index] = nullptr;
 	_count--;
 
-	if (_count == _capacity / 4)
+	if (_count == _capacity / 4 && _capacity / 2 > 8)
 		resize(_capacity / 2);
 }
 
@@ -132,7 +132,7 @@ void DynamicArrayOfPointers::popBack()
 	delete _data[_count - 1];
 	_count--;
 
-	if (_count == _capacity / 4)
+	if (_count == _capacity / 4 && _capacity / 2 > 8)
 		resize(_capacity / 2);
 }
 
