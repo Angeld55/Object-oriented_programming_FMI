@@ -1,5 +1,7 @@
 #include "MyString.h"
 
+#pragma warning(disable: 4996)
+
 MyString::MyString(size_t capacity)
 {
 	_length = capacity - 1;
@@ -20,7 +22,7 @@ MyString operator+(const MyString& lhs, const MyString& rhs)
 MyString& MyString::operator+=(const MyString& other)
 {
 	char* result = new char[(_length += other._length) + 1];
-	result[0] = '\0'; 
+	result[0] = '\0';
 	strcat(result, _data);
 	strcat(result, other._data);
 
@@ -37,7 +39,7 @@ MyString::MyString() : MyString(1)
 
 MyString::MyString(const char* data) : MyString(strlen(data) + 1)
 {
-	strcpy(_data, data);	
+	strcpy(_data, data);
 }
 
 MyString::MyString(const MyString& other)
@@ -79,12 +81,31 @@ void MyString::copyFrom(const MyString& other)
 	strcpy(_data, other._data);
 }
 
-char& MyString::operator[](size_t index) //Неконстантен достъп
+MyString::MyString(MyString&& other) noexcept
+{
+	_data = other._data; // to function moveFrom ?
+	other._data = nullptr;
+	_length = other._length;
+}
+
+MyString& MyString::operator=(MyString&& other) noexcept
+{
+	if (this != &other)
+	{
+		free();
+		_data = other._data;
+		other._data = nullptr;
+		_length = other._length;
+	}
+	return *this;
+}
+
+char& MyString::operator[](size_t index)
 {
 	return _data[index];
 }
 
-char MyString::operator[](size_t index) const //Константен достъп 
+char MyString::operator[](size_t index) const
 {
 	return _data[index];
 }
@@ -93,7 +114,7 @@ MyString MyString::substr(size_t begin, size_t howMany) const
 {
 	if (begin + howMany > _length)
 		throw std::length_error("Error, Substr out of range");
-	
+
 
 	MyString res(howMany + 1);
 	for (int i = 0; i < howMany; i++)

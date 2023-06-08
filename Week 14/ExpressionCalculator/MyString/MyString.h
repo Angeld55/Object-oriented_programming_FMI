@@ -18,10 +18,8 @@ public:
 	MyString& operator=(const MyString& other);
 	~MyString();
 
-	//move semantics on the next lecture
-	//MyString(MyString&& other) = delete; 
-	//MyString& operator=(MyString&& other) = delete; 
-	///
+	MyString(MyString&& other) noexcept;
+	MyString& operator=(MyString&& other) noexcept;
 
 	size_t length() const;
 	MyString& operator+=(const MyString& other);
@@ -30,11 +28,11 @@ public:
 
 	char& operator[](size_t index);
 	char operator[](size_t index) const;
-	
+
 	const char* c_str() const;
 
 	friend MyString operator+(const MyString& lhs, const MyString& rhs);
-	friend std::istream& operator>>(std::istream& is, MyString& str);
+	friend std::istream& operator>>(std::istream&, MyString& str);
 };
 
 std::ostream& operator<<(std::ostream& os, const MyString& str);

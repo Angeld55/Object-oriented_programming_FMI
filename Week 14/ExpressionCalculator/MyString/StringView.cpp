@@ -1,6 +1,6 @@
 #include "StringView.h"
 
-StringView::StringView(const char* begin, const char* end): _begin(begin), _end(end)
+StringView::StringView(const char* begin, const char* end) : _begin(begin), _end(end)
 {}
 
 StringView::StringView(const char* str) : StringView(str, str + strlen(str)) {}
