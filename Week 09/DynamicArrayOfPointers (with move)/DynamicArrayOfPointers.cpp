@@ -109,6 +109,9 @@ void DynamicArrayOfPointers::removeAt(size_t index)
 	delete _data[index];
 	_data[index] = nullptr;
 	_count--;
+
+	if (_count == _capacity / 4 && _capacity / 2 > 8)
+		resize(_capacity / 2);
 }
 
 const A& DynamicArrayOfPointers::operator[](size_t index) const
@@ -128,6 +131,9 @@ void DynamicArrayOfPointers::popBack()
 
 	delete _data[_count - 1];
 	_count--;
+
+	if (_count == _capacity / 4 && _capacity / 2 > 8)
+		resize(_capacity / 2);
 }
 
 void DynamicArrayOfPointers::setAtIndex(const A& obj, size_t index)
