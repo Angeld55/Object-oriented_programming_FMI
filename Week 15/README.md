@@ -1,4 +1,4 @@
-# Дървовидна структура от полиморфни обекти.
+# Design patterns. Solid principles
 
 
 
