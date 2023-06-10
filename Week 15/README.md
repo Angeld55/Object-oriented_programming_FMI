@@ -12,7 +12,7 @@
   
 ## Разгледани design patterns
  - Factory
- - Singelton
+ - Singleton
  - Flyweight
  - Iterator
  - Command
