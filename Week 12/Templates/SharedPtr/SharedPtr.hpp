@@ -22,6 +22,7 @@ public:
 	T& operator*();
 	const T* operator->() const;
 	T* operator->();
+	bool isInitlized() const;
 
 	~SharedPtr();
 };
@@ -110,11 +111,19 @@ SharedPtr<T>::~SharedPtr()
 
 
 template<typename T>
-T* SharedPtr<T>::operator->() {
+T* SharedPtr<T>::operator->() 
+{
 	return data;
 }
 
 template<typename T>
-const T* SharedPtr<T>::operator->() const {
+const T* SharedPtr<T>::operator->() const 
+{
 	return data;
 }
+
+bool SharedPtr<T>::isInitlized() const
+{
+	return data != nullptr;
+}
+
