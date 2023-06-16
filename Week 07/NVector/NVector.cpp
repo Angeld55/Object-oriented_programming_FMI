@@ -174,9 +174,7 @@ void Nvector::print() const
 	std::cout << "(";
 	
 	for (size_t i = 0; i < size - 1; i++)
-	{
 		std::cout << data[i] << ", ";
-	}
 	
 	std::cout << data[size] << ")" << std::endl;
 }
