@@ -168,3 +168,13 @@ bool operator|=(const Nvector& lhs, const Nvector& rhs)
 {
 	return  lhs % rhs == 0; //the size check is done by %
 }
+
+void Nvector::print() const
+{
+	std::cout << "(";
+	
+	for (size_t i = 0; i < size - 1; i++)
+		std::cout << data[i] << ", ";
+	
+	std::cout << data[size] << ")" << std::endl;
+}

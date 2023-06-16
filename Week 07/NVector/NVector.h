@@ -26,9 +26,9 @@ public:
 	 
 	int operator[](size_t) const; // get
 
-	void print();
+	void print() const;
 
-	size_t operator~() const;//ize;
+	size_t operator~() const;// size;
 
 	friend std::ostream& operator<<(std::ostream& os, const Nvector& v);
 	friend std::istream& operator>>(std::istream&, Nvector& v);
