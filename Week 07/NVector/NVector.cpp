@@ -142,13 +142,13 @@ Nvector& Nvector::operator*=(size_t scalar)
 	return *this;
 }
 
-const Nvector operator*(const Nvector& lhs, size_t scalar)
+Nvector operator*(const Nvector& lhs, size_t scalar)
 {
 	Nvector copy(lhs);
 	copy *= scalar;
 	return copy;
 }
-const Nvector operator*(size_t scalar, const Nvector& lhs)
+Nvector operator*(size_t scalar, const Nvector& lhs)
 {
 	return lhs * scalar;
 }
@@ -171,10 +171,8 @@ bool operator|=(const Nvector& lhs, const Nvector& rhs)
 
 void Nvector::print() const
 {
-	std::cout << "(";
-	
-	for (size_t i = 0; i < size - 1; i++)
-		std::cout << data[i] << ", ";
-	
-	std::cout << data[size] << ")" << std::endl;
+	std::cout << "[ ";
+	for (int i = 0; i < v.size; i++)
+		std::cout << v[i] << " ";
+	std::cout << " ]";
 }
