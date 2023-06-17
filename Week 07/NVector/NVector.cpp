@@ -123,14 +123,28 @@ std::istream& operator>>(std::istream& is, Nvector& v)
 
 bool operator||(const Nvector& lhs, const Nvector& rhs)
 {
-	if (~lhs != ~rhs)
-		return false;
-
-	for (int i = 0; i < ~lhs - 1; i++)
-	{
-		if (lhs[i] * rhs[i + 1] != lhs[i + 1] * rhs[i])
-			return false;
+	if (lhs.size != rhs.size) {
+		throw "The vectors should have the same size!";
 	}
+
+	double lambda = 0;
+	bool foundIndex = false;
+
+	for (size_t i = 0; i < size; i++) {
+		if (lhs.data[i] && rhs.data[i]) {
+			if (foundIndex == false) {
+				lambda = (double)lhs.data[i] / rhs.data[i];
+				foundIndex = true;
+			}
+			else if ((double)lhs.data[i] / (double)rhs.data[i] != lambda) {
+				return false;
+			}
+		}
+		else if ((lhs.data[i] == 0) ^ (rhs.data[i] == 0)) {
+			return false;
+		}
+	}
+
 	return true;
 }
 
