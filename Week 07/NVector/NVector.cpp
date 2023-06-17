@@ -172,7 +172,7 @@ bool operator|=(const Nvector& lhs, const Nvector& rhs)
 void Nvector::print() const
 {
 	std::cout << "[ ";
-	for (int i = 0; i < v.size; i++)
-		std::cout << v[i] << " ";
+	for (int i = 0; i < data.size; i++)
+		std::cout << data[i] << " ";
 	std::cout << " ]";
 }
