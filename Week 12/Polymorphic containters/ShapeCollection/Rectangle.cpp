@@ -2,7 +2,7 @@
 
 Rectangle::Rectangle(int x1, int y1, int x3, int y3) : Shape(4)
 {
-	if (x1 < x3) 
+	if (x1 > x3) 
 		std::swap(x1, x3);
 	if (y1 < y3)
 		std::swap(y1, y3);
