@@ -1,4 +1,4 @@
-#include "Nvector.h"
+#include "NVector.h"
 
 Nvector::Nvector(size_t n) : size(n)
 {
@@ -62,7 +62,7 @@ Nvector& Nvector::operator-=(const Nvector& other)
 
 	for (int i = 0; i < size; i++)
 		data[i] -= other.data[i];
-	
+
 	return *this;
 }
 
@@ -123,24 +123,24 @@ std::istream& operator>>(std::istream& is, Nvector& v)
 
 bool operator||(const Nvector& lhs, const Nvector& rhs)
 {
-	if (lhs.size != rhs.size) {
+	if (~lhs != ~rhs) {
 		throw "The vectors should have the same size!";
 	}
 
 	double lambda = 0;
 	bool foundIndex = false;
 
-	for (size_t i = 0; i < size; i++) {
-		if (lhs.data[i] && rhs.data[i]) {
+	for (size_t i = 0; i < ~lhs; i++) {
+		if (lhs[i] && rhs[i]) {
 			if (foundIndex == false) {
-				lambda = (double)lhs.data[i] / rhs.data[i];
+				lambda = (double)lhs[i] / rhs[i];
 				foundIndex = true;
 			}
-			else if ((double)lhs.data[i] / (double)rhs.data[i] != lambda) {
+			else if ((double)lhs[i] / (double)rhs[i] != lambda) {
 				return false;
 			}
 		}
-		else if ((lhs.data[i] == 0) ^ (rhs.data[i] == 0)) {
+		else if ((lhs[i] == 0) ^ (rhs[i] == 0)) {
 			return false;
 		}
 	}
@@ -186,7 +186,7 @@ bool operator|=(const Nvector& lhs, const Nvector& rhs)
 void Nvector::print() const
 {
 	std::cout << "[ ";
-	for (int i = 0; i < data.size; i++)
+	for (int i = 0; i < size; i++)
 		std::cout << data[i] << " ";
 	std::cout << " ]";
 }
