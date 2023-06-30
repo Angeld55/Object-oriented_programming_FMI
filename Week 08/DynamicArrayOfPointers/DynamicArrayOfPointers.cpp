@@ -77,7 +77,12 @@ void DynamicArrayOfPointers::removeAt(size_t index)
 		return;
 
 	delete _data[index];
-	_data[index] = nullptr;
+	
+	for (size_t i = index; i < count - 1; i++){ //
+		_data[index] = _data[index + 1];    // _data[index] = _data[count - 1];
+	}					    //
+	
+	_data[count - 1] = nullptr;
 	_count--;
 }
 
