@@ -60,7 +60,7 @@ bool SortedStringPool::addString(const char* str)
 		data[currentIndex + 1] = data[currentIndex];
 		currentIndex--;
 	}
-	//currentIndex + 1 å ïîçèöèÿòà
+	//currentIndex + 1 Ã¥ Ã¯Ã®Ã§Ã¨Ã¶Ã¨Ã¿Ã²Ã 
 
 	if (currentIndex + 1 > 0 && lastStrcmpRes == 0)
 	{
@@ -107,7 +107,7 @@ long long SortedStringPool::contains(const char* str) const
 		if (strCmpRes == 0)
 		{
 			result = mid;
-			end = mid - 1;
+			start = mid + 1;
 		}
 		else if (strCmpRes < 0)
 		{
