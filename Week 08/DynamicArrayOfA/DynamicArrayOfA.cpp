@@ -3,8 +3,12 @@
 
 DynamicArray::DynamicArray() : DynamicArray(8) {}
 
-static size_t closestPowerOfAwo(size_t n)
+static size_t closestPowerOfTwo(size_t n)
 {
+	if (n == 0) {
+		return 1;
+	}
+	
 	n--;
 	n |= n >> 1;
 	n |= n >> 2;
@@ -17,7 +21,7 @@ static size_t closestPowerOfAwo(size_t n)
 
 DynamicArray::DynamicArray(size_t capacity) : size(0)
 {
-	this->capacity = closestPowerOfAwo(capacity);
+	this->capacity = closestPowerOfTwo(capacity);
 	arr = new A[this->capacity];
 }
 
@@ -67,7 +71,7 @@ void DynamicArray::free()
 
 void DynamicArray::resize(size_t newCap)
 {
-
+	newCap = closestPowerOfTwo(newCap);
 	A* temp = arr;
 	arr = new A[newCap];
 
