@@ -96,7 +96,7 @@ FuncOperation::FuncOperation(IntegerFunction** sets, size_t count)
 		this->sets[i] = sets[i]->clone();
 }
 
-FuncOperation::FuncOperation(const FuncOperation& other)
+FuncOperation::FuncOperation(const FuncOperation& other) : IntegerFunction(other)
 {
 	copyfrom(other);
 }
@@ -104,6 +104,7 @@ FuncOperation& FuncOperation::operator=(const FuncOperation& other)
 {
 	if (this != &other)
 	{
+	    IntegerFunction::operator=(other);
 		free();
 		copyfrom(other);
 	}
