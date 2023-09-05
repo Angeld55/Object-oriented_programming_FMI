@@ -111,7 +111,7 @@ FuncOperation& FuncOperation::operator=(const FuncOperation& other)
 	return *this;
 }
 
-FuncOperation::FuncOperation(FuncOperation&& other)
+FuncOperation::FuncOperation(FuncOperation&& other) : IntegerFunction(std::move(other))
 {
 	moveFrom(std::move(other));
 }
@@ -120,6 +120,7 @@ FuncOperation& FuncOperation::operator=(FuncOperation&& other)
 {
 	if (this != &other)
 	{
+	    	IntegerFunction::operator=(std::move(other));
 		free();
 		moveFrom(std::move(other));
 	}
