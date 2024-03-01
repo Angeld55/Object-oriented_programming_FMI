@@ -81,3 +81,9 @@ void printHighestGradeFromMajor(Student students[MAX_STUDENTS_COUNT], size_t siz
 double getAverageFromMajor(Student students[MAX_STUDENTS_COUNT], size_t size, Major major) {...}
 ```
 която връща средностатистическият успех на всички студенти от дадена специалност
+
+## Бонус: union
+
+Реализирайте `union Shape`, който да поддържа 3 вида фигури - кръг, квадрат и правоъгълник. Реализирайте функция, която приема инстанция на Shape и енъм ShapeType и връща лицето на фигурата
+
+Проверете какъв е размерът на написания от вас union
