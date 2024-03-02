@@ -1,13 +1,4 @@
-3
-Petur
-12
-3
-Ivan
-12345
-2
-Aleksandur
-56
-4#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <assert.h>
 
