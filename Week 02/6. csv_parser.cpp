@@ -11,6 +11,7 @@ namespace GlobalConstants
 	constexpr int BUFFER_SIZE = 1024;
 	constexpr char SEP = ',';
 }
+
 typedef char Field[GlobalConstants::FIELD_MAX_SIZE];
 
 struct Row
@@ -24,7 +25,6 @@ struct CsvTable
 	size_t rowsCount = 0;
 	size_t collsCount = 0;
 };
-
 
 size_t parseRow(const char* row, Row& toReturn)
 {
@@ -52,7 +52,10 @@ CsvTable parseFromFile(const char* fileName)
 {
 	std::ifstream ifs(fileName);
 	if (!ifs.is_open())
+	{
 		return {};
+	}
+
 	return parseFromFile(ifs);
 }
 
@@ -70,15 +73,14 @@ void printTable(const CsvTable& table)
 
 void saveRowToFile(std::ostream& ofs, const Row& row, size_t collsCount)
 {
-	for (int j = 0; j < collsCount; j++)
+	for (int i = 0; i < collsCount; i++)
 	{
-		ofs << row.fields[j];
-		if (j != collsCount - 1)
+		ofs << row.fields[i];
+		if (i != collsCount - 1)
 		{
 			ofs << GlobalConstants::SEP;
 		}
 	}
-	ofs << std::endl;
 }
 
 void saveToFile(std::ostream& ofs, const CsvTable& table)
@@ -86,6 +88,10 @@ void saveToFile(std::ostream& ofs, const CsvTable& table)
 	for (int i = 0; i < table.rowsCount; i++)
 	{
 		saveRowToFile(ofs, table.rows[i], table.collsCount);
+		if (i != table.rowsCount - 1) 
+		{
+			ofs << std::endl;
+		}
 	}
 }
 
