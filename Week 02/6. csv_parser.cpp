@@ -99,6 +99,7 @@ void saveToFile(const char* fileName, const CsvTable& table)
 {
 	std::ofstream ofs(fileName);
 	saveToFile(ofs, table);
+	ofs.close();
 }
 
 int main()
