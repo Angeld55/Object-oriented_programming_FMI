@@ -75,7 +75,7 @@ void saveToFile(std::ostream& ofs, const CsvTable& table)
 		{
 			ofs << table.rows[i].fields[j] << GlobalConstants::SEP;
 		}
-		std::cout << std::endl;
+		ofs << std::endl;
 	}
 }
 
