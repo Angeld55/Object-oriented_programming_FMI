@@ -33,7 +33,7 @@ size_t parseRow(const char* row, Row& toReturn)
 	size_t currentColumnCount = 0;
 	while (!ss.eof())
 	{
-		ss.getline(toReturn.fields[currentColumnCount++], GlobalConstants::BUFFER_SIZE, GlobalConstants::SEP);
+		ss.getline(toReturn.fields[currentColumnCount++], GlobalConstants::FIELD_MAX_SIZE, GlobalConstants::SEP);
 	}
 	return currentColumnCount;
 }
