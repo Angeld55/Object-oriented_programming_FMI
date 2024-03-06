@@ -5,10 +5,11 @@
 
 namespace GlobalConstants
 {
-	const int FIELD_MAX_SIZE = 30;
-	const int MAX_FIELDS_ROW = 10;
-	const int ROWS_MAX_SIZE = 300;
-	const char SEP = ',';
+	constexpr int FIELD_MAX_SIZE = 30;
+	constexpr int MAX_FIELDS_ROW = 10;
+	constexpr int ROWS_MAX_SIZE = 300;
+	constexpr int BUFFER_SIZE = 1024;
+	constexpr char SEP = ',';
 }
 typedef char Field[GlobalConstants::FIELD_MAX_SIZE];
 
@@ -32,17 +33,17 @@ size_t parseRow(const char* row, Row& toReturn)
 	size_t currentColumnCount = 0;
 	while (!ss.eof())
 	{
-		ss.getline(toReturn.fields[currentColumnCount++], 1024, GlobalConstants::SEP);
-	}	
+		ss.getline(toReturn.fields[currentColumnCount++], GlobalConstants::BUFFER_SIZE, GlobalConstants::SEP);
+	}
 	return currentColumnCount;
 }
 CsvTable parseFromFile(std::istream& ifs)
 {
 	CsvTable result;
-	char buff[1024];
+	char buff[GlobalConstants::BUFFER_SIZE];
 	while (!ifs.eof())
 	{
-		ifs.getline(buff, 1024);
+		ifs.getline(buff, GlobalConstants::BUFFER_SIZE);
 		result.collsCount = parseRow(buff, result.rows[result.rowsCount++]);
 	}
 	return result;
@@ -67,15 +68,24 @@ void printTable(const CsvTable& table)
 	}
 }
 
+void saveRowToFile(std::ostream& ofs, const Row& row, size_t collsCount)
+{
+	for (int j = 0; j < collsCount; j++)
+	{
+		ofs << row.fields[j];
+		if (j != collsCount - 1)
+		{
+			ofs << GlobalConstants::SEP;
+		}
+	}
+	ofs << std::endl;
+}
+
 void saveToFile(std::ostream& ofs, const CsvTable& table)
 {
 	for (int i = 0; i < table.rowsCount; i++)
 	{
-		for (int j = 0; j < table.collsCount; j++)
-		{
-			ofs << table.rows[i].fields[j] << GlobalConstants::SEP;
-		}
-		ofs << std::endl;
+		saveRowToFile(ofs, table.rows[i], table.collsCount);
 	}
 }
 
