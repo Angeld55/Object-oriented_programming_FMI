@@ -135,7 +135,7 @@ int main()
 
 	printTable(myFile);
 
-	//changing the name of Katerina to Petya
+	//changing the "Ime" column values.
 	modify(myFile, "Ime", "Katerina|Petya", '|');
 
 	saveToFile("students_new.csv", myFile);
