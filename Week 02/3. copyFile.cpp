@@ -18,8 +18,6 @@ bool copyTo(const char* fileNameSource, const char* fileNameDest)
 		sourceStream.getline(buff, 1024);
 		destStream << buff << std::endl;
 	}
-	sourceStream.close();
-	destStream.close();
 }
 int main()
 {
