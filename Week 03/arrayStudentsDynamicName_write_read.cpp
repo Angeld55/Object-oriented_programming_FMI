@@ -96,7 +96,6 @@ int main()
  
 		saveStudentsArrayToFile(ofs, arr, 3);
  
-		ofs.close();
 		freeStudent(arr[0]);
 		freeStudent(arr[1]);
 		freeStudent(arr[2]);
@@ -117,6 +116,5 @@ int main()
  
 		for (size_t i = 0; i < size; i++)
 			freeStudent(arr[i]);
-		ifs.close();
 	}
 }
