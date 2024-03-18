@@ -83,7 +83,7 @@ public:
 
 int main()
 {
-	Time t(1,22,33);//00:00:00
+	Time t(1,22,33);
 
 	t.setMins(30);
 	t.setSeconds(0);
