@@ -59,18 +59,20 @@ void BulgarianDate::goToNextDay()
 	{
 		day = 14;
 		month = 4;
-		return;
 	}
-
-	day++;
-	if (day > MAX_DAYS[month - 1])
+	else
 	{
-	    day = 1;
-	    
-		setMonth(month == 12 ? 1 : (month + 1));
-		if (month == 1)
-			setYear(year + 1);
+		day++;
+		if (day > MAX_DAYS[month - 1])
+		{
+		    day = 1;
+		    
+			setMonth(month == 12 ? 1 : (month + 1));
+			if (month == 1)
+				setYear(year + 1);
+		}
 	}
+	isModified = true;
 }
 
 int BulgarianDate::getDayOfWeek() const
