@@ -65,8 +65,7 @@ void BulgarianDate::goToNextDay()
 		day++;
 		if (day > MAX_DAYS[month - 1])
 		{
-		    day = 1;
-		    
+		    	day = 1;   
 			setMonth(month == 12 ? 1 : (month + 1));
 			if (month == 1)
 				setYear(year + 1);
