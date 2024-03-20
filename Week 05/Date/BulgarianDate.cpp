@@ -10,21 +10,24 @@ BulgarianDate::BulgarianDate(unsigned day, unsigned month, unsigned year)
 
 unsigned BulgarianDate::getDay() const
 {
+	if(!good()) return 0;
 	return day;
 }
 unsigned BulgarianDate::getMonth() const
 {
+	if(!good()) return 0;
 	return month;
 }
 unsigned BulgarianDate::getYear() const
-{
+{	
+	if(!good()) return 0;
 	return year;
 }
 
 void BulgarianDate::setYear(unsigned year)
 {
+	if(!good()) return;
 	this->year = year;
-	
 	if (isLeapYear())
 		MAX_DAYS[1] = 29;
 	else
@@ -36,12 +39,14 @@ void BulgarianDate::setYear(unsigned year)
 
 void BulgarianDate::setDay(unsigned day)
 {
+	if(!good()) return;
 	this->day = day;
 	isModified = true;
 	validateDate();
 }
 void BulgarianDate::setMonth(unsigned month)
 {
+	if(!good()) return;
 	this->month = month;
 	isModified = true;
 	validateDate();
@@ -49,6 +54,7 @@ void BulgarianDate::setMonth(unsigned month)
 
 void BulgarianDate::goToNextDay()
 {
+	if(!good()) return;
 	if (year == 1916 && month == 3 && day == 31) //Julian to the Gregorian calendar
 	{
 		day = 14;
@@ -69,13 +75,14 @@ void BulgarianDate::goToNextDay()
 
 int BulgarianDate::getDayOfWeek() const
 {
+	if(!good()) return -1;
 	if (!isModified)
 		return dayOfWeek;
 
 	BulgarianDate d(1,1,1);
-	int day = 5; //0 for monday, 6 for sunday
+	int day = 5; //0 for monday, 6 for sunday (We know that 1.1.1 is sunday)
 
-	while (compareBulgarianDates(d, *this) != 0)
+	while (compareBulgarianDates(d, *this) != 0)  //very simple (but dumb) algorithm
 	{
 		d.goToNextDay();
 		day++;
@@ -88,6 +95,7 @@ int BulgarianDate::getDayOfWeek() const
 
 void BulgarianDate::print() const
 {
+	if(!good()) return;
 	std::cout << day << "." << month << "." << year << std::endl;
 }
 
