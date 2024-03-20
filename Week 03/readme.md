@@ -361,7 +361,7 @@ int main()
     
     Test arr[3] = {{'a', 400},{'b', 500},{'c', 600}};
     
-    f.write((const char*)&arr, sizeof(arr));
+    f.write((const char*)arr, sizeof(arr));
     
     f.close();
 }
