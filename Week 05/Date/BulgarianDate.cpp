@@ -80,7 +80,7 @@ int BulgarianDate::getDayOfWeek() const
 		return dayOfWeek;
 
 	BulgarianDate d(1,1,1);
-	int day = 5; //0 for monday, 6 for sunday (We know that 1.1.1 is sunday)
+	int day = 5; //0 for monday, 6 for sunday (We know that 1.1.1 is saturday)
 
 	while (compareBulgarianDates(d, *this) != 0)  //very simple (but dumb) algorithm
 	{
@@ -111,6 +111,7 @@ void BulgarianDate::validateDate()
 {
     isDateInValidState =  !((month == 0 || month > 12) ||
                           (day == 0 || day > MAX_DAYS[month - 1]) ||
+	    		  (year == 0) ||
                           (year == 1916 && month == 4 && day < 14)); //(due to the transition of Julian to Gregorian)
                           //we don't create an object here, because we are calling this func in the constructor(an inf recursion)
 }
