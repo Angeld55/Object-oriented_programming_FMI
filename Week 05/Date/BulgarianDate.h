@@ -9,14 +9,14 @@ class BulgarianDate
 	unsigned year = 1;
 
 	bool isLeapYear() const;
-  void validateDate();
+        void validateDate();
     
-    bool isDateInValidState = true;
+        bool isDateInValidState = true;
 	mutable bool isModified = true;
 	mutable int dayOfWeek = -1;
 
 public:
-  BulgarianDate() = default;
+ 	BulgarianDate() = default;
 	BulgarianDate(unsigned day, unsigned month, unsigned year);
 	unsigned getDay() const;
 	unsigned getMonth() const;
