@@ -116,7 +116,7 @@ bool BulgarianDate::good() const //all functions should check this in the beggin
 void BulgarianDate::clear()
 {
     isDateInValidState = true;
-    day = months = year = 1;
+    day = month = year = 1;
 }
 
 int compareBulgarianDates(const BulgarianDate& lhs, const BulgarianDate& rhs)
