@@ -44,12 +44,12 @@ struct StudentDatabase
 
 void sortStudents(StudentDatabase& database)
 {
-    assert(studentsCount <= STUDENTS_MAX_SIZE);
+    assert(database.studentsCount <= STUDENTS_MAX_SIZE);
 }
 
 void printDatabase(const StudentDatabase& database)
 {
-    assert(studentsCount <= STUDENTS_MAX_SIZE);
+    assert(database.studentsCount <= STUDENTS_MAX_SIZE);
 
     for (int i = 0; i < database.studentsCount; i++)
         printStudent(database.students[i]);
