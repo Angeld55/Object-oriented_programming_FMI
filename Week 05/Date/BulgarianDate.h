@@ -1,3 +1,5 @@
+#pragma once
+
 class BulgarianDate
 {
 	unsigned MAX_DAYS[12] =
