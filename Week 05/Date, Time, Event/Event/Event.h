@@ -1,6 +1,9 @@
 #pragma once
 #include "../Time/Time.h"
-#include "../Date/Date.h"
+#include "../Date/BulgarianDate.h"
+
+typedef BulgarianDate Date;
+
 class Event
 {
 	char _name[21];

@@ -43,7 +43,7 @@ void Event::setName(const char* str)
 }
 void Event::validateTimes()
 {
-	if (_startTime.compare(_endTime) >= 1)
+	if (compareTimes(_startTime, _endTime) >= 1)
 		std::swap(_startTime, _endTime);
 }
 
