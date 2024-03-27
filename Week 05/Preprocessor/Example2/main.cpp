@@ -2,7 +2,7 @@
 
 int main()
 {
-	#include "nz.txt";
+#include "nz.txt";
 	a++;
 	std::cout << a;
 }
