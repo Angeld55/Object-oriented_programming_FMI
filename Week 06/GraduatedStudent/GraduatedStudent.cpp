@@ -2,7 +2,7 @@
 #include <cstring>
 #pragma warning (disable : 4996)
 
-//опхелюле, ве наейрю е хгвхярем 
+//we assume that the object is "empty". No need for delete
 void GraduatedStudent::copyFrom(const GraduatedStudent& other)
 {
 	name = new char[strlen(other.name) + 1];
