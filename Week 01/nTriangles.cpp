@@ -68,7 +68,7 @@ namespace Figures
         {
             int minAreaTriangleIndex = i;
 
-            for (int j = i; j < N; j++)
+            for (int j = i + 1; j < N; j++)
             {
                 if (areas[j] < areas[minAreaTriangleIndex])
                     minAreaTriangleIndex = j;
