@@ -15,7 +15,7 @@ unsigned Interval::countCriteria(bool(*pred)(int)) const
 
 Interval::Interval(int start, int end)
 {
-    if (start >= end)
+    if (start <= end)
     {
         this->start = start;
         this->end = end;
