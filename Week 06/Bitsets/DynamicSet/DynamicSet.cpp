@@ -16,6 +16,8 @@ void DynamicSet::free()
 void DynamicSet::copyFrom(const DynamicSet& other)
 {
 	buckets = new uint8_t[other.bucketsCount];
+	for(size_t i = 0; i < other.bucketCount; i++)
+		buckets[i] = other.buckets[i];
 	bucketsCount = other.bucketsCount;
 	N = other.N;
 }
