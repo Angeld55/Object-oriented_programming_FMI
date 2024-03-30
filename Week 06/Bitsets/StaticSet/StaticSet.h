@@ -3,7 +3,7 @@
 
 constexpr unsigned MAX_NUM = 1023;
 constexpr unsigned NUMBERS_COUNT = MAX_NUM + 1;
-constexpr unsigned BUCKET_SIZE = sizeof(uint8_t);
+constexpr unsigned BUCKET_SIZE = sizeof(uint8_t) * 8;
 constexpr unsigned BUCKETS_COUNT = NUMBERS_COUNT / BUCKET_SIZE + 1;
 
 class StaticSet
