@@ -1,6 +1,6 @@
 #include "NVector.h"
 
-Nvector::Nvector(size_t n) : size(n)
+NVector::NVector(size_t n) : size(n)
 {
 	data = new int[n];
 
@@ -8,12 +8,12 @@ Nvector::Nvector(size_t n) : size(n)
 		data[i] = 0;
 }
 
-Nvector::Nvector(const Nvector& other)
+NVector::NVector(const NVector& other)
 {
 	copyFrom(other);
 }
 
-Nvector& Nvector::operator=(const Nvector& other)
+NVector& NVector::operator=(const NVector& other)
 {
 	if (this != &other)
 	{
@@ -22,12 +22,12 @@ Nvector& Nvector::operator=(const Nvector& other)
 	}
 	return *this;
 }
-Nvector::~Nvector()
+NVector::~NVector()
 {
 	free();
 }
 
-void Nvector::copyFrom(const Nvector& other)
+void NVector::copyFrom(const NVector& other)
 {
 	size = other.size;
 	data = new int[size];
@@ -35,7 +35,7 @@ void Nvector::copyFrom(const Nvector& other)
 	for (int i = 0; i < size; i++)
 		data[i] = other.data[i];
 }
-void Nvector::free()
+void NVector::free()
 {
 	delete[] data;
 	size = 0;
@@ -44,7 +44,7 @@ void Nvector::free()
 
 
 //v += v1;
-Nvector& Nvector::operator+=(const Nvector& other)
+NVector& NVector::operator+=(const NVector& other)
 {
 	if (size != other.size)
 		throw "The vectors should have the same size!";
@@ -55,7 +55,7 @@ Nvector& Nvector::operator+=(const Nvector& other)
 	return *this;
 }
 
-Nvector& Nvector::operator-=(const Nvector& other)
+NVector& NVector::operator-=(const NVector& other)
 {
 	if (size != other.size)
 		throw "The vectors should have the same size!";
@@ -66,23 +66,23 @@ Nvector& Nvector::operator-=(const Nvector& other)
 	return *this;
 }
 
-Nvector operator+(const Nvector& lhs, const Nvector& rhs)
+NVector operator+(const NVector& lhs, const NVector& rhs)
 {
-	Nvector lhsCopy(lhs);
+	NVector lhsCopy(lhs);
 	lhsCopy += rhs;
 
 	return lhsCopy;
 }
 
-Nvector operator-(const Nvector& lhs, const Nvector& rhs)
+NVector operator-(const NVector& lhs, const NVector& rhs)
 {
-	Nvector lhsCopy(lhs);
+	NVector lhsCopy(lhs);
 	lhsCopy -= rhs;
 
 	return lhsCopy;
 }
 
-int& Nvector::operator[](size_t index)
+int& NVector::operator[](size_t index)
 {
 	if (index >= size)
 		throw "Invalid index";
@@ -90,7 +90,7 @@ int& Nvector::operator[](size_t index)
 	return data[index];
 }
 
-int Nvector::operator[](size_t index) const
+int NVector::operator[](size_t index) const
 {
 	if (index >= size)
 		throw "Invalid index";
@@ -98,12 +98,12 @@ int Nvector::operator[](size_t index) const
 	return data[index];
 }
 
-size_t Nvector::operator~() const
+size_t NVector::operator~() const
 {
 	return size;
 }
 
-std::ostream& operator<<(std::ostream& os, const Nvector& v)
+std::ostream& operator<<(std::ostream& os, const NVector& v)
 {
 	os << "[ ";
 	for (int i = 0; i < v.size; i++)
@@ -113,7 +113,7 @@ std::ostream& operator<<(std::ostream& os, const Nvector& v)
 	return os;
 }
 
-std::istream& operator>>(std::istream& is, Nvector& v)
+std::istream& operator>>(std::istream& is, NVector& v)
 {
 	for (int i = 0; i < v.size; i++)
 		is >> v[i];
@@ -121,7 +121,7 @@ std::istream& operator>>(std::istream& is, Nvector& v)
 	return is;
 }
 
-bool operator||(const Nvector& lhs, const Nvector& rhs)
+bool operator||(const NVector& lhs, const NVector& rhs)
 {
 	if (~lhs != ~rhs) {
 		throw "The vectors should have the same size!";
@@ -130,7 +130,7 @@ bool operator||(const Nvector& lhs, const Nvector& rhs)
     double ratio = 0.0;
     bool ratioSet = false;
 
-    for (size_t i = 0; i < lhs.size(); ++i) 
+    for (size_t i = 0; i < ~lhs; ++i) 
     {
         // Skip if both components are zero
         if (lhs[i] == 0 && rhs[i] == 0) 
@@ -160,7 +160,7 @@ bool operator||(const Nvector& lhs, const Nvector& rhs)
     return true;
 }
 
-Nvector& Nvector::operator*=(size_t scalar)
+NVector& NVector::operator*=(size_t scalar)
 {
 	for (int i = 0; i < size; i++)
 		data[i] *= scalar;
@@ -168,17 +168,17 @@ Nvector& Nvector::operator*=(size_t scalar)
 	return *this;
 }
 
-Nvector operator*(const Nvector& lhs, size_t scalar)
+NVector operator*(const NVector& lhs, size_t scalar)
 {
-	Nvector copy(lhs);
+	NVector copy(lhs);
 	copy *= scalar;
 	return copy;
 }
-Nvector operator*(size_t scalar, const Nvector& lhs)
+NVector operator*(size_t scalar, const NVector& lhs)
 {
 	return lhs * scalar;
 }
-size_t operator%(const Nvector& lhs, const Nvector& rhs)
+size_t operator%(const NVector& lhs, const NVector& rhs)
 {
 	if (~lhs != ~rhs)
 		throw "The vectors should have the same size!";
@@ -190,15 +190,8 @@ size_t operator%(const Nvector& lhs, const Nvector& rhs)
 	return res;
 }
 
-bool operator|=(const Nvector& lhs, const Nvector& rhs)
+bool operator|=(const NVector& lhs, const NVector& rhs)
 {
 	return  lhs % rhs == 0; //the size check is done by %
 }
 
-void Nvector::print() const
-{
-	std::cout << "[ ";
-	for (int i = 0; i < size; i++)
-		std::cout << data[i] << " ";
-	std::cout << " ]";
-}
