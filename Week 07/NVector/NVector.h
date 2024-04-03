@@ -1,28 +1,28 @@
 #pragma once
 #include <iostream>
 
-class Nvector
+class NVector
 {
 private:
 	int* data;
 	size_t size;
 
-	void copyFrom(const Nvector& other);
+	void copyFrom(const NVector& other);
 	void free();
 
 public:
-	Nvector(size_t size);
+	NVector(size_t size);
 
-	Nvector(const Nvector& other);
-	Nvector& operator=(const Nvector& other);
-	~Nvector();
-
-
-	Nvector& operator+=(const Nvector& other);
-	Nvector& operator-=(const Nvector& other);
+	NVector(const NVector& other);
+	NVector& operator=(const NVector& other);
+	~NVector();
 
 
-	Nvector& operator*=(size_t scalar);
+	NVector& operator+=(const NVector& other);
+	NVector& operator-=(const NVector& other);
+
+
+	NVector& operator*=(size_t scalar);
 
 	int& operator[](size_t); //get set
 	int operator[](size_t) const; // get
@@ -30,26 +30,26 @@ public:
 
 	size_t operator~() const;// size;
 
-	friend std::ostream& operator<<(std::ostream& os, const Nvector& v);
-	friend std::istream& operator>>(std::istream&, Nvector& v);
+	friend std::ostream& operator<<(std::ostream& os, const NVector& v);
+	friend std::istream& operator>>(std::istream&, NVector& v);
 };
 
-Nvector operator+(const Nvector& lhs, const Nvector& rhs);
-Nvector operator-(const Nvector& lhs, const Nvector& rhs);
+NVector operator+(const NVector& lhs, const NVector& rhs);
+NVector operator-(const NVector& lhs, const NVector& rhs);
 
 
 //So it could be commutative:
-Nvector operator*(const Nvector& lhs, size_t scalar);
-Nvector operator*(size_t scalar, const Nvector& lhs);
+NVector operator*(const NVector& lhs, size_t scalar);
+NVector operator*(size_t scalar, const NVector& lhs);
 
 
 //are parallel
-bool operator||(const Nvector& lhs, const Nvector& rhs);
+bool operator||(const NVector& lhs, const NVector& rhs);
 
 
 //scalar product
-size_t operator%(const Nvector& lhs, const Nvector& rhs);
+size_t operator%(const NVector& lhs, const NVector& rhs);
 
 
 //are perpendicular
-bool operator|=(const Nvector& lhs, const Nvector& rhs);
+bool operator|=(const NVector& lhs, const NVector& rhs);
