@@ -65,6 +65,7 @@ int main() {
 class Student {
 	char* name = nullptr;
 	int* grades = nullptr;
+	size_t gradesCount;
 	int fn;
 
 public:
