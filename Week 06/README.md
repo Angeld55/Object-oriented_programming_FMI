@@ -81,7 +81,7 @@ int main()
  ```c++
 struct Person
 {
-	Person(const char* name, int age) : name(nullptr), age(age)
+	Person(const char* name, int age)
 	{
 		setName(name);
 		setAge(age);
