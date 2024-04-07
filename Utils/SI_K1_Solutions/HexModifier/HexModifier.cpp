@@ -213,7 +213,7 @@ std::ostream& operator<<(std::ostream& os, const HexModifier& modifier)
 std::istream& operator>>(std::istream& is, HexModifier& modifier)
 {
     char buffer[GlobalConstants::BUFFER_SIZE];
-    is.getline(buffer, GlobalConstants::BUFFER_SIZE);
+    is >> buffer;
 
     std::stringstream ss(buffer);
 
