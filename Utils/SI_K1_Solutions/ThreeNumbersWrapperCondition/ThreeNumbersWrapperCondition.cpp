@@ -1,19 +1,29 @@
 #include "ThreeNumbersWrapperCondition.h"
 
+namespace GlobalConstants {
+	constexpr int MAX_VALUE = 999;
+	constexpr int MIN_VALUE = 0;
+}
+
 bool CustomPredicates::allValid(int a, int b, int c)
 {
 	return true;
 }
 
+bool ThreeNumbersWrapperCondition::isValidValue(int value) const
+{
+	return value >= GlobalConstants::MIN_VALUE && value <= GlobalConstants::MAX_VALUE;
+}
+
 bool ThreeNumbersWrapperCondition::goToNextElement()
 {
-	c = (c + 1) % 1000;
+	c = (c + 1) % (GlobalConstants::MAX_VALUE + 1);
 	if (c == 0)
 	{
-		b = (b + 1) % 1000;
+		b = (b + 1) % (GlobalConstants::MAX_VALUE + 1);
 		if (b == 0)
 		{
-			a = (a + 1) % 1000;
+			a = (a + 1) % (GlobalConstants::MAX_VALUE + 1);
 			if (a == 0)
 			{
 				return false;
@@ -135,7 +145,7 @@ int ThreeNumbersWrapperCondition::getIndex() const
 	{
 		return -1;
 	}
-	
+
 	if (!isModified)
 	{
 		return elementsBeforeCount;
@@ -156,7 +166,7 @@ int ThreeNumbersWrapperCondition::getIndex() const
 
 void ThreeNumbersWrapperCondition::validateState()
 {
-	good = predicate(a, b, c);
+	good = isValidValue(a) && isValidValue(b) && isValidValue(c) && predicate(a, b, c);
 }
 
 bool ThreeNumbersWrapperCondition::isGood() const

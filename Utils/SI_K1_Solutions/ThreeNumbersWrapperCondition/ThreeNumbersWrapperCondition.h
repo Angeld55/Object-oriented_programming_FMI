@@ -14,6 +14,7 @@ class ThreeNumbersWrapperCondition
 	mutable bool isModified = true;
 	mutable size_t elementsBeforeCount = 0;
 
+	bool isValidValue(int value) const;
 	bool goToNextElement();
 	void validateState();
 public:
