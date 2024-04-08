@@ -181,12 +181,12 @@ int compare(const ThreeNumbersWrapperCondition& lhs, const ThreeNumbersWrapperCo
 		return lhs.a - rhs.a;
 	}
 
-	if (lhs.a == rhs.a && lhs.b != rhs.b)
+	if (lhs.b != rhs.b)
 	{
 		return lhs.b - rhs.b;
 	}
 
-	if (lhs.a == rhs.a && lhs.b == rhs.b && lhs.c != rhs.c)
+	if (lhs.c != rhs.c)
 	{
 		return lhs.c - rhs.c;
 	}
