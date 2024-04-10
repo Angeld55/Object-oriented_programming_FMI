@@ -77,9 +77,10 @@ MyString& MyString::operator+=(const MyString& other)
 {
     if (getSize() + other.getSize() + 1 > _allocatedDataSize)
         resize(dataToAllocByStringLen(getSize() + other.getSize()));
-  
+
+    // we need to use strncat instead of strcat, because strcat will not work for str += str 
+    // (the terminating zero of str will be destroyed by the first char)
     std::strncat(_data, other._data, other.getSize()); 
-    //use strncat instead of strcat, because strcat will not work for str += str (the term zero of str will be destroyed by the first char)
     
     _size = getSize() + other.getSize();
     return *this;
