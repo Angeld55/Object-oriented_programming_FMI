@@ -6,7 +6,6 @@ class MyString
 public:
     MyString();
     MyString(const char* data);
-    explicit MyString(size_t stringLength);
 
     MyString(const MyString& other);
     MyString& operator=(const MyString& other); 
@@ -26,6 +25,7 @@ public:
     friend std::istream& operator>>(std::istream& is, MyString& ref);
 
 private:
+    explicit MyString(size_t stringLength);
     void resize(unsigned newAllocatedDataSize);
 
     void free();
