@@ -23,7 +23,7 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const MyString& obj);
     friend std::istream& operator>>(std::istream& is, MyString& ref);
-
+    friend MyString operator+(const MyString& lhs, const MyString& rhs);
 private:
     explicit MyString(size_t stringLength);
     void resize(unsigned newAllocatedDataSize);
@@ -36,7 +36,7 @@ private:
     size_t _allocatedDataSize;
 };
 
-MyString operator+(const MyString& lhs, const MyString& rhs);
+
 
 bool operator==(const MyString& lhs, const MyString& rhs);
 bool operator!=(const MyString& lhs, const MyString& rhs);
