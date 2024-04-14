@@ -138,6 +138,7 @@ HexModifier::HexModifier(const char* srcPath, const char* destPath)
         std::ifstream ifs(srcPath, std::ios::binary);
         if (!ifs.is_open())
         {
+            delete[] this->destPath;
             return;
         }
 
