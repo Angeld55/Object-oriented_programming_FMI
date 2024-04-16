@@ -121,7 +121,7 @@ bool DynamicArrayOfPointers::containsAt(unsigned ind) const
 
 void DynamicArrayOfPointers::removeAt(size_t index)
 {
-	if (index >= _count)
+	if (index >= _capacity)
 		return;
 
 	delete _data[index];
