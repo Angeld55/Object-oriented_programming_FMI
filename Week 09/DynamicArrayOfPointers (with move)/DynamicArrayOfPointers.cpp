@@ -91,7 +91,7 @@ void DynamicArrayOfPointers::addAtFirstFreeIndex(const A& current)
 		resize(_capacity * 2);
 
 	int ind = getFirstFreeIndex();
-	_data[_count++] = new A(current);
+	_data[ind] = new A(current);
 	_count++;
 }
 
