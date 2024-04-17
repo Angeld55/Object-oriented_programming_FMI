@@ -58,7 +58,7 @@ void MyString::moveFrom(MyString&& other)
     other._size = 0;
 
     _allocatedDataSize = other._allocatedDataSize;
-    _allocatedDataSize = 0;
+    other._allocatedDataSize = 0;
 }
 
 
