@@ -13,7 +13,7 @@ void DynamicArrayOfPointers::copyFrom(const DynamicArrayOfPointers& other)
 	_capacity = other._capacity;
 
 	_data = new A*[_capacity];
-	for (int i = 0; i < _count; i++)
+	for (int i = 0; i < _capacity; i++)
 	{
 		if (other._data[i] == nullptr)
 			_data[i] = nullptr;
@@ -26,7 +26,7 @@ void DynamicArrayOfPointers::resize(size_t newCap)
 {
 	A** newDataPtr = new A * [newCap] {nullptr};
 	
-	for (int i = 0; i < _count; i++)
+	for (int i = 0; i < _capacity; i++)
 		newDataPtr[i] = _data[i];
 
 	delete[] _data;
@@ -121,7 +121,7 @@ bool DynamicArrayOfPointers::containsAt(unsigned ind) const
 
 void DynamicArrayOfPointers::removeAt(size_t index)
 {
-	if (index >= _count)
+	if (index >= _capacity)
 		return;
 
 	delete _data[index];
