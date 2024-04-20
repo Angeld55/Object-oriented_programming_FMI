@@ -15,7 +15,7 @@ int getCharCount(std::ifstream& ifs, char ch) {
 		char current = ifs.get();
 
 		if (ifs.eof()) {
-			return count + 1;
+			return count;
 		}
 
 		if (current == ch) {
@@ -35,7 +35,7 @@ int getLinesCount(const char* fileName) {
 		return -1;
 	}
 
-	return getCharCount(ifs, NEW_LINE_CHAR);
+	return getCharCount(ifs, NEW_LINE_CHAR) + 1;
 }
 int main()
 {
