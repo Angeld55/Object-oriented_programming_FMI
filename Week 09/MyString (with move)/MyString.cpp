@@ -4,7 +4,7 @@
 #pragma warning (disable : 4996)
 
 
-static unsigned roundToPowerOfTwo(unsigned v) //static! -> will be discused in the next lecture
+static unsigned roundToPowerOfTwo(unsigned v)
 {
     v--;
     v |= v >> 1;
