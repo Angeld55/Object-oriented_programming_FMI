@@ -184,7 +184,7 @@ size_t operator%(const NVector& lhs, const NVector& rhs)
 		throw "The vectors should have the same size!";
 
 	size_t res = 0;
-	for (int i = 0; ~lhs; i++)
+	for (int i = 0; i < ~lhs; i++)
 		res += lhs[i] * rhs[i];
 
 	return res;
