@@ -8,11 +8,11 @@ public:
     MyString(const char* data);
 
     MyString(const MyString& other);
-    MyString(MyString&& other);
+    MyString(MyString&& other) noexcept;
 
     MyString& operator=(const MyString& other); 
 
-    MyString& operator=(MyString&& other);
+    MyString& operator=(MyString&& other) noexcept;
     ~MyString();
 
     size_t getCapacity() const;
