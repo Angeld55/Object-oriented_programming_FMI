@@ -130,8 +130,8 @@ void DynamicArrayOfPointers::removeAt(size_t index)
 	_data[index] = nullptr;
 	_count--;
 
-	if (_count == _capacity / 4 && _capacity / 2 > 8)
-		resize(_capacity / 2);
+	/*if (_count == _capacity / 4 && _capacity / 2 > 8)
+		resize(_capacity / 2);*/
 }
 
 const A& DynamicArrayOfPointers::operator[](size_t index) const

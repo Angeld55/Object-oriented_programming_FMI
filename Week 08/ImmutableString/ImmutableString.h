@@ -5,6 +5,19 @@
 
 class ImmutableString
 {
+
+public:
+
+	ImmutableString(const char* data);
+	ImmutableString(const ImmutableString& other);
+	~ImmutableString();
+
+	size_t length() const;
+	char operator[](size_t index) const;
+	const char* c_str() const;
+
+private:
+
 	const char* _data;
 	size_t _length;
 
@@ -13,19 +26,6 @@ class ImmutableString
 
 	explicit ImmutableString(size_t capacity); 
 	static StringPool _pool;
-
-public:
-
-	ImmutableString(const char* data);
-	ImmutableString(const ImmutableString& other);
-	~ImmutableString();
-
-
-	size_t length() const;
-
-	char operator[](size_t index) const;
-
-	const char* c_str() const;
 };
 
 std::ostream& operator<<(std::ostream& os, const ImmutableString& str);
