@@ -66,8 +66,10 @@ void DynamicArrayOfPointers::moveFrom(DynamicArrayOfPointers&& other)
 {
 	_data = other._data;
 	other._data = nullptr;
+
 	_capacity = other._capacity;
 	_count = other._count;
+	
 	other._count = 0; 
 }
 
@@ -156,7 +158,7 @@ void DynamicArrayOfPointers::popBack()
 
 void DynamicArrayOfPointers::setAtIndex(const A& obj, size_t index)
 {
-	if (index >= capacity) 
+	if (index >= _capacity) 
 		resize(_capacity * 2);
 	
 	/*
@@ -165,7 +167,7 @@ void DynamicArrayOfPointers::setAtIndex(const A& obj, size_t index)
 	*/
 
 	if (_data[index] != nullptr)
-		*_data[index] = obj;
+		_data[index]->operator=(obj);
 	else
 	{
 		_data[index] = new A(obj);

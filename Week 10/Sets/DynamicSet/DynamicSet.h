@@ -22,21 +22,10 @@ public:
 	void add(unsigned num);
 	void remove(unsigned num);
 	bool contains(unsigned num) const; 
+	unsigned getN() const;
 	void print() const;
+	void removeAll() const;
 	friend DynamicSet UnionOfSets(const DynamicSet& lhs, const DynamicSet& rhs);
 	friend DynamicSet IntersectionOfSets(const DynamicSet& lhs, const DynamicSet& rhs);
 
-};
-
-class SetByCriteria : public DynamicSet
-{
-public:
-	SetByCriteria(int n, bool(*cr)(unsigned)) : DynamicSet(n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			if (cr(i))
-				add(i);
-		}
-	}
 };
