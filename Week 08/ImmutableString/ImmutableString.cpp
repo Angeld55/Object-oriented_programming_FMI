@@ -7,6 +7,7 @@ StringPool ImmutableString::_pool;
 ImmutableString::ImmutableString(const char* data) 
 {
 	_data = _pool.getAllocatedString(data);
+	_length = std::strlen(data);
 }
 
 ImmutableString::ImmutableString(const ImmutableString& other)
@@ -34,10 +35,11 @@ size_t ImmutableString::length() const
 void ImmutableString::copyFrom(const ImmutableString& other)
 {
 	_data = _pool.getAllocatedString(other._data);
+	_length = other._length;
 }
 
 
-char ImmutableString::operator[](size_t index) const //Константен достъп 
+char ImmutableString::operator[](size_t index) const //ГЉГ®Г­Г±ГІГ Г­ГІГҐГ­ Г¤Г®Г±ГІГєГЇ 
 {
 	return _data[index];
 }
