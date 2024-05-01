@@ -13,7 +13,7 @@ class DynamicSet
 
 	unsigned getBucketIndex(unsigned num) const;
 public:
-	DynamicSet(unsigned n); // [0....n] (n + 1 ÷èñëà)
+	DynamicSet(unsigned n); // [0....n] (n + 1 Ã·Ã¨Ã±Ã«Ã )
 
 	DynamicSet(const DynamicSet& other);
 	DynamicSet& operator=(const DynamicSet& other);
@@ -24,7 +24,7 @@ public:
 	bool contains(unsigned num) const; 
 	unsigned getN() const;
 	void print() const;
-	void removeAll() const;
+	void removeAll();
 	friend DynamicSet UnionOfSets(const DynamicSet& lhs, const DynamicSet& rhs);
 	friend DynamicSet IntersectionOfSets(const DynamicSet& lhs, const DynamicSet& rhs);
 
