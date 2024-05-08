@@ -10,6 +10,7 @@ public:
 
 	ImmutableString(const char* data);
 	ImmutableString(const ImmutableString& other);
+	ImmutableString& operator=(const ImmutableString& other) = delete; //this could be implemented in some cases
 	~ImmutableString();
 
 	size_t length() const;
