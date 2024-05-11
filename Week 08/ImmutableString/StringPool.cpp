@@ -59,10 +59,10 @@ void StringPool::releaseString(const char* str)
 	}
 }
 
-void StringPool::~StringPool()
+StringPool::~StringPool()
 {
    for(int i = 0; i < stringCapacity; i++) //if the class is used correctly all strings will be deleted by this point.
-	   delete stringRecords[i];
+	   delete stringRecords[i].str;
    delete[] stringRecords;
 }
 
