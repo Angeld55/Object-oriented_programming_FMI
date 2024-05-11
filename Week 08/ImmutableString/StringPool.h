@@ -6,7 +6,9 @@ public:
 	StringPool();
 	const char* getAllocatedString(const char* str);
 	void releaseString(const char* str); 
-
+        StringPool(const StringPool&) = delete;
+        StringPool& operator=(const StringPool&) = delete;
+        ~StringPool();
 private:
 
 	unsigned allocatedNewString(const char* str);
