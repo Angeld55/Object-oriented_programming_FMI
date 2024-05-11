@@ -10,9 +10,9 @@ class DynamicArray
 {
 
 private:
-	A* arr;
-	size_t size;
-	size_t capacity;
+	A* arr = nullptr;
+	size_t size = 0;
+	size_t capacity = 0;
 	void moveFrom(DynamicArray&& other);
 public:
 	DynamicArray();
