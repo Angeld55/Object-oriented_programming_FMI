@@ -8,9 +8,9 @@ struct A
 
 class DynamicArrayOfPointers
 {
-	A** _data;
-	size_t _capacity; //колко е големината на масива от указатели
-	size_t _count = 0; //колко елемента са добавени
+	A** _data = nullptr;
+	size_t _capacity = 0;
+	size_t _count = 0;
 
 	void free();
 	void copyFrom(const DynamicArrayOfPointers& other);
