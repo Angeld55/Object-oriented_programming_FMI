@@ -36,7 +36,7 @@ void Teacher::free()
 }
 void Teacher::copyFrom(const Teacher& other)
 {
-	copyArrayOfString(other.subjects, other.subjectsCount);
+	subjects = copyArrayOfString(other.subjects, other.subjectsCount);
 	subjectsCount = other.subjectsCount;
 }
 
