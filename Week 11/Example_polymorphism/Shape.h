@@ -32,6 +32,8 @@ public:
 
 	Shape(const Shape& other);
 	Shape& operator=(const Shape& other);
+
+//TODO: add move
 	virtual ~Shape(); //!!!!!!
 
 	void setPoint(size_t pointIndex, int x, int y);
