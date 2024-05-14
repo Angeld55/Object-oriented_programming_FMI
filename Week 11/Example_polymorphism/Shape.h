@@ -24,6 +24,7 @@ private:
 	size_t pointsCount;
 
 	void copyFrom(const Shape& other);
+	void moveFrom(Shape&& other);
 	void free();
 
 
@@ -31,9 +32,11 @@ public:
 	Shape(size_t pointsCount);
 
 	Shape(const Shape& other);
-	Shape& operator=(const Shape& other);
+	Shape(Shape&& other) noexcept;
 
-//TODO: add move
+	Shape& operator=(const Shape& other);
+	Shape& operator=(Shape&& other) noexcept;
+
 	virtual ~Shape(); //!!!!!!
 
 	void setPoint(size_t pointIndex, int x, int y);
