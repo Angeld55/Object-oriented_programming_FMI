@@ -81,6 +81,7 @@ void DynamicArray::moveFrom(DynamicArray&& other)
 	arr = other.arr;
 	other.arr = nullptr;
 	size = other.size;
+	capacity = other.capacity;
 }
 
 

@@ -96,7 +96,7 @@ void DynamicSet::print() const
 	std::cout << '}' << std::endl;
 }
 
-void DynamicSet::removeAll() const
+void DynamicSet::removeAll()
 {
 	for (int i = 0; i < bucketsCount; i++)
 		buckets[i] = 0;

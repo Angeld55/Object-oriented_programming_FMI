@@ -7,6 +7,7 @@ StringPool ImmutableString::_pool;
 ImmutableString::ImmutableString(const char* data) 
 {
 	_data = _pool.getAllocatedString(data);
+	_length = strlen(_data);
 }
 
 ImmutableString::ImmutableString(const ImmutableString& other)
@@ -37,7 +38,7 @@ void ImmutableString::copyFrom(const ImmutableString& other)
 }
 
 
-char ImmutableString::operator[](size_t index) const //Константен достъп 
+char ImmutableString::operator[](size_t index) const //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ 
 {
 	return _data[index];
 }

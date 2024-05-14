@@ -93,6 +93,9 @@ void DynamicArrayOfPointers::addAtFirstFreeIndex(const A& current)
 		resize(_capacity * 2);
 
 	int ind = getFirstFreeIndex();
+	if(ind == -1)
+		return;
+	
 	_data[ind] = new A(current);
 	_count++;
 }
@@ -112,6 +115,9 @@ void DynamicArrayOfPointers::addAtFirstFreeIndex(A&& obj)
 		resize(_capacity * 2);
 	
 	int ind = getFirstFreeIndex();
+	if(ind == -1)
+		return;
+	
 	_data[ind] = new A(std::move(obj));  //move ctor
 	_count++; 
 }
@@ -123,7 +129,7 @@ bool DynamicArrayOfPointers::containsAt(unsigned ind) const
 
 void DynamicArrayOfPointers::removeAt(size_t index)
 {
-	if (index >= _count)
+	if (index >= _capacity)
 		return;
 
 	delete _data[index];

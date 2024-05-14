@@ -3,8 +3,6 @@
 #include <cstring>
 #pragma warning (disable:4996)
 
-
-
 void Person::copyFrom(const Person& other)
 {
 	name = new char[strlen(other.name) + 1];

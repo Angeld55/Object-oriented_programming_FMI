@@ -59,13 +59,20 @@ void StringPool::releaseString(const char* str)
 	}
 }
 
+StringPool::~StringPool()
+{
+   for(int i = 0; i < stringCapacity; i++) //if the class is used correctly all strings will be deleted by this point.
+	   delete stringRecords[i].str;
+   delete[] stringRecords;
+}
+
 void StringPool::resize(unsigned newCap)
 {
 	StringRecord* newArr = new StringRecord[newCap];
 
 	for (unsigned i = 0; i < stringCount; i++)
 		newArr[i] = stringRecords[i]; //here a shallow copy is made (so we don't reallocate the strings)
-
+        stringCapacity = newCap;
 	delete[] stringRecords; //the array is deleted, but not the strings (the constructor of the StringRecord doesn't delete the string)
 	stringRecords = newArr;
 }
