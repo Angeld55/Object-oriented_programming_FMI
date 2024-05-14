@@ -34,11 +34,22 @@ int main()
 {
 		Shape** arr = new Shape*[4];
 
+		/// <summary>
+		/// 
+		// FACTORY
 		arr[0] = new Rectangle(3, 4, 6, 8);
 		arr[1] = new Circle(3, 3, 4);
 		arr[2] = new Circle(1, 4, 5);
 		arr[3] = new Triangle(1, 1, 2, 2, 3, 3);
-
+		/// <summary>
+		/// //
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		/// 
+		/// 
+		/// 
+		/// 
 		printAreas(arr, 4);
 		std::cout << endl;
 		printPers(arr, 4);
