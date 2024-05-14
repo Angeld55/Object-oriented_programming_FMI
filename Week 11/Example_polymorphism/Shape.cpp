@@ -31,7 +31,7 @@ Shape::Shape(const Shape& other)
 {
 	copyFrom(other);
 }
-Shape::Shape(Shape&& other)
+Shape::Shape(Shape&& other) noexcept
 {
 	moveFrom(std::move(other));
 }
@@ -45,7 +45,7 @@ Shape& Shape::operator= (const Shape& other)
 	}
 	return *this;
 }
-Shape& Shape::operator=(Shape&& other)
+Shape& Shape::operator=(Shape&& other) noexcept
 {
 	if (this != &other)
 	{
