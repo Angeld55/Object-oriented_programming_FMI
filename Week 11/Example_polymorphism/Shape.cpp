@@ -15,6 +15,13 @@ void Shape::copyFrom(const Shape& other)
 	
 	pointsCount = other.pointsCount;
 }
+void Shape::moveFrom(Shape&& other)
+{
+	points = other.points;
+	other.points = nullptr;
+
+	pointsCount = other.pointsCount;
+}
 void Shape::free()
 {
 	delete[] points;
@@ -24,6 +31,11 @@ Shape::Shape(const Shape& other)
 {
 	copyFrom(other);
 }
+Shape::Shape(Shape&& other)
+{
+	moveFrom(std::move(other));
+}
+
 Shape& Shape::operator= (const Shape& other)
 {
 	if (this != &other)
@@ -33,6 +45,16 @@ Shape& Shape::operator= (const Shape& other)
 	}
 	return *this;
 }
+Shape& Shape::operator=(Shape&& other)
+{
+	if (this != &other)
+	{
+		free();
+		moveFrom(std::move(other));
+	}
+	return *this;
+}
+
 Shape::~Shape()
 {
 	free();
