@@ -90,7 +90,7 @@ unsigned StringPool::allocatedNewString(const char* str)
 	return firstFreeIndex;
 }
 
-int StringPool::findAllocatedString(const char* str)
+int StringPool::findAllocatedString(const char* str) const
 {
 	for (int i = 0; i < stringCount; i++)
 	{
