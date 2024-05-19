@@ -24,9 +24,6 @@ public:
 	const Shape* operator[](unsigned) const;
 	unsigned getSize() const;
 
-	//copy
-	//move
-	//destr
 private:
 
 	void resize(size_t newCap);
