@@ -27,6 +27,7 @@ public:
 	Farm& operator=(Farm&& other) noexcept;
 
 	void addAnimal(AnimalType animalType);
+	void addAnimal(const Animal& animal);
 	void roarAll() const;
 
 	AnimalType getTypeByIndex(unsigned index) const;

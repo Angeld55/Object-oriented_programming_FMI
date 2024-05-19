@@ -52,6 +52,14 @@ void Farm::addAnimal(AnimalType animalType)
 	animals[animalsCount++] = animalFactory(animalType);
 }
 
+void Farm::addAnimal(const Animal& animal)
+{
+	if (animalsCount == capacity)
+		resize();
+	animals[animalsCount++] = animal.clone();
+}
+
+
 Farm::Farm()
 {
 	capacity = 8;

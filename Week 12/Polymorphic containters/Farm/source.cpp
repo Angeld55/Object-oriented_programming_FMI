@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Collection/Farm.h"
 #include "Animals/Animal.h"
+#include "Factory/AnimalFactory.h"
 
 int main()
 {
@@ -8,7 +9,6 @@ int main()
 	f.addAnimal(AnimalType::Dog);
 	f.addAnimal(AnimalType::Cat);
 	f.addAnimal(AnimalType::Cow);
-
 
 	f.roarAll();
 	
