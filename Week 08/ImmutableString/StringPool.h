@@ -13,7 +13,7 @@ private:
 
 	unsigned allocatedNewString(const char* str);
 	void resize(unsigned newCap);
-	int findAllocatedString(const char* str);
+	int findAllocatedString(const char* str) const;
 
 	void removeRecord(unsigned index);
 
