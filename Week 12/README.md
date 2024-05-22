@@ -188,7 +188,7 @@ int main()
  ```c++
 int main()
 {
-	quene<int> q;
+	queue<int> q;
 	q.push(3);
 	q.push(5);
 	q.push(10);
