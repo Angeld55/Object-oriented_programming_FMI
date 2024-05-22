@@ -41,7 +41,13 @@ const char* StringPool::getAllocatedString(const char* str)
 void StringPool::removeRecord(unsigned index)
 {
 	std::swap(stringRecords[index], stringRecords[stringCount - 1]);
+	
 	delete[] stringRecords[stringCount - 1].str;
+	
+	stringRecords[stringCount - 1].str = nullptr;
+        stringRecords[stringCount - 1].refCount = 0;
+	
+        stringCount--;
 }
 
 void StringPool::releaseString(const char* str)
