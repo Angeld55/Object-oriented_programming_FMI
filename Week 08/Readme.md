@@ -161,7 +161,7 @@ public:
 
 ```cpp
 int increment() {
-    int value = 0;
+    static int value = 0;
     ++value;
     return value;
 }
