@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #include <iostream>
 #include "StringPool.h"
 
@@ -25,7 +24,6 @@ private:
 	void copyFrom(const ImmutableString& data);
 	void free();
 
-	explicit ImmutableString(size_t capacity); 
 	static StringPool _pool;
 };
 
