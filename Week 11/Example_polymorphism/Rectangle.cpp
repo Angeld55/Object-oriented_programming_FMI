@@ -20,6 +20,6 @@ double Rectangle::getArea() const
 bool Rectangle::isPointIn(int x, int y) const
 {
 	Shape::point p(x, y);
-	return p.x >= getPointAtIndex(0).x && p.x >= getPointAtIndex(1).x &&
+	return p.x >= getPointAtIndex(0).x && p.x <= getPointAtIndex(2).x &&
 		p.y <= getPointAtIndex(0).y && p.y >= getPointAtIndex(2).y;
 }
