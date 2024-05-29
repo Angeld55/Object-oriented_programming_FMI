@@ -1,4 +1,3 @@
-#pragma once
 #include "StringPool.h"
 #include <cstring>
 #include <iostream>
@@ -68,7 +67,7 @@ void StringPool::releaseString(const char* str)
 StringPool::~StringPool()
 {
    for(int i = 0; i < stringCapacity; i++) //if the class is used correctly all strings will be deleted by this point.
-	   delete stringRecords[i].str;
+	   delete[] stringRecords[i].str;
    delete[] stringRecords;
 }
 
