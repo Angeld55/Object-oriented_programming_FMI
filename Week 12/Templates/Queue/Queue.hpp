@@ -1,87 +1,187 @@
-
+#include <iostream>
+#include <exception>
 template <typename T>
-class Queue
+class MyQueue
 {
+	T* data;
+	size_t capacity; 
+	size_t size;
+
+	size_t get;
+	size_t put;
+
+	void resize();
+
+	void moveFrom(MyQueue<T>&& other);
+	void copyFrom(const MyQueue<T>& other);
+	void free();
 public:
-	Queue();
+	MyQueue();
+
+	MyQueue(const MyQueue<T>& other);
+	MyQueue<T>& operator=(const MyQueue<T>& other);
+
+	MyQueue(MyQueue<T>&& other);
+	MyQueue<T>& operator=(MyQueue<T>&& other);
 
 	void push(const T& obj);
-	void push(T&& obj);
-
+	void push(T&& obj); 
 	void pop();
-	const T& peek(); //погледни обекта, който ще се премахне при pop
 
-	size_t getSize() const;
+	const T& peek() const;
 	bool isEmpty() const;
-private:
-	T* data = nullptr; //
-	size_t size = 0;
-	size_t capacity = 8;
 
-	size_t getInd = 0; //last added el
-	size_t putInd = 0; //first free ind
+	~MyQueue();
 
-	void resize(size_t newCap);
 };
 
 template <typename T>
-Queue<T>::Queue()
+MyQueue<T>::MyQueue()
 {
-	capacity = 8;
+	capacity = 4;
+	data = new T[capacity];
 	size = 0;
-	data = new T[capacity]; ///def constr
+	get = put = 0;
 }
 
 template <typename T>
-void Queue<T>::push(const T& obj)
+void MyQueue<T>::push(const T& obj)
 {
 	if (size == capacity)
 		resize();
-	data[putInd] = obj; //op=
-	(++putInd) %= capacity;
+
+	data[put] = obj; //operator=
+	(++put) %= capacity;
 	size++;
 }
 
 template <typename T>
-void Queue<T>::push(T&& obj)
+void MyQueue<T>::push(T&& obj)
 {
 	if (size == capacity)
 		resize();
-	data[putInd] = std::move(obj); //move op=
-	(++putInd) %= capacity;
+
+	data[put] = std::move(obj); //move operator =
+	(++put) %= capacity;
 	size++;
 }
 
 template <typename T>
-const T& Queue<T>::peek()
+bool MyQueue<T>::isEmpty() const
+{
+	return size == 0;
+}
+
+
+template <typename T>
+const T& MyQueue<T>::peek() const
 {
 	if (isEmpty())
-		throw "qweqwe";
-	return data[getInd];
+		throw std::logic_error("Empty queue!");
+
+	return data[get];
 }
 
 template <typename T>
-void Queue<T>::pop()
+void MyQueue<T>::pop()
 {
 	if (isEmpty())
-		throw "qweqwe";
-	(++getInd) %= capacity;
+		throw std::logic_error("Empty queue!");
+	(++get) %= capacity;
 	size--;
 }
 
 template <typename T>
-void Queue<T>::resize(size_t newCap)
+void MyQueue<T>::resize()
 {
-	T* newData = new T[newCap];
-	for (int i = 0; i < size; i++)
+	T* resizedData = new T[capacity * 2];
+	for (size_t i = 0; i < size; i++)
 	{
-		newData[i] = std::move(data[getInd]); 
-		(++getInd) %= capacity;
+		resizedData[i] = data[get];
+		(++get) %= capacity;
 	}
+	capacity *= 2;
 	delete[] data;
-	data = newData;
-	capacity = newCap;
-	getInd = 0;
-	putInd = size;
+	data = resizedData;
+	get = 0;
+	put = size;
 }
 
+
+template <typename T>
+void MyQueue<T>::copyFrom(const MyQueue<T>& other)
+{
+	data = new T[other.capacity];
+	for (int i = 0; i < other.capacity; i++)
+		data[i] = other.data[i];
+
+	get = other.get;
+	put = other.put;
+
+	size = other.size;
+	capacity = other.capacity;
+
+}
+
+template <typename T>
+void MyQueue<T>::moveFrom(MyQueue<T>&& other)
+{
+	get = other.get;
+	put = other.put;
+
+	size = other.size;
+	capacity = other.capacity;
+
+	data = other.data;
+	other.data = nullptr;
+
+	other.size = other.capacity = 0;
+}
+
+template <typename T>
+void MyQueue<T>::free()
+{
+	delete[] data;
+}
+
+template <typename T>
+MyQueue<T>::MyQueue(const MyQueue<T>& other)
+{
+	copyFrom(other);
+
+}
+
+template <typename T>
+MyQueue<T>& MyQueue<T>::operator=(const MyQueue<T>& other)
+{
+	if (this != &other)
+	{
+		free();
+		copyFrom(other);
+	}
+	return *this;
+}
+
+template <typename T>
+MyQueue<T>::MyQueue(MyQueue<T>&& other)
+{
+	moveFrom(std::move(other));
+}
+
+template <typename T>
+MyQueue<T>& MyQueue<T>::operator=(MyQueue<T>&& other)
+{
+	if (this != &other)
+	{
+		free();
+		moveFrom(std::move(other));
+	}
+	return *this;
+}
+
+
+template <typename T>
+MyQueue<T>::~MyQueue()
+{
+	free();
+}
