@@ -248,18 +248,28 @@ public:
 
 	bool isTautology() const
 	{
+		return checkAllTruthAssignments(true);
+	}
+
+	bool isContradiction() const
+	{
+		return checkAllTruthAssignments(false);
+	}
+private:
+
+	bool checkAllTruthAssignments(bool value) const
+	{
 		size_t varsCount = myVariables.getTrueCount(); //
 		size_t powerOfTwo = 1 << varsCount;
 		for (int i = 0; i < powerOfTwo; i++)
 		{
 			BooleanInterpretation current = myVariables; // T T T
 			current.excludeValuesByMask(i);
-			if (!expr->eval(current))
+			if (expr->eval(current) != value)
 				return false;
 		}
 		return true;
 	}
-private:
 	void free()
 	{
 		delete expr;
