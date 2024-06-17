@@ -78,9 +78,9 @@ private:
 	char ch;
 };
 
-struct UnaryOperatrion : BooleanExpression
+struct UnaryOperation : BooleanExpression
 {
-	UnaryOperatrion(BooleanExpression* expr) : expr(expr) {}
+	UnaryOperation(BooleanExpression* expr) : expr(expr) {}
 
 	void populateVariables(BooleanInterpretation& interpret) const override
 	{
@@ -89,9 +89,9 @@ struct UnaryOperatrion : BooleanExpression
 protected:
 	BooleanExpression* expr;
 };
-struct Negation : UnaryOperatrion
+struct Negation : UnaryOperation
 {
-	Negation(BooleanExpression* expr) : UnaryOperatrion(expr) {}
+	Negation(BooleanExpression* expr) : UnaryOperation(expr) {}
 	~Negation()
 	{
 		delete expr;
@@ -236,11 +236,11 @@ public:
 		return *this;
 	}
 
-	BooleanExpressionHandler(BooleanExpressionHandler&& other)
+	BooleanExpressionHandler(BooleanExpressionHandler&& other) noexcept
 	{
-		copyFrom(std::move(other));
+		moveFrom(std::move(other));
 	}
-	BooleanExpressionHandler& operator=(BooleanExpressionHandler&& other)
+	BooleanExpressionHandler& operator=(BooleanExpressionHandler&& other) noexcept
 	{
 		if (this != &other)
 		{
@@ -255,7 +255,7 @@ public:
 		free();
 	}
 
-	bool evaluate(const BooleanInterpretation& bi)
+	bool evaluate(const BooleanInterpretation& bi) const
 	{
 		return expr->eval(bi);
 	}
