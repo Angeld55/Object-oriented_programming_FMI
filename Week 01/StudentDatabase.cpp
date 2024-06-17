@@ -64,7 +64,7 @@ enum class Criteria
 
 void sortDatabase(StudentDatabase& database, bool(*isLess)(const Student& lhs, const Student& rhs))
 {
-    for (int i = 0; i < database.studentsCount; i++)
+    for (int i = 0; i < database.studentsCount - 1; i++)
     {
         int minIndex = i;
         for (int j = i + 1; j < database.studentsCount; j++)
