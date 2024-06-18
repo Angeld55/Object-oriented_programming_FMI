@@ -54,25 +54,19 @@ public:
 	FruitStore& operator=(const FruitStore&);
        ~FruitStore();
 	
-	void addApple();
-    	void addOrange();
-     	void addLemon(size_t sourness);
+	void addFruit(Fruit* fr);
 };
 
-void FruitStore::addApple()
+void FruitStore::addFruit(Fruit* fr)
 {
-	fruits[count++] = new Apple();
+	fruits[count++] = fr;
 }
-
-void FruitStore::addOrange()
+int main()
 {
-	fruits[count++] = new Orange();
+	FruitStore store;
+	store.addFruit(new Lemmon(3));
+	store.addFruit(new Apple());
 }
-void FruitStore::addLemon(size_t sourness)
-{
-	fruits[count++] = new Lemon(sourness);
-}
- ```
 
 ## Триене
 Понеже имаме виртуален деструктор в базовия клас, не се интересуваме в колекцията какви са обектите, които трием.
