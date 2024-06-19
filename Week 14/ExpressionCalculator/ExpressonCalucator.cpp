@@ -142,19 +142,6 @@ struct Conjunction : BinaryOperation
 
 };
 
-struct DBProvider
-{
-	static DBProvider& getInstance()
-	{
-		static DBProvider obj(1234);
-		return obj;
-	}
-private:
-	DBProvider(int port) {}
-
-	DBProvider(const DBProvider&) = delete;
-	DBProvider& operator=(const DBProvider&) = delete;
-};
 struct Disjunction : BinaryOperation
 {
 	Disjunction(BooleanExpression* left, BooleanExpression* right) : BinaryOperation(left, right) {}
@@ -209,7 +196,6 @@ BooleanExpression* expressionFactory(StringView str)
 				case '>': return new Implies(expressionFactory(str.substr(0, i)), expressionFactory(str.substr(i + 1, str.length() - i - 1)));
 			}
 		}
-
 	}
 }
 
@@ -302,21 +288,12 @@ private:
 	BooleanExpression* expr = nullptr;
 };
 
-
-template <class IterType, class Eltype>
-bool linearSearch(const IterType& begin, const IterType& end, const Eltype& el)
-{
-	IterType current = begin;
-
-	while (current != end)
-	{
-		if (*current == el)
-			return true;
-		current++;
-	}
-	return false;
-}
 int main()
 {
-	DBProvider current = DBProvider::getInstance();
+	BooleanExpressionHandler be("((p)|((q)&(t)))");
+	BooleanInterpretation bi;
+	bi.set('p', true);
+	std::cout << be.evaluate(bi) << std::endl;
+	BooleanExpressionHandler be2("((p)|(!(p)))");
+	std::cout << be2.isTautology() << std::endl;
 }
