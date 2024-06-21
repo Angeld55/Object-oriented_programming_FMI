@@ -318,5 +318,5 @@ bool linearSearch(const IterType& begin, const IterType& end, const Eltype& el)
 }
 int main()
 {
-	DBProvider current = DBProvider::getInstance();
+	DBProvider& current = DBProvider::getInstance();
 }
