@@ -86,16 +86,17 @@ struct UnaryOperation : BooleanExpression
 	{
 		expr->populateVariables(interpret);
 	}
+
+	~UnaryOperation()
+	{
+		delete expr;
+	}
 protected:
 	BooleanExpression* expr;
 };
 struct Negation : UnaryOperation
 {
 	Negation(BooleanExpression* expr) : UnaryOperation(expr) {}
-	~Negation()
-	{
-		delete expr;
-	}
 	virtual BooleanExpression* clone() const override
 	{
 		return new Negation(expr->clone());
