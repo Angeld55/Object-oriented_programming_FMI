@@ -36,7 +36,7 @@ struct Counter
 template <typename T>
 class SharedPtr
 {
-	template <typename T> friend class WeakPtr;
+	template <typename V> friend class WeakPtr;
 
 	T* data;
 	Counter* counter;
