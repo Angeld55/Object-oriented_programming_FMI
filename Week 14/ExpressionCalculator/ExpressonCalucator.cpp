@@ -198,6 +198,8 @@ BooleanExpression* expressionFactory(StringView str)
 			}
 		}
 	}
+	throw std::invalid_argument("Invalid expression!");
+
 }
 
 //The wrapper class. The tree will be handled here!
