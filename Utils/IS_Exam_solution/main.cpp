@@ -102,7 +102,7 @@ SetOperation::SetOperation(Set**&& sets, size_t count)
 	this->count = count;
 }
 
-SetOperation::SetOperation(const SetOperation& other)
+SetOperation::SetOperation(const SetOperation& other) : Set(other)
 {
 	copyfrom(other);
 }
@@ -110,13 +110,14 @@ SetOperation& SetOperation::operator=(const SetOperation& other)
 {
 	if (this != &other)
 	{
+		Set::operator=(other);
 		free();
 		copyfrom(other);
 	}
 	return *this;
 }
 
-SetOperation::SetOperation(SetOperation&& other)
+SetOperation::SetOperation(SetOperation&& other) : Set(std::move(other))
 {
 	moveFrom(std::move(other));
 }
@@ -125,6 +126,7 @@ SetOperation& SetOperation::operator=(SetOperation&& other)
 {
 	if (this != &other)
 	{
+		Set::operator=(std::move(other));
 		free();
 		moveFrom(std::move(other));
 	}
