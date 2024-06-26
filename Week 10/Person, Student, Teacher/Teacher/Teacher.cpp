@@ -30,9 +30,7 @@ Teacher::Teacher(const char* name, int age, const char* const* subjects, size_t 
 
 void Teacher::free()
 {
-	for (size_t i = 0; i < subjectsCount; i++)
-		delete[] subjects[i];
-	delete[] subjects;
+	freeArraysOfString(subjects, subjectsCount);
 }
 void Teacher::copyFrom(const Teacher& other)
 {
@@ -64,12 +62,12 @@ void Teacher::moveFrom(Teacher&& other)
 }
 
 
-Teacher::Teacher(Teacher&& other) : Person(std::move(other))
+Teacher::Teacher(Teacher&& other) noexcept : Person(std::move(other))
 {
 	moveFrom(std::move(other));
 }
 
-Teacher& Teacher::operator=(Teacher&& other)
+Teacher& Teacher::operator=(Teacher&& other) noexcept
 {
 	if (this != &other)
 	{

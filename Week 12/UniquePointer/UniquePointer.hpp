@@ -7,11 +7,11 @@ class UniquePointer
 public:
 	UniquePointer(T* ptr);
 
-	UniquePointer(const UniquePointer&) = delete;
-	UniquePointer& operator=(const UniquePointer&) = delete;
+	UniquePointer(const UniquePointer<T>&) = delete;
+	UniquePointer<T>& operator=(const UniquePointer<T>&) = delete;
 
-	UniquePointer(UniquePointer&&) noexcept;
-	UniquePointer& operator=(UniquePointer&&) noexcept;
+	UniquePointer(UniquePointer<T>&&) noexcept;
+	UniquePointer<T>& operator=(UniquePointer<T>&&) noexcept;
 
 	T& operator*();
 	const T& operator*() const;

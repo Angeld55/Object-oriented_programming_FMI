@@ -15,7 +15,7 @@ public:
 	Teacher(const Teacher& other);
 	Teacher& operator=(const Teacher& other);
 
-	Teacher(Teacher&& other);
-	Teacher& operator=(Teacher&& other);
+	Teacher(Teacher&& other) noexcept;
+	Teacher& operator=(Teacher&& other) noexcept;
 	~Teacher();
 };
