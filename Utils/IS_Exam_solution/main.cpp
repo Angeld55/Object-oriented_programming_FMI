@@ -81,6 +81,7 @@ void SetOperation::free()
 		delete sets[i];
 	delete[] sets;
 }
+
 void SetOperation::moveFrom(SetOperation&& other)
 {
 	sets = other.sets;
