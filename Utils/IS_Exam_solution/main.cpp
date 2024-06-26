@@ -8,8 +8,6 @@ public:
 	virtual Set* clone() const = 0;
 	virtual bool accepts(unsigned) const = 0;
 	virtual ~Set() = default;
-	void f() {}
-
 };
 
 template <typename T>
