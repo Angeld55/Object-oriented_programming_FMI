@@ -209,6 +209,7 @@ public:
 	BooleanExpressionHandler(const MyString& str)
 	{
 		expr = expressionFactory(str);
+		expr->populateVariables(myVariables);
 	}
 
 	BooleanExpressionHandler(const BooleanExpressionHandler& other)
@@ -277,7 +278,7 @@ private:
 	{
 		delete expr;
 	}
-	void copyFrom(const BooleanExpressionHandler& other)                      
+	void copyFrom(const BooleanExpressionHandler& other)
 	{
 		expr = other.expr->clone();
 	}
