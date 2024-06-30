@@ -35,6 +35,7 @@ size_t ImmutableString::length() const
 void ImmutableString::copyFrom(const ImmutableString& other)
 {
 	_data = _pool.getAllocatedString(other._data);
+	_length = other._length;
 }
 
 
