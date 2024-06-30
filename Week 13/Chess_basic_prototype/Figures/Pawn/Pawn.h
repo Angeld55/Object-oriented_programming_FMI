@@ -1,7 +1,7 @@
 #pragma once
 #include "../FigureBase/Figure.h"
 
-class Pawn : virtual public Figure
+class Pawn : public Figure
 {
 	bool isFirstMove;
 public:
