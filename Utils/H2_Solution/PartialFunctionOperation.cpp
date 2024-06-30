@@ -25,12 +25,12 @@ PartialFunctionOperation::PartialFunctionOperation(PartialFunction**&& functions
     }
 }
 
-PartialFunctionOperation::PartialFunctionOperation(const PartialFunctionOperation& other)
+PartialFunctionOperation::PartialFunctionOperation(const PartialFunctionOperation& other) : PartialFunction(other)
 {
     copyFrom(other);
 }
 
-PartialFunctionOperation::PartialFunctionOperation(PartialFunctionOperation&& other) noexcept
+PartialFunctionOperation::PartialFunctionOperation(PartialFunctionOperation&& other) : PartialFunction(std::move(other)) noexcept
 {
     moveFrom(std::move(other));
 }
@@ -39,6 +39,7 @@ PartialFunctionOperation& PartialFunctionOperation::operator=(const PartialFunct
 {
     if (this != &other)
     {
+        PartialFunction::operator=(std::move(other));
         free();
         copyFrom(other);
     }
@@ -50,6 +51,7 @@ PartialFunctionOperation& PartialFunctionOperation::operator=(PartialFunctionOpe
 {
     if (this != &other)
     {
+        PartialFunction::operator=(std::move(other));
         free();
         moveFrom(std::move(other));
     }
