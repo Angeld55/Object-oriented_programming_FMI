@@ -281,10 +281,12 @@ private:
 	void copyFrom(const BooleanExpressionHandler& other)
 	{
 		expr = other.expr->clone();
+		myVariables = other.myVariables;
 	}
 	void moveFrom(BooleanExpressionHandler&& other)
 	{
 		expr = other.expr;
+		myVariables = std::move(other.myVariables);
 		other.expr = nullptr;
 	}
 
