@@ -13,8 +13,11 @@ public:
 	UniquePointer(UniquePointer<T>&&) noexcept;
 	UniquePointer<T>& operator=(UniquePointer<T>&&) noexcept;
 
-	T* operator*();
-	const T* operator*() const;
+	T& operator*();
+	const T& operator*() const;
+
+	T* operator->();
+	const T* operator->() const;
 
 	~UniquePointer();
 };
@@ -42,13 +45,26 @@ UniquePointer<T>& UniquePointer<T>::operator=(UniquePointer<T>&& other) noexcept
 }
 
 template <typename T>
-T* UniquePointer<T>::operator*()
+T& UniquePointer<T>::operator*()
+{
+	return *ptr;
+}
+
+template <typename T>
+const T& UniquePointer<T>::operator*() const
+{
+	return *ptr;
+}
+
+
+template <typename T>
+T* UniquePointer<T>::operator->()
 {
 	return ptr;
 }
 
 template <typename T>
-const T* UniquePointer<T>::operator*() const
+const T* UniquePointer<T>::operator->() const
 {
 	return ptr;
 }
@@ -56,5 +72,7 @@ const T* UniquePointer<T>::operator*() const
 template <typename T>
 UniquePointer<T>::~UniquePointer()
 {
-	delete ptr;
+	delete *ptr;
 }
+
+
