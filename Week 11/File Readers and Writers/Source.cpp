@@ -64,8 +64,8 @@ void transfer(const MyString& in, const MyString& out) {
     writer->write(arr, size);
 
     delete[] arr;
-    delete[] reader;
-    delete[] writer;
+    delete reader;
+    delete writer;
 }
 
 int main()
