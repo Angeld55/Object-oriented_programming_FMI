@@ -4,6 +4,8 @@
 template <typename T>
 class WeakPtr
 {
+	template<class V> friend class SharedPtr;
+
 	T* data;
 	Counter* counter;
 	void copyFrom(const WeakPtr<T>& other);
@@ -127,5 +129,5 @@ SharedPtr<T> WeakPtr<T>::lock() const
 	if (expired())
 		return SharedPtr<T>();
 	else
-		return SharedPtr<T>(data);
+		return SharedPtr<T>(*this);
 }
