@@ -33,6 +33,9 @@ struct Counter
 
 };
 
+template <class V>
+class WeakPtr;
+
 template <typename T>
 class SharedPtr
 {
@@ -45,6 +48,7 @@ class SharedPtr
 	void copyFrom(const SharedPtr<T>& other);
 	void moveFrom(SharedPtr<T>&& other);
 
+	SharedPtr(WeakPtr<T>& ptr);
 public:
 	SharedPtr();
 	SharedPtr(T* data);
@@ -64,6 +68,17 @@ public:
 	
 	~SharedPtr();
 };
+
+template<class T>
+inline SharedPtr<T>::SharedPtr(WeakPtr<T>& ptr)
+{
+	data = ptr.data;
+	counter = other.counter;
+	if (counter)
+	{
+		counter->addSharedPtr();
+	}
+}
 
 template <typename T>
 void SharedPtr<T>::free()
