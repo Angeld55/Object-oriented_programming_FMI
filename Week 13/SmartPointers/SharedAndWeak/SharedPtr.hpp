@@ -175,15 +175,14 @@ SharedPtr<T>::~SharedPtr()
 	free();
 }
 
-
 template<typename T>
 T* SharedPtr<T>::operator->() {
-	return data;
+	return *data;
 }
 
 template<typename T>
 const T* SharedPtr<T>::operator->() const {
-	return data;
+	return *data;
 }
 
 template<typename T>

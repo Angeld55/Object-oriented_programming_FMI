@@ -24,6 +24,11 @@ public:
 	SharedPtr<T> lock() const;
 
 	bool expired() const;
+
+	const T& operator*() const;
+	T& operator*();
+	const T* operator->() const;
+	T* operator->();
 };
 
 template <typename T>
@@ -128,4 +133,34 @@ SharedPtr<T> WeakPtr<T>::lock() const
 		return SharedPtr<T>();
 	else
 		return SharedPtr<T>(data);
+}
+
+template <typename T>
+const T& WeakPtr<T>::operator*() const
+{
+	if(data == nullptr)
+	{
+		throw std::runtime_error("Pointer not set");
+	}
+	return *data;
+}
+
+template <typename T>
+T& WeakPtr<T>::operator*()
+{
+	if(data == nullptr)
+	{
+		throw std::runtime_error("Pointer not set");
+	}
+	return *data;
+}
+
+template<typename T>
+T* WeakPtr<T>::operator->() {
+	return *data;
+}
+
+template<typename T>
+const T* WeakPtr<T>::operator->() const {
+	return *data;
 }
