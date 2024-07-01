@@ -73,7 +73,7 @@ template<class T>
 inline SharedPtr<T>::SharedPtr(WeakPtr<T>& ptr)
 {
 	data = ptr.data;
-	counter = other.counter;
+	counter = ptr.counter;
 	if (counter)
 	{
 		counter->addSharedPtr();
