@@ -127,6 +127,7 @@ public:
     Serializator(const char* str, const HexArray& arr) : arr(arr) { strcpy(fileName, str); }
     virtual void serialize() = 0;
     virtual Serializator* clone() const = 0;
+    virtual ~Serializator() = default;
 };
 
 class BinarySerializator : public Serializator
@@ -215,7 +216,7 @@ protected:
 public:
     Deserializator(const char* str) { strcpy(fileName, str); }
     virtual HexArray deserialize() const = 0;
-    virtual Deserializator* clone() const = 0;
+    virtual ~Deserializator() = default;
 };
 
 class BinaryDeserializator : public Deserializator
@@ -230,10 +231,6 @@ public:
         unsigned char* data = new unsigned char[size];
         ifs.read((char*)data, size);
         return HexArray(data, size);
-    }
-
-    virtual Deserializator* clone() const override {
-        return new BinaryDeserializator(*this);
     }
 };
 
@@ -255,10 +252,6 @@ public:
         }
         return HexArray(res, size);
     }
-
-    virtual Deserializator* clone() const override {
-        return new TxtHexDeserializator(*this);
-    }
 };
 class TxtDecimalDeserializator : public Deserializator
 {
@@ -276,10 +269,6 @@ public:
             res[i] = tempByte;
         }
         return HexArray(res, size);
-    }
-
-    virtual Deserializator* clone() const override {
-        return new TxtDecimalDeserializator(*this);
     }
 };
 
