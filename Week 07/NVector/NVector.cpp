@@ -174,7 +174,7 @@ NVector operator*(const NVector& lhs, size_t scalar)
 	copy *= scalar;
 	return copy;
 }
-NVector operator*(size_t scalar, const NVector& lhs)
+NVector operator*(size_t scalar, const NVector& rhs)
 {
 	return lhs * scalar;
 }
