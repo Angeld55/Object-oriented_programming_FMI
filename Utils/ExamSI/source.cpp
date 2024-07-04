@@ -46,6 +46,8 @@ public:
         os << std::endl;
         for (int i = 0; i < arr.size; i++)
             os << std::hex << (isValidSymbol(arr.data[i]) ? arr.data[i] : '.') << " ";
+        
+        return os;
     }
     
     template <class T>
