@@ -40,7 +40,7 @@ NVector operator-(const NVector& lhs, const NVector& rhs);
 
 //So it could be commutative:
 NVector operator*(const NVector& lhs, size_t scalar);
-NVector operator*(size_t scalar, const NVector& lhs);
+NVector operator*(size_t scalar, const NVector& rhs);
 
 
 //are parallel
