@@ -37,13 +37,13 @@ void rationalize(Rational& rat)
 {
     assert(isValid(rat));
 
-    unsigned gcd = getGcd(r.nom, r.denom);
-    r.denom /= gcd;
-    r.nom /= gcd;
-    if (r.nom < 0 && r.denom < 0 || r.nom > 0 && r.denom < 0)
+    unsigned gcd = getGcd(rat.nom, rat.denom);
+    rat.denom /= gcd;
+    rat.nom /= gcd;
+    if (rat.nom < 0 && rat.denom < 0 || rat.nom > 0 && rat.denom < 0)
     {
-        r.nom *= -1;
-        r.denom *= -1;
+        rat.nom *= -1;
+        rat.denom *= -1;
     }
 }
 
