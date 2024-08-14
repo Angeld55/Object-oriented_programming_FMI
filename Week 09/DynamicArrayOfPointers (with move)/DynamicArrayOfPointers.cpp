@@ -129,7 +129,7 @@ bool DynamicArrayOfPointers::containsAt(unsigned ind) const
 
 void DynamicArrayOfPointers::removeAt(size_t index)
 {
-	if (index >= _capacity)
+	if (index >= _capacity || _data[index] == nullptr)
 		return;
 
 	delete _data[index];
@@ -155,9 +155,17 @@ void DynamicArrayOfPointers::popBack()
 	if (size() == 0)
 		return;
 
-	delete _data[_count - 1];
-	_count--;
-
+	for (int i = _capacity - 1; i >= 0; i--)
+	{
+		if (_data[i] != nullptr)
+		{
+			delete _data[i];
+			_data[i] = nullptr;
+			_count--;
+			break;
+		}
+	}
+	
 	/*if (_count == _capacity / 4 && _capacity / 2 > 8)
 		resize(_capacity / 2);*/
 }
