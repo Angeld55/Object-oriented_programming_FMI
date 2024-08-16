@@ -73,7 +73,7 @@ void SortedCollection::remove(int elem)
 {
 	int elementIndex = lowerBound(elem);
 
-	if (elementIndex == size)
+	if (elementIndex == size || data[elementIndex] != elem)
 	{
 		return;
 	}
@@ -90,7 +90,7 @@ unsigned SortedCollection::count(int elem) const
 
 	int leftIndex = lowerBound(elem);
 
-	if (leftIndex == size)
+	if (leftIndex == size || data[elementIndex] != elem)
 	{
 		return 0;
 	}
@@ -102,5 +102,6 @@ unsigned SortedCollection::count(int elem) const
 
 bool SortedCollection::contains(int elem) const
 {
-	return lowerBound(elem) != size;
+	int leftIndex = lowerBound(arg);
+	return leftIndex != size && data[leftIndex] == arg;
 }
