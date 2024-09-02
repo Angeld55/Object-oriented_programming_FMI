@@ -16,8 +16,8 @@ public:
 	Person(const Person& other);
 	Person& operator=(const Person& other);
 
-	Person(Person&& other);
-	Person& operator=(Person&& other);
+	Person(Person&& other) noexcept;
+	Person& operator=(Person&& other) noexcept;
 
 	const char* getName() const;
 	int getAge() const;
