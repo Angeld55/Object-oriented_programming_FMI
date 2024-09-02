@@ -44,12 +44,12 @@ void Person::moveFrom(Person&& other)
 }
 
 
-Person::Person(Person&& other)
+Person::Person(Person&& other) noexcept
 {
 	moveFrom(std::move(other));
 }
 
-Person& Person::operator=(Person&& other)
+Person& Person::operator=(Person&& other) noexcept
 {
 	if (this != &other)
 	{
