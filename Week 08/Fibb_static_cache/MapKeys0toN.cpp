@@ -9,7 +9,7 @@ MapKeys0toN::MapKeys0toN(unsigned nullValue)
 
 void MapKeys0toN::add(unsigned key, unsigned value)
 {
-    if (value == _nullValue)
+    if (value == _nullValue || key >= N)
         return;
 
     _values[key] = value;
