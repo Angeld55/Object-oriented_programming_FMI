@@ -21,8 +21,8 @@ public:
 	MyQueue(const MyQueue<T>& other);
 	MyQueue<T>& operator=(const MyQueue<T>& other);
 
-	MyQueue(MyQueue<T>&& other);
-	MyQueue<T>& operator=(MyQueue<T>&& other);
+	MyQueue(MyQueue<T>&& other) noexcept;
+	MyQueue<T>& operator=(MyQueue<T>&& other) noexcept;
 
 	void push(const T& obj);
 	void push(T&& obj); 
@@ -163,13 +163,13 @@ MyQueue<T>& MyQueue<T>::operator=(const MyQueue<T>& other)
 }
 
 template <typename T>
-MyQueue<T>::MyQueue(MyQueue<T>&& other)
+MyQueue<T>::MyQueue(MyQueue<T>&& other) noexcept
 {
 	moveFrom(std::move(other));
 }
 
 template <typename T>
-MyQueue<T>& MyQueue<T>::operator=(MyQueue<T>&& other)
+MyQueue<T>& MyQueue<T>::operator=(MyQueue<T>&& other) noexcept
 {
 	if (this != &other)
 	{
