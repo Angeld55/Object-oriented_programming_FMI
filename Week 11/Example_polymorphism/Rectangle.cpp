@@ -1,4 +1,5 @@
 #include "Rectangle.h"
+#include <algorithm>
 
 Rectangle::Rectangle(int x1, int y1, int x3, int y3) : Shape(4)
 {
@@ -20,6 +21,12 @@ double Rectangle::getArea() const
 bool Rectangle::isPointIn(int x, int y) const
 {
 	Shape::point p(x, y);
-	return p.x >= getPointAtIndex(0).x && p.x <= getPointAtIndex(2).x &&
-		p.y <= getPointAtIndex(0).y && p.y >= getPointAtIndex(2).y;
+	int leftX = std::min(getPointAtIndex(0).x, getPointAtIndex(2).x);
+	int rightX = std::max(getPointAtIndex(0).x, getPointAtIndex(2).x);
+
+	int upY = std::max(getPointAtIndex(0).y, getPointAtIndex(2).y);
+	int downY = std::min(getPointAtIndex(0).y, getPointAtIndex(2).y);
+	
+	return p.x >= leftX && p.x <= rightX &&
+		p.y <= upY && p.y >= downY;
 }
