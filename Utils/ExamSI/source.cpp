@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "Utills.h"
+#include "Utils.h"
 #pragma warning (disable : 4996)
 
 class HexArray
@@ -41,12 +41,21 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const HexArray& arr)
     {
-        for (int i = 0; i < arr.size; i++)
-            os << std::hex << arr.data[i] << " ";
+        for (int i = 0; i < arr.size; i++) 
+        {
+            if (isValidSymbol(arr.data[i]))
+            {
+                os << std::hex << arr.data[i] << " ";
+            }
+            else
+            {
+                os << '.' << " ";
+            }
+        }
         os << std::endl;
         for (int i = 0; i < arr.size; i++)
-            os << std::hex << (isValidSymbol(arr.data[i]) ? arr.data[i] : '.') << " ";
-        
+            os << std::hex << (int)arr.data[i] << " ";
+
         return os;
     }
     
