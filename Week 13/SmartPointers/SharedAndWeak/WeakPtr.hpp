@@ -19,8 +19,8 @@ public:
 	WeakPtr(const WeakPtr<T>& other);
 	WeakPtr& operator=(const WeakPtr<T>& other);
 
-	WeakPtr(WeakPtr<T>&& other);
-	WeakPtr& operator=(WeakPtr<T>&& other);
+	WeakPtr(WeakPtr<T>&& other) noexcept;
+	WeakPtr& operator=(WeakPtr<T>&& other) noexcept;
 	~WeakPtr();
 
 	SharedPtr<T> lock() const;
@@ -47,13 +47,13 @@ void WeakPtr<T>::moveFrom(WeakPtr<T>&& other)
 
 
 template <typename T>
-WeakPtr<T>::WeakPtr(WeakPtr<T>&& other)
+WeakPtr<T>::WeakPtr(WeakPtr<T>&& other) noexcept
 {
 	moveFrom(std::move(other));
 }
 
 template <typename T>
-WeakPtr<T>& WeakPtr<T>::operator=(WeakPtr<T>&& other)
+WeakPtr<T>& WeakPtr<T>::operator=(WeakPtr<T>&& other) noexcept
 {
 	if (this != &other)
 	{
