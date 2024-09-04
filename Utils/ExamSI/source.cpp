@@ -290,7 +290,7 @@ Serializator* serializatorFactory(const HexArray& arr, const char* str)
         return new BinarySerializator(str, arr);
     if (strcmp(extension, ".txtHex"))
         return new TxtHexSerializator(str, arr);
-    if (strcmp(extension, ".dat"))
+    if (strcmp(extension, ".txt"))
         return new TxtDecimalSerializator(str, arr);
     if (strcmp(extension, ".rec"))
         return new RecSerializator(str, arr);
@@ -304,7 +304,7 @@ Deserializator* deserializatorFactory(const char* str)
         return new BinaryDeserializator(str);
     if (strcmp(extension, ".txtHex"))
         return new TxtHexDeserializator(str);
-    if (strcmp(extension, ".dat"))
+    if (strcmp(extension, ".txt"))
         return new TxtDecimalDeserializator(str);
     return nullptr;
 }
