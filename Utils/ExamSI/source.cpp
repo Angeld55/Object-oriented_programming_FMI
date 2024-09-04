@@ -227,6 +227,7 @@ protected:
 public:
     Deserializator(const char* str) { strcpy(fileName, str); }
     virtual HexArray deserialize() const = 0;
+    virtual Deserializator* clone() const = 0;
     virtual ~Deserializator() = default;
 };
 
@@ -242,6 +243,10 @@ public:
         unsigned char* data = new unsigned char[size];
         ifs.read((char*)data, size);
         return HexArray(data, size);
+    }
+
+    Deserializator* clone() const {
+        return new BinaryDeserializator(*this);
     }
 };
 
@@ -263,6 +268,10 @@ public:
         }
         return HexArray(res, size);
     }
+
+    Deserializator* clone() const {
+        return new TxtHexDeserializator(*this);
+    }
 };
 class TxtDecimalDeserializator : public Deserializator
 {
@@ -280,6 +289,10 @@ public:
             res[i] = tempByte;
         }
         return HexArray(res, size);
+    }
+
+    Deserializator* clone() const {
+        return new TxtDecimalDeserializator(*this);
     }
 };
 
