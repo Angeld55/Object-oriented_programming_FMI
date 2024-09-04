@@ -208,6 +208,7 @@ public:
     }
     virtual void serialize() override
     {
+        std::ofstream ofs(fileName, std::ios::binary | std::ios::trunc); //to trunc the file.
         ser->serialize();
     }
     virtual Serializator* clone() const override {
