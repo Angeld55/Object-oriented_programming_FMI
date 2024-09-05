@@ -125,7 +125,7 @@ public:
         const unsigned char* iter = strView._begin;
         while (iter != strView._end)
         {
-            std::os << std::hex << (int)*(iter++) << " ";
+            os << std::hex << (int)*(iter++) << " ";
         }
 
         return os;
