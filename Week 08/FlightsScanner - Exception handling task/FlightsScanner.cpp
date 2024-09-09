@@ -73,7 +73,7 @@ void FlightsScanner::parseLine(const char* line, FlightsScanner::FlightRecord& r
 	}
 }
 
-void FlightsScanner::saveRecord(std::ofstream& ofs, const FlightRecord& record) const
+void FlightsScanner::saveRecord(std::ofstream& ofs, const FlightsScanner::FlightRecord& record) const
 {
 	const static double EU_TO_LEV = 1.95;
 	ofs << record.origin << " " << record.dest << " " << record.amount * EU_TO_LEV << std::endl;
