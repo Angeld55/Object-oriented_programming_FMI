@@ -54,10 +54,10 @@ public:
 	SharedPtr(T* data);
 
 	SharedPtr(const SharedPtr<T>& other);
-	SharedPtr& operator=(const SharedPtr<T>& other);
+	SharedPtr<T>& operator=(const SharedPtr<T>& other);
 
 	SharedPtr(SharedPtr<T>&& other) noexcept;
-	SharedPtr& operator=(SharedPtr<T>&& other) noexcept;
+	SharedPtr<T>& operator=(SharedPtr<T>&& other) noexcept;
 
 	const T& operator*() const;
 	T& operator*();
