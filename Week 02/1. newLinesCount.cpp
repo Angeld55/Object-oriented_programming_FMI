@@ -22,7 +22,7 @@ int getCharCount(std::ifstream& ifs, char ch) {
 			count++;
 		}
 	}
-	return 0;
+	return count;
 }
 
 int getLinesCount(const char* fileName) {
