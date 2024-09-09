@@ -33,6 +33,7 @@ public:
             free();
             moveFrom(std::move(other));
         }
+        return *this;
     }
 
     ~HexArray() {
@@ -45,7 +46,7 @@ public:
         {
             if (isValidSymbol(arr.data[i]))
             {
-                os << std::hex << arr.data[i] << " ";
+                os << arr.data[i] << " ";
             }
             else
             {
@@ -119,13 +120,15 @@ public:
     {
         return HexArrayView(_begin + from, _begin + from + length);
     }
-    friend std::ostream& operator<<(std::ostream&, const HexArrayView& strView)
+    friend std::ostream& operator<<(std::ostream& os, const HexArrayView& strView)
     {
         const unsigned char* iter = strView._begin;
         while (iter != strView._end)
         {
-            std::cout << std::hex << iter++;
+            os << std::hex << (int)*(iter++) << " ";
         }
+
+        return os;
     }
 };
 
@@ -149,6 +152,7 @@ public:
     {
         std::ofstream ofs(fileName, std::ios::binary);
         ofs.write((const char*)arr.c_str(), arr.getSize());
+        ofs.close();
     }
     virtual Serializator* clone() const override {
         return new BinarySerializator(*this);
@@ -161,9 +165,11 @@ public:
     TxtHexSerializator(const char* str, const HexArray& arr) : Serializator(str, arr) {}
     virtual void serialize() override
     {
-        std::ofstream ofs(fileName, std::ios::binary);
+        std::ofstream ofs(fileName);
         for (int i = 0; i < arr.getSize(); i++)
-            ofs << std::hex << arr.c_str()[i] << " ";
+            ofs << std::hex << (int)arr.c_str()[i] << " ";
+
+        ofs.close();
     }
     virtual Serializator* clone() const override {
         return new TxtHexSerializator(*this);
@@ -176,9 +182,11 @@ public:
 
     virtual void serialize() override
     {
-        std::ofstream ofs(fileName, std::ios::binary);
+        std::ofstream ofs(fileName);
         for (int i = 0; i < arr.getSize(); i++)
             ofs << arr.c_str()[i] << " ";
+
+        ofs.close();
     }
 
     virtual Serializator* clone() const override {
@@ -197,6 +205,8 @@ public:
         char recFileName[1024];
         ifs >> recFileName;
         ser = serializatorFactory(arr, recFileName);
+
+        ifs.close();
     }
     virtual void serialize() override
     {
@@ -209,7 +219,7 @@ public:
 
     RecSerializator(const RecSerializator& other) : Serializator(other)
     {
-        ser = ser->clone();
+        ser = other.ser->clone();
     }
     ~RecSerializator()
     {
@@ -242,6 +252,8 @@ public:
         size_t size = getFileSize(ifs);
         unsigned char* data = new unsigned char[size];
         ifs.read((char*)data, size);
+        ifs.close();
+        
         return HexArray(data, size);
     }
 
@@ -266,6 +278,8 @@ public:
             ifs >> std::hex >> tempByte; //works for newlines and spaces!!
             res[i] = tempByte;
         }
+
+        ifs.close();
         return HexArray(res, size);
     }
 
@@ -280,7 +294,7 @@ public:
     HexArray deserialize() const override
     {
         std::ifstream ifs(fileName);
-        unsigned size = getCharCount(ifs, '\n') + 1;
+        unsigned size = getCharCount(ifs, ' ') + 1;
         unsigned char* res = new unsigned char[size];
         for (int i = 0; i < size; i++)
         {
@@ -288,6 +302,8 @@ public:
             ifs >> tempByte;
             res[i] = tempByte;
         }
+
+        ifs.close();
         return HexArray(res, size);
     }
 
@@ -303,7 +319,7 @@ Serializator* serializatorFactory(const HexArray& arr, const char* str)
         return new BinarySerializator(str, arr);
     if (strcmp(extension, ".txtHex"))
         return new TxtHexSerializator(str, arr);
-    if (strcmp(extension, ".dat"))
+    if (strcmp(extension, ".txt"))
         return new TxtDecimalSerializator(str, arr);
     if (strcmp(extension, ".rec"))
         return new RecSerializator(str, arr);
@@ -317,7 +333,7 @@ Deserializator* deserializatorFactory(const char* str)
         return new BinaryDeserializator(str);
     if (strcmp(extension, ".txtHex"))
         return new TxtHexDeserializator(str);
-    if (strcmp(extension, ".dat"))
+    if (strcmp(extension, ".txt"))
         return new TxtDecimalDeserializator(str);
     return nullptr;
 }

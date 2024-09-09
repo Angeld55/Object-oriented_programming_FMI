@@ -14,7 +14,7 @@ static unsigned char* createAndFillByteArray(size_t destSize, const unsigned cha
 static const char* getFileExtension(const char* str)
 {
     while (*str && *str != '.') str++;
-    return str + 1;
+    return str; //'.' included in factory, if not str + 1
 }
 
 int getCharCount(std::ifstream& ifs, char ch) {
