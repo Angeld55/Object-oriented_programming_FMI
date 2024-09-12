@@ -55,8 +55,8 @@ public:
 int main() {
 	SingletonFactory& sf = SingletonFactory::getInstance();
 
-	sf.create();
-	sf.create();
-	sf.create();
-	sf.create();
+	Base* obj = sf.create();
+	Base* obj2 = sf.create();
+        delete obj;
+        delete obj2;
 }
