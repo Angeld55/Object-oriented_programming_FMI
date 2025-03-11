@@ -1,30 +1,30 @@
 #include <iostream>
 #include <fstream>
 
-unsigned getCharCountFromFile(std::ifstream& ifs, char ch)
+unsigned getCharCountFromFile(std::ifstream& ifs, char ch) 
 {
-	size_t currentPosition = ifs.tellg();
-	ifs.seekg(0, std::ios::beg);
+    size_t currentPosition = ifs.tellg();
+    ifs.seekg(0, std::ios::beg);
 
-	if (!ifs.is_open())
-		return 0;
+    if (!ifs.is_open()) 
+        return 0;
+    
 
-	unsigned int count = 0;
+    unsigned int count = 0;
+    char current;
+    
+    while (ifs.get(current)) 
+    {
+        if (current == ch) 
+            ++count;
+    }
 
-	while (true)
-	{
-		char current = ifs.get();
-		if (ifs.eof())
-			break;
-
-		if (current == ch)
-			count++;
-	}
-
-	ifs.clear();
-	ifs.seekg(currentPosition);
-	return count;
+    ifs.clear();
+    ifs.seekg(currentPosition);
+    
+    return count;
 }
+
 
 int* getArrayFromFile(const char* fileName, size_t& arraySize)
 {
