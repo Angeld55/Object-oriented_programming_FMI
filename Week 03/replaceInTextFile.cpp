@@ -4,16 +4,15 @@ using namespace std;
 
 void replaceInFile(char ch, char ch2, fstream& file)
 {
-	while (!file.eof())
+	char currentSymbol;
+	while (file.get(currentSymbol))
 	{
-		char currentSybmol = file.get();
-
-		if (currentSybmol != ch)
-			continue;
-
-		file.seekp(-1, ios::cur);
-		file.put(ch2);
-		file.flush();
+	    if (currentSymbol == ch)
+	    {
+	        file.seekp(-1, std::ios::cur);
+	        file.put(ch2);
+	        file.flush();
+	    }
 	}
 }
 
