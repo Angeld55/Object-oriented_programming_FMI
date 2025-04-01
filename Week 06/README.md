@@ -87,23 +87,24 @@ struct Person
 		setAge(age);
 	}
 
-	Person(const Person& other)
+	Person(const Person& other) : age(age)  //copy constructor of non-dynamic members
 	{	
-		copyFrom(other); // копираме
+		copyDynamic(other); // копираме
 	}
 
 	Person& operator=(const Person& other)
 	{
 		if (this != &other)
 		{
-			free(); //трием
-			copyFrom(other); //копираме
+			freeDynamic(); //трием
+			copyDynamic(other); //копираме
+			this->age = age;
 		}
 		return *this;
 	}
 	~Person()
 	{
-		free(); //трием
+		freeDynamic(); //трием
 	}
 	
 	.
@@ -116,7 +117,6 @@ struct Person
 
  ```
 
-При всички класове, които използват динамична памет, тези функции изглеждат по този начин. Разликите са в имплементациите на функциите **free** и **copyFrom**.
 
 ## Задачи
 **Задача 1**: Напишете клас Set, който съдържа множество от числа (без повторения) в диапазона от 0 до n-1, където n е подадено в началото (1 <= n <= 1000). Класът трябва да пази дали съдържа дадено число в битове, т.е ако съдържа дадено число, съответвеният последователен бит ще бъде 1, в противен случай 0. Пример:
