@@ -87,7 +87,7 @@ struct Person
 		setAge(age);
 	}
 
-	Person(const Person& other) : age(age)  //copy constructor of non-dynamic members
+	Person(const Person& other) : age(age)  //извикваме копиращ конструктор на член-данните, които не са указатели към дин.памет.
 	{	
 		copyDynamic(other); // копираме
 	}
