@@ -8,12 +8,15 @@ class DynamicSet
 	unsigned N = 0;
 	const unsigned elementsInBucket = sizeof(uint8_t) * 8;
 
-	void free();
-	void copyFrom(const DynamicSet& other);
+	void freeDynamic();
+	void copyDynamic(const DynamicSet& other);
 
 	unsigned getBucketIndex(unsigned num) const;
 public:
-	DynamicSet(unsigned n); // [0....n] (n + 1 числа)
+	DynamicSet() = default;
+
+	//explicit prevents implicit casting
+	explicit DynamicSet(unsigned n); // [0....n] (n + 1 числа)
 
 	DynamicSet(const DynamicSet& other);
 	DynamicSet& operator=(const DynamicSet& other);
@@ -21,7 +24,7 @@ public:
 
 	void add(unsigned num);
 	void remove(unsigned num);
-	bool contains(unsigned num) const; 
+	bool contains(unsigned num) const;
 	void print() const;
 	friend DynamicSet UnionOfSets(const DynamicSet& lhs, const DynamicSet& rhs);
 	friend DynamicSet IntersectionOfSets(const DynamicSet& lhs, const DynamicSet& rhs);

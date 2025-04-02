@@ -7,37 +7,38 @@ DynamicSet::DynamicSet(unsigned N)
 	this->N = N;
 }
 
-void DynamicSet::free()
+void DynamicSet::freeDynamic()
 {
 	delete[] buckets;//!!!
 	bucketsCount = 0;
 	buckets = nullptr;
 }
-void DynamicSet::copyFrom(const DynamicSet& other)
+void DynamicSet::copyDynamic(const DynamicSet& other)
 {
 	buckets = new uint8_t[other.bucketsCount];
-	for(size_t i = 0; i < other.bucketsCount; i++)
+	for (size_t i = 0; i < other.bucketsCount; i++)
 		buckets[i] = other.buckets[i];
-	bucketsCount = other.bucketsCount;
-	N = other.N;
 }
 
-DynamicSet::DynamicSet(const DynamicSet& other)
+DynamicSet::DynamicSet(const DynamicSet& other) : bucketsCount(other.bucketsCount), N(other.N)
 {
-	copyFrom(other);
+	copyDynamic(other);
 }
+
 DynamicSet& DynamicSet::operator=(const DynamicSet& other)
 {
 	if (this != &other)
 	{
-		free();
-		copyFrom(other);
+		freeDynamic();
+		copyDynamic(other);
+		bucketsCount = other.bucketsCount;
+		N = other.N;
 	}
 	return *this;
 }
 DynamicSet::~DynamicSet()
 {
-	free();
+	freeDynamic();
 }
 
 unsigned DynamicSet::getBucketIndex(unsigned num) const
@@ -53,7 +54,7 @@ void DynamicSet::add(unsigned num)
 	unsigned bucketIndex = getBucketIndex(num);
 	unsigned bitIndex = num % elementsInBucket;
 
-	uint8_t mask = 1 << bitIndex; 
+	uint8_t mask = 1 << bitIndex;
 	buckets[bucketIndex] |= mask;
 
 }
@@ -65,7 +66,7 @@ void DynamicSet::remove(unsigned num)
 	unsigned bitIndex = num % elementsInBucket;
 
 	uint8_t mask = ~(1 << bitIndex);
-	buckets[bucketIndex] &= mask; 
+	buckets[bucketIndex] &= mask;
 }
 
 bool DynamicSet::contains(unsigned num) const
@@ -114,3 +115,4 @@ DynamicSet IntersectionOfSets(const DynamicSet& lhs, const DynamicSet& rhs)
 		result.buckets[i] = lhs.buckets[i] & rhs.buckets[i];
 	return result;
 }
+
