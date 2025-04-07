@@ -17,8 +17,6 @@ void GraduatedStudent::freeDynamic()
     delete[] grades;
     name = nullptr;
     grades = nullptr;
-    gradesCount = 0;
-    strcpy(quote, "");
 }
 
 GraduatedStudent::GraduatedStudent(const char* name, const int* grades, size_t gradesCount, const char* quote)
