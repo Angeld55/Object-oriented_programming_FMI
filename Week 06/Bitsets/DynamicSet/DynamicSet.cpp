@@ -10,8 +10,6 @@ DynamicSet::DynamicSet(unsigned N)
 void DynamicSet::freeDynamic()
 {
 	delete[] buckets;//!!!
-	bucketsCount = 0;
-	buckets = nullptr;
 }
 void DynamicSet::copyDynamic(const DynamicSet& other)
 {
