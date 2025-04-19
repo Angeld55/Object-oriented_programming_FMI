@@ -31,21 +31,18 @@ Complex& Complex::operator*=(const Complex& other)
 }
 Complex& Complex::operator/=(const Complex& other) // a/=b
 {
-	Complex Conjugated = other.getConjugated(); //взимаме комплексно спрегнатата на другата дроб (b)
+	Complex Conjugated = other.getConjugated();
+	Complex numerator = *this * Conjugated;
+	Complex denominator = other * Conjugated;
 
-	Complex otherCopy(other);// копираме другата (b), за да не я промяняме.
+    	if (denominator.real == 0)
+    	{
+            return *this // не прави нищо
+    	}
 
-	//Умножаваме двете по комплексно спрегнатата.
-	*this *= Conjugated;
-	otherCopy *= Conjugated; //Тук трябва да остане само реална част.
-
-	if (otherCopy.real != 0)
-	{
-		real /= otherCopy.real;
-		im /= otherCopy.real;
-	}
-
-	return *this;
+    	real = numerator.real / denominator.real;
+    	im = numerator.im / denominator.real;
+    	return *this;
 }
 
 
