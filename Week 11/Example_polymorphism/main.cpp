@@ -1,9 +1,6 @@
 ﻿#include <iostream>
 using namespace std;
-
-#include "Rectangle.h"
-#include "Circle.h"
-#include "Triangle.h"
+#include "ShapeFactory.h"
 
 
 void printAreas(const Shape* const * shapes, size_t shapesCount)
@@ -34,30 +31,14 @@ int main()
 {
 		Shape** arr = new Shape*[4];
 
-		/// <summary>
-		/// 
-		// FACTORY
-		arr[0] = new Rectangle(3, 4, 6, 8);
-		arr[1] = new Circle(3, 3, 4);
-		arr[2] = new Circle(1, 4, 5);
-		arr[3] = new Triangle(1, 1, 2, 2, 3, 3);
-		/// <summary>
-		/// //
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		/// 
-		/// 
-		/// 
-		/// 
+		for (int i = 0; i < 4; i++)
+			arr[i] = shapeFactory();
+		
 		printAreas(arr, 4);
 		std::cout << endl;
 		printPers(arr, 4);
 		std::cout << endl;
-
 		checkPointIn(arr, 4, 3, 3);
-		
 
 		freeCollection(arr, 4);
-	
 }
