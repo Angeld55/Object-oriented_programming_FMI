@@ -1,9 +1,11 @@
 #pragma once
 #include "Animal.h"
+
 class Cat : public Animal
 {
 public:
-	Cat();
-	void roar() const override;
+	void roar() const override;	
 	Animal* clone() const override;
+	int getType() const override;
 };
+

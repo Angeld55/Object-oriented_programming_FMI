@@ -1,16 +1,16 @@
 #include <iostream>
-#include "Collection/Farm.h"
-#include "Animals/Animal.h"
-#include "Factory/AnimalFactory.h"
+#include "Farm.h"
+#include "Factory.h"
+
 
 int main()
 {
 	Farm f;
-	f.addAnimal(AnimalType::Dog);
-	f.addAnimal(AnimalType::Cat);
-	f.addAnimal(AnimalType::Cow);
-
+	int n = 0;
+	std::cin >> n;
+	for (int i = 0; i < n; i++)
+		f.addAnimal(animalFactory());
 	f.roarAll();
-	
-	std::cout << (int)f.getTypeByIndex(0) << std::endl;
-}
+
+} //~Farm() -->  deletes all animals
+
