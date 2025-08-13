@@ -257,7 +257,7 @@ public:
         return HexArray(data, size);
     }
 
-    Deserializator* clone() const {
+    Deserializator* clone() const override{
         return new BinaryDeserializator(*this);
     }
 };
@@ -283,7 +283,7 @@ public:
         return HexArray(res, size);
     }
 
-    Deserializator* clone() const {
+    Deserializator* clone() const override{
         return new TxtHexDeserializator(*this);
     }
 };
@@ -307,7 +307,7 @@ public:
         return HexArray(res, size);
     }
 
-    Deserializator* clone() const {
+    Deserializator* clone() const override{
         return new TxtDecimalDeserializator(*this);
     }
 };
@@ -315,13 +315,13 @@ public:
 Serializator* serializatorFactory(const HexArray& arr, const char* str)
 {
     const char* extension = getFileExtension(str);
-    if (strcmp(extension, ".dat"))
+    if (strcmp(extension, ".dat") == 0)
         return new BinarySerializator(str, arr);
-    if (strcmp(extension, ".txtHex"))
+    if (strcmp(extension, ".txtHex") == 0)
         return new TxtHexSerializator(str, arr);
-    if (strcmp(extension, ".txt"))
+    if (strcmp(extension, ".txt") == 0)
         return new TxtDecimalSerializator(str, arr);
-    if (strcmp(extension, ".rec"))
+    if (strcmp(extension, ".rec") == 0)
         return new RecSerializator(str, arr);
     return nullptr;
 }
@@ -329,11 +329,11 @@ Serializator* serializatorFactory(const HexArray& arr, const char* str)
 Deserializator* deserializatorFactory(const char* str)
 {
     const char* extension = getFileExtension(str);
-    if (strcmp(extension, ".dat"))
+    if (strcmp(extension, ".dat") == 0)
         return new BinaryDeserializator(str);
-    if (strcmp(extension, ".txtHex"))
+    if (strcmp(extension, ".txtHex") == 0)
         return new TxtHexDeserializator(str);
-    if (strcmp(extension, ".txt"))
+    if (strcmp(extension, ".txt") == 0)
         return new TxtDecimalDeserializator(str);
     return nullptr;
 }
