@@ -254,7 +254,9 @@ public:
         ifs.read((char*)data, size);
         ifs.close();
         
-        return HexArray(data, size);
+        HexArray toReturn(data, size);
+        delete[] data;
+        return toReturn;
     }
 
     Deserializator* clone() const override{
@@ -280,7 +282,9 @@ public:
         }
 
         ifs.close();
-        return HexArray(res, size);
+        HexArray toReturn(res, size);
+        delete[] res;
+        return toReturn;
     }
 
     Deserializator* clone() const override{
@@ -304,7 +308,9 @@ public:
         }
 
         ifs.close();
-        return HexArray(res, size);
+        HexArray toReturn(res, size);
+        delete[] res;
+        return toReturn;
     }
 
     Deserializator* clone() const override{
